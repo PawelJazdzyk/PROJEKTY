@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript">
+      google.charts.load("current", { packages: ["calendar"] });
+      google.charts.setOnLoadCallback(drawChart);
+    </script>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
+    <script src="ds-dashboard.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
@@ -26,18 +36,207 @@
     </nav>
     <div class="desktop">
       <div class="container-left">
-        <button class="ui-button ui-widget ui-corner-all container-left_button" style="margin-top: 45%;">Overwiev
-          <button class="ui-button ui-widget ui-corner-all container-left_button">Order for Today
-            <button class="ui-button ui-widget ui-corner-all container-left_button">Your Targets
-          <button class="ui-button ui-widget ui-corner-all container-left_button">Sales Analysis
-            <button class="ui-button ui-widget ui-corner-all container-left_button">Sales Geography
-              <button class="ui-button ui-widget ui-corner-all container-left_button">Orders Review
-                <button class="ui-button ui-widget ui-corner-all container-left_button">Customer Analysis
-                  <button class="ui-button ui-widget ui-corner-all container-left_button">Invoices
-                    <button class="ui-button ui-widget ui-corner-all container-left_button">Pricelists
-                      <button class="ui-button ui-widget ui-corner-all container-left_button">Calculators
-                      </div>
-      <div class="container-right"></div>
+        <div class="container-left_buttons_container">
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button buttons_sticky"
+            style="margin-top: 40%"
+          >
+            Overwiev
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Order for Today
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Your Targets
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Sales Analysis
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Sales Geography
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Orders Review
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Customer Analysis
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Invoices
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Pricelists
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Calculators
+          </button>
+        </div>
+      </div>
+
+      <div class="container-right">
+        <div class="container-right_first_row">
+          <div class="container-right_left_side">
+            <div class="container-right_target">
+              <div>
+                <p
+                  class="container-right_target_text"
+                  id="container-right_target_text_id"
+                ></p>
+              </div>
+              <div><p class="target_percent">66,12%</p></div>
+              <div id="target_bar"></div>
+            </div>
+            <div class="container-right_sales_history">
+              <div id="sales-history"></div>
+            </div>
+          </div>
+          <div class="container-right_informations">
+            <p class="container-right_informations_title_1">Sales Today</p>
+            <div
+              class="container-right_informations_content_today"
+              id="informations_content_1"
+            >
+              <span class="small_letter">All</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_today"
+              id="informations_content_2"
+            >
+              <span class="small_letter">Cd/Dvd</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_today"
+              id="informations_content_3"
+            >
+              <span class="small_letter">Vinyl</span><br />123456
+            </div>
+            <p class="container-right_informations_title_2">
+              Sales Today Margin Profit
+            </p>
+            <div
+              class="container-right_informations_content_today"
+              id="informations_content_4"
+            >
+              <span class="small_letter">All</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_today"
+              id="informations_content_5"
+            >
+              <span class="small_letter">Cd/Dvd</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_today"
+              id="informations_content_6"
+            >
+              <span class="small_letter">Vinyl</span><br />123456
+            </div>
+            <p class="container-right_informations_title_3">
+              Sales Today Margin Profit %
+            </p>
+            <div
+              class="container-right_informations_content_today"
+              id="informations_content_7"
+            >
+              <span class="small_letter">All</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_today"
+              id="informations_content_8"
+            >
+              <span class="small_letter">Cd/Dvd</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_today"
+              id="informations_content_9"
+            >
+              <span class="small_letter">Vinyl</span><br />123456
+            </div>
+            <p class="container-right_informations_title_4">Sales Month</p>
+            <div
+              class="container-right_informations_content_month"
+              id="informations_content_10"
+            >
+              <span class="small_letter">All</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_month"
+              id="informations_content_11"
+            >
+              <span class="small_letter">Cd/Dvd</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_month"
+              id="informations_content_12"
+            >
+              <span class="small_letter">Vinyl</span><br />123456
+            </div>
+            <p class="container-right_informations_title_5">
+              Sales Month Margin Profit
+            </p>
+            <div
+              class="container-right_informations_content_month"
+              id="informations_content_13"
+            >
+              <span class="small_letter">All</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_month"
+              id="informations_content_14"
+            >
+              <span class="small_letter">Cd/Dvd</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_month"
+              id="informations_content_15"
+            >
+              <span class="small_letter">Vinyl</span><br />123456
+            </div>
+            <p class="container-right_informations_title_6">
+              Sales Month Margin Profit %
+            </p>
+            <div
+              class="container-right_informations_content_month"
+              id="informations_content_16"
+            >
+              <span class="small_letter">All</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_month"
+              id="informations_content_17"
+            >
+              <span class="small_letter">Cd/Dvd</span><br />123456
+            </div>
+            <div
+              class="container-right_informations_content_month"
+              id="informations_content_18"
+            >
+              <span class="small_letter">Vinyl</span><br />123456
+            </div>
+          </div>
+          <div class="container-right_calendar">
+            <div id="sales_callendar"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
