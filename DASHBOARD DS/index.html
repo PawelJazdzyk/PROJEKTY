@@ -21,6 +21,29 @@
     />
     <link rel="stylesheet" href="/resources/demos/style.css" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .headerRow {
+        font-family: "Calibri";
+        font-size: 110%;
+        color: rgb(66, 65, 66);
+        background-color: rgb(192, 188, 188);
+      }
+      .tableRow {
+        font-family: "Calibri";
+        font-size: 105%;
+        word-wrap: break-word;
+        text-align: center;
+        color: rgb(97, 97, 97);
+      }
+      .oddTableRow {
+        font-family: "Calibri";
+        font-size: 105%;
+        word-wrap: break-word;
+        text-align: center;
+        background-color: rgb(248, 248, 248);
+        color: rgb(97, 97, 97);
+      }
+    </style>
     <link rel="shortcut icon" href="Images/faviconX.png" type="image/x-icon" />
     <title>Sales X-Dashboard</title>
   </head>
@@ -32,7 +55,7 @@
         alt="logo X disc group"
       />
       <h1 class="dashboard_title">Sales X-Dashboard</h1>
-      <p class="welcome-user">Welcome, Paweł Jażdżyk</p>
+      <p class="welcome-user" id="welcome-user-id"></p>
     </nav>
     <div class="desktop">
       <div class="container-left">
@@ -40,26 +63,31 @@
           <button
             class="ui-button ui-widget ui-corner-all container-left_button buttons_sticky"
             style="margin-top: 40%"
+            id="overwiev_button"
           >
             Overwiev
           </button>
           <button
             class="ui-button ui-widget ui-corner-all container-left_button"
+            id="orders-for-Today_button"
           >
-            Order for Today
+            Orders for Today
           </button>
           <button
             class="ui-button ui-widget ui-corner-all container-left_button"
+            id="orders-entry-Today_button"
           >
-            Your Targets
+            Entered Orders
           </button>
           <button
             class="ui-button ui-widget ui-corner-all container-left_button"
+            id="invoice-Today_button"
           >
-            Sales Analysis
+            Invoice Today
           </button>
-          <button
+          <!-- <button
             class="ui-button ui-widget ui-corner-all container-left_button"
+      
           >
             Sales Geography
           </button>
@@ -87,154 +115,95 @@
             class="ui-button ui-widget ui-corner-all container-left_button"
           >
             Calculators
-          </button>
+          </button> -->
         </div>
       </div>
 
       <div class="container-right">
-        <div class="container-right_first_row">
-          <div class="container-right_left_side">
-            <div class="container-right_target">
-              <div>
-                <p
-                  class="container-right_target_text"
-                  id="container-right_target_text_id"
-                ></p>
-              </div>
-              <div><p class="target_percent">66,12%</p></div>
-              <div id="target_bar"></div>
+        <div class="container-right_firs_row">
+          <div class="container-right_firs_row_data">
+            <p
+              class="container-right_firs_row_data_text"
+              id="target-this_month"
+            ></p>
+          </div>
+          <div class="container-right_firs_row_data">
+            <p
+              class="container-right_firs_row_data_text"
+              id="invoices-today_month"
+            ></p>
+          </div>
+          <div class="container-right_firs_row_data">
+            <p class="container-right_firs_row_data_text" id="orders-today"></p>
+          </div>
+          <div class="container-right_firs_row_data">
+            <p
+              class="container-right_firs_row_data_text"
+              id="orders-for_today"
+            ></p>
+          </div>
+          <div id="sales_callendar"></div>
+        </div>
+        <div class="container-right_second_row">
+          <div class="container-right_second_row_target">
+            <div id="target_bar"></div>
+          </div>
+          <div class="container-right_second_row_history">
+            <div id="sales-history"></div>
+          </div>
+          <div class="container-right_second_row_sales">
+            <div class="container-right_second_row_sales_content">
+              <p
+                class="container-right_second_row_data_text"
+                id="today-sales"
+              ></p>
             </div>
-            <div class="container-right_sales_history">
-              <div id="sales-history"></div>
+            <div class="container-right_second_row_sales_content">
+              <p
+                class="container-right_second_row_data_text"
+                id="today-profit"
+              ></p>
+            </div>
+            <div class="container-right_second_row_sales_content">
+              <p
+                class="container-right_second_row_data_text"
+                id="today-profit_percent"
+              ></p>
+            </div>
+            <div class="container-right_second_row_sales_content">
+              <p
+                class="container-right_second_row_data_text"
+                id="today-order_value"
+              ></p>
             </div>
           </div>
-          <div class="container-right_informations">
-            <p class="container-right_informations_title_1">Sales Today</p>
-            <div
-              class="container-right_informations_content_today"
-              id="informations_content_1"
-            >
-              <span class="small_letter">All</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_today"
-              id="informations_content_2"
-            >
-              <span class="small_letter">Cd/Dvd</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_today"
-              id="informations_content_3"
-            >
-              <span class="small_letter">Vinyl</span><br />123456
-            </div>
-            <p class="container-right_informations_title_2">
-              Sales Today Margin Profit
-            </p>
-            <div
-              class="container-right_informations_content_today"
-              id="informations_content_4"
-            >
-              <span class="small_letter">All</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_today"
-              id="informations_content_5"
-            >
-              <span class="small_letter">Cd/Dvd</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_today"
-              id="informations_content_6"
-            >
-              <span class="small_letter">Vinyl</span><br />123456
-            </div>
-            <p class="container-right_informations_title_3">
-              Sales Today Margin Profit %
-            </p>
-            <div
-              class="container-right_informations_content_today"
-              id="informations_content_7"
-            >
-              <span class="small_letter">All</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_today"
-              id="informations_content_8"
-            >
-              <span class="small_letter">Cd/Dvd</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_today"
-              id="informations_content_9"
-            >
-              <span class="small_letter">Vinyl</span><br />123456
-            </div>
-            <p class="container-right_informations_title_4">Sales Month</p>
-            <div
-              class="container-right_informations_content_month"
-              id="informations_content_10"
-            >
-              <span class="small_letter">All</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_month"
-              id="informations_content_11"
-            >
-              <span class="small_letter">Cd/Dvd</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_month"
-              id="informations_content_12"
-            >
-              <span class="small_letter">Vinyl</span><br />123456
-            </div>
-            <p class="container-right_informations_title_5">
-              Sales Month Margin Profit
-            </p>
-            <div
-              class="container-right_informations_content_month"
-              id="informations_content_13"
-            >
-              <span class="small_letter">All</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_month"
-              id="informations_content_14"
-            >
-              <span class="small_letter">Cd/Dvd</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_month"
-              id="informations_content_15"
-            >
-              <span class="small_letter">Vinyl</span><br />123456
-            </div>
-            <p class="container-right_informations_title_6">
-              Sales Month Margin Profit %
-            </p>
-            <div
-              class="container-right_informations_content_month"
-              id="informations_content_16"
-            >
-              <span class="small_letter">All</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_month"
-              id="informations_content_17"
-            >
-              <span class="small_letter">Cd/Dvd</span><br />123456
-            </div>
-            <div
-              class="container-right_informations_content_month"
-              id="informations_content_18"
-            >
-              <span class="small_letter">Vinyl</span><br />123456
-            </div>
+        </div>
+        <div class="container-right_three_row">
+          <div class="alerts_gray"><p class="alerts_data">Alerts:</p></div>
+          <div class="alerts_green"><p class="alerts_data">75</p></div>
+          <div class="alerts_yellow"><p class="alerts_data">175</p></div>
+          <div class="alerts_orange"><p class="alerts_data">175</p></div>
+          <div class="alerts_red"><p class="alerts_data">175</p></div>
+          <div class="alerts_vinyl"><p class="alerts_data">Vinyls</p></div>
+          <div class="alerts_vinyl_cont">
+            <p class="alerts_data" id="percent-winyl_all"></p>
           </div>
-          <div class="container-right_calendar">
-            <div id="sales_callendar"></div>
+          <div class="alerts_cd"><p class="alerts_data">Cd</p></div>
+          <div class="alerts_cd_cont">
+            <p class="alerts_data" id="percent-cd_all"></p>
           </div>
+        </div>
+        <div class="container-right_four_row" id="orders-for-today_head">
+          <p class="dive-heads">Orders For Today</p>
+          <div id="orders-for-today_table"></div>
+        </div>
+        <div class="container-right_five_row" id="orders-entry-today_head">
+          <p class="dive-heads">Orders Entered Today</p>
+          <div id="orders-entry-today_table"></div>
+        </div>
+        <div class="container-right_six_row" id="invoice-today_head">
+          <p class="dive-heads">Invoice Today</p>
+          <div id="invoice-today_table"></div>
         </div>
       </div>
     </div>

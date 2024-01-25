@@ -1,9 +1,192 @@
 $(document).ready(function () {
+  const options = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
+  class NameStyle {
+    constructor(v, p) {
+      this.v = v;
+      this.p = p;
+    }
+  }
+  class NameValue {
+    constructor(v, f) {
+      this.v = v;
+      this.f = f;
+    }
+  }
+  $("#orders-for-Today_button, #orders-for_today").click(function () {
+    $("html, body").animate(
+      {
+        scrollTop: $("#orders-for-today_head").offset().top,
+      },
+      500
+    );
+  });
+  $("#orders-entry-Today_button, #orders-today").click(function () {
+    $("html, body").animate(
+      {
+        scrollTop: $("#orders-entry-today_head").offset().top,
+      },
+      500
+    );
+  });
+  $("#invoice-Today_button, #invoices-today_month").click(function () {
+    $("html, body").animate(
+      {
+        scrollTop: $("#invoice-today_head").offset().top,
+      },
+      500
+    );
+  });
+  $("#overwiev_button").click(function () {
+    $("html, body").animate(
+      {
+        scrollTop: $(".desktop").offset().top,
+      },
+      500
+    );
+  });
+
+  let dataPoint = [
+    1266.890435345, 2443.8903455, 2674.8904345, 4872.8903555, 5339.894343,
+    2359.894343, 4322.894343, 4335.894343, 7739.894343,
+  ];
+
+  let aa = Math.round(Math.round(dataPoint[0]) * 1.11);
+  let bb = Math.round(Math.round(dataPoint[1]) * 1.11);
+  let cc = Math.round(Math.round(dataPoint[2]) * 1.11);
+  let dd = Math.round(Math.round(dataPoint[3]) * 1.11);
+  let ee = Math.round(Math.round(dataPoint[4]) * 1.11);
+  let ff = Math.round(Math.round(dataPoint[5]) * 1.11);
+  let gg = Math.round(Math.round(dataPoint[6]) * 1.11);
+  let hh = Math.round(Math.round(dataPoint[7]) * 1.11);
+  let ii = Math.round(Math.round(dataPoint[8]) * 1.11);
+
+  // console.log(aa);
+  // console.log(bb);
+  // console.log(cc);
+  // console.log(dd);
+  // console.log(ee);
+  // console.log(ff);
+  // console.log(gg);
+  // console.log(hh);
+  // console.log(ii);
+
   let handlowiec = "Lucyna Kozicka";
   let target = [
     1234567, 1234567, 1234567, 1234567, 1234567, 1234567, 1234567, 1234567,
     1234567, 1234567, 1234567, 1234567,
   ];
+  let mailHandlowiec;
+  let welcomeUser;
+
+  while (true) {
+    let pinHandlowiec = Number(prompt("Podaj PIN"));
+
+    switch (pinHandlowiec) {
+      case aa:
+        handlowiec = "Maja Grunt";
+        target = [
+          70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+          100000, 100000,
+        ];
+        mailHandlowiec = "maja.grunt@x-disc.pl";
+        welcomeUser = "Welcome, Maja Grunt";
+        break;
+
+      case bb:
+        handlowiec = "Krzysztof Ciółkowski";
+        target = [
+          95000, 95000, 95000, 105000, 105000, 105000, 110000, 110000, 110000,
+          120000, 120000, 120000,
+        ];
+        welcomeUser = "Welcome, Krzysztof Ciółkowski";
+        mailHandlowiec = "krzysztof.ciolkowski@x-disc.pl";
+        break;
+
+      case cc:
+        handlowiec = "Michał Durmowicz";
+        target = [
+          70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+          100000, 100000,
+        ];
+        welcomeUser = "Welcome, Michał Durmowicz";
+        mailHandlowiec = "michal.durmowicz@x-disc.pl";
+        break;
+
+      case dd:
+        handlowiec = "Marta Kierzkowska";
+        target = [
+          200000, 200000, 200000, 210000, 210000, 210000, 200000, 380000,
+          250000, 250000, 240000, 0,
+        ];
+        welcomeUser = "Welcome, Marta Kierzkowska";
+        mailHandlowiec = "marta.kierzkowska@x-disc.pl";
+        break;
+
+      case ee:
+        handlowiec = "Lucyna Kozicka";
+        target = [
+          280000, 280000, 280000, 305000, 305000, 305000, 320000, 320000,
+          320000, 335000, 335000, 335000,
+        ];
+        welcomeUser = "Welcome, Lucyna Kozicka";
+        mailHandlowiec = "lucyna.kozicka@x-disc.pl";
+        break;
+
+      case ff:
+        handlowiec = "Jakub Mikliński";
+        target = [
+          335000, 335000, 335000, 335000, 335000, 335000, 370000, 370000,
+          370000, 385000, 375000, 375000,
+        ];
+        welcomeUser = "Welcome, Jakub Mikliński";
+        mailHandlowiec = "jakub.miklinski@x-disc.pl";
+        break;
+
+      case gg:
+        handlowiec = "Małgorzata Roszkowska";
+        target = [
+          160000, 160000, 160000, 165000, 165000, 175000, 170000, 170000,
+          170000, 170000, 170000, 170000,
+        ];
+        welcomeUser = "Welcome, Małgorzata Roszkowska";
+        mailHandlowiec = "malgorzata.roszkowska@x-disc.pl";
+        break;
+
+      case hh:
+        handlowiec = "Ingo Kleimann";
+        target = [
+          56000, 122000, 146000, 39000, 130000, 68000, 145000, 200000, 84000,
+          125000, 100000, 100000,
+        ];
+        welcomeUser = "Welcome, Ingo Kleimann";
+        mailHandlowiec = "ingo.kleimann@x-disc.pl";
+        break;
+
+      case ii:
+        handlowiec = "Jean-Remi BEL";
+        target = [
+          50000, 50000, 50000, 70000, 70000, 70000, 85000, 85000, 85000, 90000,
+          90000, 90000,
+        ];
+        welcomeUser = "Welcome, Jean-Remi Bel";
+        mailHandlowiec = "jean-remi.bel@x-disc.pl";
+        break;
+
+      default:
+        setTimeout(function () {
+          window.location.href = "failPin.html";
+        }, 500);
+    }
+
+    break;
+  }
+
+  $("#welcome-user-id").html(welcomeUser);
+
   let ms;
   let mis;
   let di;
@@ -12,19 +195,19 @@ $(document).ready(function () {
     31, 30, 31, 30, 31,
   ];
   let month = [
-    "Styczeń",
-    "Luty",
-    "Marzec",
-    "Kwiecień",
-    "Maj",
-    "Czerwiec",
-    "Lipiec",
-    "Sierpień",
-    "Wrzesień",
-    "Październik",
-    "Listopad",
-    "Grudzień",
-    "Styczeń",
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+    "January",
   ];
 
   let d = new Date().getDate();
@@ -146,113 +329,107 @@ $(document).ready(function () {
     monthMinus = 0;
   }
 
-  let planWinyl1 = [
-    1942857, 2014286, 2037143, 1957143, 2000000, 2008571, 2057143, 2300000,
-    2168571, 2257143, 2214286, 1871429,
-  ];
-
-  let planWinyl = planWinyl1[m];
-
   if (m == 0) {
     m = 12;
     month = [
-      "Styczeń",
-      "Luty",
-      "Marzec",
-      "Kwiecień",
-      "Maj",
-      "Czerwiec",
-      "Lipiec",
-      "Sierpień",
-      "Wrzesień",
-      "Październik",
-      "Listopad",
-      "Grudzień",
-      "Styczeń",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+      "January",
     ];
   } else if (m == 1) {
     m = 12;
     month = [
-      "Luty",
-      "Marzec",
-      "Kwiecień",
-      "Maj",
-      "Czerwiec",
-      "Lipiec",
-      "Sierpień",
-      "Wrzesień",
-      "Październik",
-      "Listopad",
-      "Grudzień",
-      "Styczeń",
-      "Luty",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+      "January",
+      "February",
     ];
   } else if (m == 2) {
     m = 12;
     month = [
-      "Marzec",
-      "Kwiecień",
-      "Maj",
-      "Czerwiec",
-      "Lipiec",
-      "Sierpień",
-      "Wrzesień",
-      "Październik",
-      "Listopad",
-      "Grudzień",
-      "Styczeń",
-      "Luty",
-      "Marzec",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+      "January",
+      "February",
+      "March",
     ];
   } else if (m == 3) {
     m = 12;
     month = [
-      "Kwiecień",
-      "Maj",
-      "Czerwiec",
-      "Lipiec",
-      "Sierpień",
-      "Wrzesień",
-      "Październik",
-      "Listopad",
-      "Grudzień",
-      "Styczeń",
-      "Luty",
-      "Marzec",
-      "Kwiecień",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+      "January",
+      "February",
+      "March",
+      "April",
     ];
   } else if (m == 4) {
     m = 12;
     month = [
-      "Maj",
-      "Czerwiec",
-      "Lipiec",
-      "Sierpień",
-      "Wrzesień",
-      "Październik",
-      "Listopad",
-      "Grudzień",
-      "Styczeń",
-      "Luty",
-      "Marzec",
-      "Kwiecień",
-      "Maj",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
     ];
   } else if (m == 5) {
     m = 12;
     month = [
-      "Czerwiec",
-      "Lipiec",
-      "Sierpień",
-      "Wrzesień",
-      "Październik",
-      "Listopad",
-      "Grudzień",
-      "Styczeń",
-      "Luty",
-      "Marzec",
-      "Kwiecień",
-      "Czerwiec",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
     ];
   } else {
     m = m;
@@ -653,8 +830,8 @@ $(document).ready(function () {
     data: JSON.stringify({
       //"DataOd": '2023-09-01',
       //"DataDo": '2023-09-05',
-      DataOd: poczatekData2,
-      DataDo: koniecData00,
+      DataOd: poczatekData0,
+      DataDo: koniecData06,
       BazaDanych: "XDISC",
 
       KategorieDokumentow: ["ZamówienieOdbiorcy"],
@@ -694,10 +871,31 @@ $(document).ready(function () {
       console.log(faktury);
       console.log(zamowienia);
 
-      let poczatekRoku = new Date(y, 0, 1);
-      let koniecMiesiac1 = new Date(dzis);
+      //***************DATY OSTATNIE PÓŁ ROKU ****************************/
 
-      let roznica = koniecMiesiac1.getTime() - poczatekRoku.getTime();
+      let datyMinus_6_Poczatek = new Date(poczatekMiesiac6).getTime();
+      let datyMinus_6_Koniec = new Date(koniecMiesiac6).getTime();
+      let datyMinus_5_Poczatek = new Date(poczatekMiesiac5).getTime();
+      let datyMinus_5_Koniec = new Date(koniecMiesiac5).getTime();
+      let datyMinus_4_Poczatek = new Date(poczatekMiesiac4).getTime();
+      let datyMinus_4_Koniec = new Date(koniecMiesiac4).getTime();
+      let datyMinus_3_Poczatek = new Date(poczatekMiesiac3).getTime();
+      let datyMinus_3_Koniec = new Date(koniecMiesiac3).getTime();
+      let datyMinus_2_Poczatek = new Date(poczatekMiesiac2).getTime();
+      let datyMinus_2_Koniec = new Date(koniecMiesiac2).getTime();
+      let datyMinus_1_Poczatek = new Date(poczatekMiesiac1).getTime();
+      let datyMinus_1_Koniec = new Date(koniecMiesiac1).getTime();
+      let datyMinus_0_Poczatek = new Date(poczatekMiesiac0).getTime();
+      let datyMinus_0_Koniec = new Date(dzis).getTime();
+      let fakturyDataDokumentu;
+      let zamowieniaDataDokumentu;
+      let zamowieniaDataRealizacji;
+
+      let poczatekRoku = new Date(y, 0, 1);
+
+      //************************************************************** */
+
+      let roznica = datyMinus_0_Koniec - poczatekRoku.getTime();
 
       let roznicaInt = Number.parseInt(roznica / (24 * 3600 * 1000)) + 1;
 
@@ -715,6 +913,8 @@ $(document).ready(function () {
       let yy;
 
       let wynik;
+
+      //*************************** FAKTURY ******************** */
 
       for (i = 0; i < roznicaInt; i++) {
         newCalendar = new Date(poczatekRoku).getTime() + i * 24 * 3600 * 1000;
@@ -771,48 +971,622 @@ $(document).ready(function () {
       google.charts.load("current", { packages: ["calendar"] });
       google.charts.setOnLoadCallback(drawChart);
 
-      let date_0_target = new Date(poczatekMiesiac0).getTime();
-      let date_1_target;
-      let date_2_target = new Date(dzis).getTime();
+      let sprzedazCD_6 = 0;
+      let sprzedazVIN_6 = 0;
+      let sprzedazCD_5 = 0;
+      let sprzedazVIN_5 = 0;
+      let sprzedazCD_4 = 0;
+      let sprzedazVIN_4 = 0;
+      let sprzedazCD_3 = 0;
+      let sprzedazVIN_3 = 0;
+      let sprzedazCD_2 = 0;
+      let sprzedazVIN_2 = 0;
+      let sprzedazCD_1 = 0;
+      let sprzedazVIN_1 = 0;
+      let sprzedazCD_0 = 0;
+      let sprzedazVIN_0 = 0;
+      let sprzedazCD_dzis = 0;
+      let sprzedazVIN_dzis = 0;
 
-      let sprzedaz_target = 0;
+      let zyskCD_6 = 0;
+      let zyskVIN_6 = 0;
+      let zyskCD_5 = 0;
+      let zyskVIN_5 = 0;
+      let zyskCD_4 = 0;
+      let zyskVIN_4 = 0;
+      let zyskCD_3 = 0;
+      let zyskVIN_3 = 0;
+      let zyskCD_2 = 0;
+      let zyskVIN_2 = 0;
+      let zyskCD_1 = 0;
+      let zyskVIN_1 = 0;
+      let zyskCD_0 = 0;
+      let zyskVIN_0 = 0;
+      let zyskCD_dzis = 0;
+      let zyskVIN_dzis = 0;
+
+      let fakturyDzis = 0;
+      let fakturyMiesiac = 0;
+
+      let fvDzisTab;
+      let fvDzisZbiorczaTab = [];
 
       for (i = 0; i < faktury.length; i++) {
         if (faktury[i].handlowiec == handlowiec) {
-          date_1_target = new Date(faktury[i].dataDokumentu).getTime();
+          fakturyDataDokumentu = new Date(faktury[i].dataDokumentu).getTime();
 
           if (
-            date_1_target >= date_0_target &&
-            date_1_target <= date_2_target
+            fakturyDataDokumentu >= datyMinus_0_Poczatek &&
+            fakturyDataDokumentu <= datyMinus_0_Koniec
           ) {
-            sprzedaz_target += faktury[i].kwotaPozycjiNetto;
+            if (faktury[i].kategoria == "Sprzedaż") {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_0 += faktury[i].kwotaPozycjiNetto;
+                zyskCD_0 += faktury[i].zysk;
+                fakturyMiesiac++;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_0 += faktury[i].kwotaPozycjiNetto;
+                zyskVIN_0 += faktury[i].zysk;
+                fakturyMiesiac++;
+              }
+            } else {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_0 += faktury[i].kwotaNetto;
+                zyskCD_0 += faktury[i].kwotaNetto;
+                fakturyMiesiac++;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_0 += faktury[i].kwotaNetto;
+                zyskVIN_0 += faktury[i].kwotaNetto;
+                fakturyMiesiac++;
+              }
+            }
+          }
+          if (
+            fakturyDataDokumentu >= datyMinus_1_Poczatek &&
+            fakturyDataDokumentu <= datyMinus_1_Koniec
+          ) {
+            if (faktury[i].kategoria == "Sprzedaż") {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_1 += faktury[i].kwotaPozycjiNetto;
+                zyskCD_1 += faktury[i].zysk;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_1 += faktury[i].kwotaPozycjiNetto;
+                zyskVIN_1 += faktury[i].zysk;
+              }
+            } else {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_1 += faktury[i].kwotaNetto;
+                zyskCD_1 += faktury[i].kwotaNetto;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_1 += faktury[i].kwotaNetto;
+                zyskVIN_1 += faktury[i].kwotaNetto;
+              }
+            }
+          }
+          if (
+            fakturyDataDokumentu >= datyMinus_2_Poczatek &&
+            fakturyDataDokumentu <= datyMinus_2_Koniec
+          ) {
+            if (faktury[i].kategoria == "Sprzedaż") {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_2 += faktury[i].kwotaPozycjiNetto;
+                zyskCD_2 += faktury[i].zysk;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_2 += faktury[i].kwotaPozycjiNetto;
+                zyskVIN_2 += faktury[i].zysk;
+              }
+            } else {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_2 += faktury[i].kwotaNetto;
+                zyskCD_2 += faktury[i].kwotaNetto;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_2 += faktury[i].kwotaNetto;
+                zyskVIN_2 += faktury[i].kwotaNetto;
+              }
+            }
+          }
+          if (
+            fakturyDataDokumentu >= datyMinus_3_Poczatek &&
+            fakturyDataDokumentu <= datyMinus_3_Koniec
+          ) {
+            if (faktury[i].kategoria == "Sprzedaż") {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_3 += faktury[i].kwotaPozycjiNetto;
+                zyskCD_3 += faktury[i].zysk;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_3 += faktury[i].kwotaPozycjiNetto;
+                zyskVIN_3 += faktury[i].zysk;
+              }
+            } else {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_3 += faktury[i].kwotaNetto;
+                zyskCD_3 += faktury[i].kwotaNetto;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_3 += faktury[i].kwotaNetto;
+                zyskVIN_3 += faktury[i].kwotaNetto;
+              }
+            }
+          }
+          if (
+            fakturyDataDokumentu >= datyMinus_4_Poczatek &&
+            fakturyDataDokumentu <= datyMinus_4_Koniec
+          ) {
+            if (faktury[i].kategoria == "Sprzedaż") {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_4 += faktury[i].kwotaPozycjiNetto;
+                zyskCD_4 += faktury[i].zysk;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_4 += faktury[i].kwotaPozycjiNetto;
+                zyskVIN_4 += faktury[i].zysk;
+              }
+            } else {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_4 += faktury[i].kwotaNetto;
+                zyskCD_4 += faktury[i].kwotaNetto;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_4 += faktury[i].kwotaNetto;
+                zyskVIN_4 += faktury[i].kwotaNetto;
+              }
+            }
+          }
+          if (
+            fakturyDataDokumentu >= datyMinus_5_Poczatek &&
+            fakturyDataDokumentu <= datyMinus_5_Koniec
+          ) {
+            if (faktury[i].kategoria == "Sprzedaż") {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_5 += faktury[i].kwotaPozycjiNetto;
+                zyskCD_5 += faktury[i].zysk;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_5 += faktury[i].kwotaPozycjiNetto;
+                zyskVIN_5 += faktury[i].zysk;
+              }
+            } else {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_5 += faktury[i].kwotaNetto;
+                zyskCD_5 += faktury[i].kwotaNetto;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_5 += faktury[i].kwotaNetto;
+                zyskVIN_5 += faktury[i].kwotaNetto;
+              }
+            }
+          }
+          if (
+            fakturyDataDokumentu >= datyMinus_6_Poczatek &&
+            fakturyDataDokumentu <= datyMinus_6_Koniec
+          ) {
+            if (faktury[i].kategoria == "Sprzedaż") {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_6 += faktury[i].kwotaPozycjiNetto;
+                zyskCD_6 += faktury[i].zysk;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_6 += faktury[i].kwotaPozycjiNetto;
+                zyskVIN_6 += faktury[i].zysk;
+              }
+            } else {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_6 += faktury[i].kwotaNetto;
+                zyskCD_6 += faktury[i].kwotaNetto;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_6 += faktury[i].kwotaNetto;
+                zyskVIN_6 += faktury[i].kwotaNetto;
+              }
+            }
+          }
+          if (fakturyDataDokumentu == datyMinus_0_Koniec) {
+            fvDzisTab = [];
+            let fvDzisNumerProdukcji;
+            let fvDzisNumerFV;
+            let fvDzisBokowiec;
+            let fvDzisKontrahent;
+            let fvDzisNosnik;
+            let fvDzisWartoscSprzedaz = 0;
+            let fvDzisWartoscSprzedazString;
+            let fvDzisWartoscZysk = 0;
+            let fvDzisWartoscZyskString;
+            let fvDzisZyskProcent = 0;
+
+            fvDzisNumerProdukcji = faktury[i].xNumer;
+            fvDzisTab.push(fvDzisNumerProdukcji);
+            fvDzisNumerFV = faktury[i].nrDokumentu;
+            fvDzisTab.push(fvDzisNumerFV);
+            fvDzisBokowiec = faktury[i].opiekun;
+            fvDzisTab.push(fvDzisBokowiec);
+            fvDzisKontrahent = faktury[i].kontrahent;
+            fvDzisTab.push(fvDzisKontrahent);
+
+            if (faktury[i].kategoria == "Sprzedaż") {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_dzis += faktury[i].kwotaPozycjiNetto;
+                zyskCD_dzis += faktury[i].zysk;
+                fvDzisWartoscSprzedaz = faktury[i].kwotaPozycjiNetto;
+                fvDzisWartoscZysk = faktury[i].zysk;
+                fvDzisNosnik = "CD/DVD";
+                fakturyDzis++;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_dzis += faktury[i].kwotaPozycjiNetto;
+                zyskVIN_dzis += faktury[i].zysk;
+                fvDzisWartoscSprzedaz = faktury[i].kwotaPozycjiNetto;
+                fvDzisWartoscZysk = faktury[i].zysk;
+                fvDzisNosnik = "VIN";
+                fakturyDzis++;
+              }
+            } else {
+              if (
+                faktury[i].dział == "PŁYTY CD" ||
+                faktury[i].dział == "INNE"
+              ) {
+                sprzedazCD_dzis += faktury[i].kwotaNetto;
+                zyskCD_dzis += faktury[i].kwotaNetto;
+                fvDzisWartoscSprzedaz = faktury[i].kwotaNetto;
+                fvDzisWartoscZysk = faktury[i].kwotaNetto;
+                fvDzisNosnik = "CD/DVD";
+                fakturyDzis++;
+              }
+              if (faktury[i].dział == "PŁYTY WINYLOWE") {
+                sprzedazVIN_dzis += faktury[i].kwotaNetto;
+                zyskVIN_dzis += faktury[i].kwotaNetto;
+                fvDzisWartoscSprzedaz = faktury[i].kwotaNetto;
+                fvDzisWartoscZysk = faktury[i].kwotaNetto;
+                fvDzisNosnik = "VIN";
+                fakturyDzis++;
+              }
+            }
+            fvDzisTab.push(fvDzisNosnik);
+
+            fvDzisWartoscSprzedazString = fvDzisWartoscSprzedaz.toLocaleString(
+              "pl-PL",
+              {
+                useGrouping: "true",
+                minimumFractionDigits: "2",
+                maximumFractionDigits: "2",
+              }
+            );
+            let fvDzisWartoscSprzedazObj = new NameValue(
+              fvDzisWartoscSprzedaz,
+              fvDzisWartoscSprzedazString
+            );
+            fvDzisTab.push(fvDzisWartoscSprzedazObj);
+            fvDzisWartoscZyskString = fvDzisWartoscZysk.toLocaleString(
+              "pl-PL",
+              {
+                useGrouping: "true",
+                minimumFractionDigits: "2",
+                maximumFractionDigits: "2",
+              }
+            );
+            let fvDzisWartoscZyskObj = new NameValue(
+              fvDzisWartoscZysk,
+              fvDzisWartoscZyskString
+            );
+            fvDzisTab.push(fvDzisWartoscZyskObj);
+
+            if (fvDzisWartoscZysk < 0) {
+              fvDzisZyskProcent = `${(0).toLocaleString("pl-PL", {
+                useGrouping: "true",
+                minimumFractionDigits: "2",
+                maximumFractionDigits: "2",
+              })} %`;
+            } else {
+              fvDzisZyskProcent = `${(
+                (fvDzisWartoscZysk / fvDzisWartoscSprzedaz) *
+                100
+              ).toLocaleString("pl-PL", {
+                useGrouping: "true",
+                minimumFractionDigits: "2",
+                maximumFractionDigits: "2",
+              })} %`;
+            }
+
+            fvDzisTab.push(fvDzisZyskProcent);
+            fvDzisZbiorczaTab.push(fvDzisTab);
           }
         }
       }
 
-      let target_percent = sprzedaz_target / target[0];
+      console.log(fakturyMiesiac);
+      console.log(fakturyDzis);
 
-      $("#container-right_target_text_id").html(
-        `Target: <span style='font-size: 300%; font-weight: 100'>${target[0].toLocaleString(
-          "pl-PL",
-          {
-            useGrouping: "true",
-            minimumFractionDigits: "0",
-            maximumFractionDigits: "0",
-          }
-        )}</span>    Current: <span style='font-size: 300%; font-weight: 100'>${sprzedaz_target.toLocaleString(
-          "pl-PL",
-          {
-            useGrouping: "true",
-            minimumFractionDigits: "0",
-            maximumFractionDigits: "0",
-          }
-        )}</span> `
+      $(
+        "#invoices-today_month"
+      ).html(` <span class="container-right_firs_row_data_text_small"
+          >Invoices (T/M)</span
+        >
+        <br />${fakturyDzis}/${fakturyMiesiac}`);
+
+      class WykresSprzedaz {
+        constructor(y, label, indexLabel) {
+          this.y = y;
+          this.label = label;
+          this.indexLabel = indexLabel;
+        }
+      }
+
+      class WykresZysk {
+        constructor(y, label) {
+          this.y = y;
+          this.label = label;
+        }
+      }
+
+      let yourSalesBar = [];
+      let yourProfitBar = [];
+
+      let sprzedazAll_6 = sprzedazCD_6 + sprzedazVIN_6;
+      let wykresSprzedaz = new WykresSprzedaz(
+        sprzedazAll_6,
+        month[m - 6],
+        sprzedazAll_6.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
       );
+      yourSalesBar.push(wykresSprzedaz);
+
+      let sprzedazAll_5 = sprzedazCD_5 + sprzedazVIN_5;
+      wykresSprzedaz = new WykresSprzedaz(
+        sprzedazAll_5,
+        month[m - 5],
+        sprzedazAll_5.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+      yourSalesBar.push(wykresSprzedaz);
+
+      let sprzedazAll_4 = sprzedazCD_4 + sprzedazVIN_4;
+      wykresSprzedaz = new WykresSprzedaz(
+        sprzedazAll_4,
+        month[m - 4],
+        sprzedazAll_4.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+      yourSalesBar.push(wykresSprzedaz);
+
+      let sprzedazAll_3 = sprzedazCD_3 + sprzedazVIN_3;
+      wykresSprzedaz = new WykresSprzedaz(
+        sprzedazAll_3,
+        month[m - 3],
+        sprzedazAll_3.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+      yourSalesBar.push(wykresSprzedaz);
+
+      let sprzedazAll_2 = sprzedazCD_2 + sprzedazVIN_2;
+      wykresSprzedaz = new WykresSprzedaz(
+        sprzedazAll_2,
+        month[m - 2],
+        sprzedazAll_2.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+      yourSalesBar.push(wykresSprzedaz);
+
+      let sprzedazAll_1 = sprzedazCD_1 + sprzedazVIN_1;
+      wykresSprzedaz = new WykresSprzedaz(
+        sprzedazAll_1,
+        month[m - 1],
+        sprzedazAll_1.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+      yourSalesBar.push(wykresSprzedaz);
+
+      let sprzedazAll_0 = sprzedazCD_0 + sprzedazVIN_0;
+      wykresSprzedaz = new WykresSprzedaz(
+        sprzedazAll_0,
+        month[m],
+        sprzedazAll_0.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+      yourSalesBar.push(wykresSprzedaz);
+
+      let sprzedazAll_Dzis = sprzedazCD_dzis + sprzedazVIN_dzis;
+      let zyskAll_Dzis = zyskCD_dzis + zyskVIN_dzis;
+      let zyskProcent_Dzis = (zyskAll_Dzis / sprzedazAll_Dzis) * 100;
+      let winylProcent = (sprzedazVIN_0 / sprzedazAll_0) * 100;
+      let cdProcent = (sprzedazCD_0 / sprzedazAll_0) * 100;
+
+      $(
+        "#today-sales"
+      ).html(` <span class="container-right_second_row_data_text_small"
+              >Sale Today (PLN)</span
+            >
+            <br /> ${sprzedazAll_Dzis.toLocaleString("pl-PL", {
+              useGrouping: "true",
+              minimumFractionDigits: "0",
+              maximumFractionDigits: "0",
+            })}`);
+
+      $(
+        "#today-profit"
+      ).html(` <span class="container-right_second_row_data_text_small"
+                >Profit Today (PLN)</span
+              >
+              <br /> ${zyskAll_Dzis.toLocaleString("pl-PL", {
+                useGrouping: "true",
+                minimumFractionDigits: "0",
+                maximumFractionDigits: "0",
+              })}`);
+
+      $(
+        "#today-profit_percent"
+      ).html(` <span class="container-right_second_row_data_text_small"
+                >Margin Profit Today %</span
+            >
+            <br /> ${zyskProcent_Dzis.toLocaleString("pl-PL", {
+              useGrouping: "true",
+              minimumFractionDigits: "2",
+              maximumFractionDigits: "2",
+            })} %`);
+
+      $("#percent-winyl_all").html(
+        `${winylProcent.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`
+      );
+
+      $("#percent-cd_all").html(
+        `${cdProcent.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`
+      );
+
+      let zyskAll_6 = zyskCD_6 + zyskVIN_6;
+      let wykresZysk = new WykresZysk(zyskAll_6, month[m - 6]);
+      yourProfitBar.push(wykresZysk);
+
+      let zyskAll_5 = zyskCD_5 + zyskVIN_5;
+      wykresZysk = new WykresZysk(zyskAll_5, month[m - 5]);
+      yourProfitBar.push(wykresZysk);
+
+      let zyskAll_4 = zyskCD_4 + zyskVIN_4;
+      wykresZysk = new WykresZysk(zyskAll_4, month[m - 4]);
+      yourProfitBar.push(wykresZysk);
+
+      let zyskAll_3 = zyskCD_3 + zyskVIN_3;
+      wykresZysk = new WykresZysk(zyskAll_3, month[m - 3]);
+      yourProfitBar.push(wykresZysk);
+
+      let zyskAll_2 = zyskCD_2 + zyskVIN_2;
+      wykresZysk = new WykresZysk(zyskAll_2, month[m - 2]);
+      yourProfitBar.push(wykresZysk);
+
+      let zyskAll_1 = zyskCD_1 + zyskVIN_1;
+      wykresZysk = new WykresZysk(zyskAll_1, month[m - 1]);
+      yourProfitBar.push(wykresZysk);
+
+      let zyskAll_0 = zyskCD_0 + zyskVIN_0;
+      wykresZysk = new WykresZysk(zyskAll_0, month[m]);
+      yourProfitBar.push(wykresZysk);
+
+      console.log(yourSalesBar);
+
+      let progrsTarget = zyskAll_0 / target[m - monthMinus];
+
+      let progrsTarget_empty = 1 - progrsTarget;
+
+      $(
+        "#target-this_month"
+      ).html(`<span class="container-right_firs_row_data_text_small" 
+              >Profit Target (PLN)</span
+            >
+            <br />
+          ${target[m - monthMinus].toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })}`);
+
+      let circleColour;
+      let circProgresTarget;
+      let circprogrsTarget_empty;
+
+      if (progrsTarget_empty < 0) {
+        circleColour = "#32CD32";
+        circProgresTarget = 100;
+        circProgrsTarget_empty = 0;
+      } else {
+        circleColour = "#FFE4E1";
+        circProgresTarget = progrsTarget;
+        circProgrsTarget_empty = progrsTarget_empty;
+      }
 
       var chart = new CanvasJS.Chart("target_bar", {
         animationEnabled: true,
-        animationDuration: 10000,
+        animationDuration: 2000,
+        title: {
+          text: `Target Progres: ${(progrsTarget * 100).toLocaleString(
+            "pl-PL",
+            {
+              useGrouping: "true",
+              minimumFractionDigits: "2",
+              maximumFractionDigits: "2",
+            }
+          )} %`,
+          fontFamily: "calibri",
+          fontColor: "#A9A9A9",
+          fontSize: "25",
+        },
         tooltips: {
           mode: false,
         },
@@ -820,11 +1594,11 @@ $(document).ready(function () {
           {
             type: "doughnut",
             startAngle: 90,
-            innerRadius: 60,
-            //toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+            innerRadius: 30,
+            toolTipContent: "<b>{label}:</b> {y} (#percent%)",
             dataPoints: [
-              { y: 66, color: "#00FA9A" },
-              { y: 34, color: "#FFE4E1" },
+              { y: circProgresTarget, label: "Relisation", color: "#008000" },
+              { y: circProgrsTarget_empty, color: circleColour },
             ],
           },
         ],
@@ -833,16 +1607,19 @@ $(document).ready(function () {
 
       var chart1 = new CanvasJS.Chart("sales-history", {
         animationEnabled: true,
+        exportEnabled: true,
         theme: "light2",
+        fontFamily: "calibri",
         title: {
-          text: "Monthly Sales Data",
+          text: "Your Sales",
+          fontColor: "#A9A9A9",
         },
         axisX: {
-          valueFormatString: "MMM",
+          ValueFormatString: "PLN # ### ###",
         },
         axisY: {
-          prefix: "$",
-          labelFormatter: addSymbols,
+          ValueFormatString: "PLN # ### ###",
+          minimum: 0,
         },
         toolTip: {
           shared: true,
@@ -854,51 +1631,31 @@ $(document).ready(function () {
         data: [
           {
             type: "column",
-            name: "Actual Sales",
+            name: "Sales",
             showInLegend: true,
-            xValueFormatString: "MMMM YYYY",
-            yValueFormatString: "$#,##0",
-            dataPoints: [
-              { x: new Date(2016, 0), y: 20000 },
-              { x: new Date(2016, 1), y: 30000 },
-              { x: new Date(2016, 2), y: 25000 },
-              { x: new Date(2016, 3), y: 70000, indexLabel: "High Renewals" },
-              { x: new Date(2016, 4), y: 50000 },
-              { x: new Date(2016, 5), y: 35000 },
-              { x: new Date(2016, 6), y: 30000 },
-            ],
+            indexLabelPlacement: "outside",
+            color: "#B0E0E6",
+            yValueFormatString: "PLN # ### ###",
+            dataPoints: yourSalesBar,
           },
           {
             type: "line",
-            name: "Expected Sales",
+            name: "Expected Profit",
             showInLegend: true,
-            yValueFormatString: "$#,##0",
-            dataPoints: [
-              { x: new Date(2016, 0), y: 40000 },
-              { x: new Date(2016, 1), y: 42000 },
-              { x: new Date(2016, 2), y: 45000 },
-              { x: new Date(2016, 3), y: 45000 },
-              { x: new Date(2016, 4), y: 47000 },
-              { x: new Date(2016, 5), y: 43000 },
-              { x: new Date(2016, 6), y: 42000 },
-            ],
+            yValueFormatString: "PLN # ### ###",
+            color: "red",
+            dataPoints: [{ x: 6, y: target[m - monthMinus] }],
           },
           {
             type: "area",
             name: "Profit",
             markerBorderColor: "white",
+            color: "#3be4ac",
             markerBorderThickness: 2,
+            indexLabelFontColor: "white",
             showInLegend: true,
-            yValueFormatString: "$#,##0",
-            dataPoints: [
-              { x: new Date(2016, 0), y: 5000 },
-              { x: new Date(2016, 1), y: 7000 },
-              { x: new Date(2016, 2), y: 6000 },
-              { x: new Date(2016, 3), y: 30000 },
-              { x: new Date(2016, 4), y: 20000 },
-              { x: new Date(2016, 5), y: 15000 },
-              { x: new Date(2016, 6), y: 13000 },
-            ],
+            yValueFormatString: "PLN # ### ###",
+            dataPoints: yourProfitBar,
           },
         ],
       });
@@ -928,6 +1685,407 @@ $(document).ready(function () {
         }
         e.chart.render();
       }
+
+      //*************************** ZAMOWIENIA ******************** */
+
+      let zamoweianiaCD_0_Wprowadzone = 0;
+      let zamoweianiaVIN_0_Wprowadzone = 0;
+      let zamoweianiaCD_dzis_Wprowadzone = 0;
+      let zamoweianiaVIN_dzis_Wprowadzone = 0;
+
+      let zamowieniaDoRealizacjiNaDzis = 0;
+      let zamowieniaDzisWprowadzone = 0;
+      let zamowieniaMiesiacWprowadzone = 0;
+      let zamowieniaDoRealizacjiMiesiac = 0;
+
+      let zamowieniaNaDzisZbiorczaTab = [];
+      let zamowieniaNaDzis;
+      let zamowieniaDzisWprowadzoneTab;
+      let zamowieniaDzisWprowadzoneZbiorczeTab = [];
+
+      for (i = 0; i < zamowienia.length; i++) {
+        if (handlowiec == zamowienia[i].handlowiec) {
+          zamowieniaDataDokumentu = new Date(
+            zamowienia[i].dataDokumentu
+          ).getTime();
+          zamowieniaDataRealizacji = new Date(
+            zamowienia[i].dataRealizacji
+          ).getTime();
+
+          if (
+            zamowieniaDataDokumentu >= datyMinus_0_Poczatek &&
+            zamowieniaDataDokumentu <= datyMinus_0_Koniec
+          ) {
+            if (
+              zamowienia[i].dział == "PŁYTY CD" ||
+              zamowienia[i].dział == "INNE"
+            ) {
+              zamoweianiaCD_0_Wprowadzone += zamowienia[i].kwotaNetto;
+              zamowieniaMiesiacWprowadzone++;
+            } else {
+              zamoweianiaVIN_0_Wprowadzone += zamowienia[i].kwotaNetto;
+              zamowieniaMiesiacWprowadzone++;
+            }
+          }
+
+          if (zamowieniaDataDokumentu == datyMinus_0_Koniec) {
+            zamowieniaDzisWprowadzoneTab = [];
+            let numerProdukcjiZKDzisWprowadzone;
+            let numerZKDzisWprowadzone;
+            let bokowiecZKDzisWprowadzone;
+            let kontrahentZKDzisWprowadzone;
+            let typProdukcjiZKDzisWprowadzone;
+            let statusZKDzisWprowadzone;
+            let wartoscZKDzisWprowadzone = 0;
+            let wartoscZKDzisWprowadzoneString;
+            let dataRealizacjiZDzisWprowadzoneData = new Date(
+              zamowienia[i].dataRealizacji
+            );
+
+            zamowieniaDzisWprowadzone++;
+            numerProdukcjiZKDzisWprowadzone = zamowienia[i].xNumer;
+            zamowieniaDzisWprowadzoneTab.push(
+              numerProdukcjiZKDzisWprowadzone.substr(0, 30)
+            );
+            numerZKDzisWprowadzone = zamowienia[i].nrDokumentu;
+            zamowieniaDzisWprowadzoneTab.push(numerZKDzisWprowadzone);
+            bokowiecZKDzisWprowadzone = zamowienia[i].opiekun;
+            zamowieniaDzisWprowadzoneTab.push(bokowiecZKDzisWprowadzone);
+            kontrahentZKDzisWprowadzone = zamowienia[i].kontrahent;
+            zamowieniaDzisWprowadzoneTab.push(kontrahentZKDzisWprowadzone);
+
+            if (
+              zamowienia[i].dział == "PŁYTY CD" ||
+              zamowienia[i].dział == "INNE"
+            ) {
+              zamoweianiaCD_dzis_Wprowadzone += zamowienia[i].kwotaNetto;
+              typProdukcjiZKDzisWprowadzone = "CD/DVD";
+            } else if (zamowienia[i].dział == "PŁYTY WINYLOWE") {
+              zamoweianiaVIN_dzis_Wprowadzone += zamowienia[i].kwotaNetto;
+              typProdukcjiZKDzisWprowadzone = "VIN";
+            } else {
+              typProdukcjiZKDzisWprowadzone = "";
+            }
+
+            zamowieniaDzisWprowadzoneTab.push(typProdukcjiZKDzisWprowadzone);
+            if (zamowienia[i].statusProdukcji == "Oczekuje") {
+              statusZKDzisWprowadzone = "Waiting";
+            } else if (zamowienia[i].statusProdukcji == "Zakończone") {
+              statusZKDzisWprowadzone = "Complete";
+            } else if (zamowienia[i].statusProdukcji == "Częściowo przyjęte") {
+              statusZKDzisWprowadzone = "Partially complete";
+            } else if (zamowienia[i].statusProdukcji == "Foliowanie") {
+              statusZKDzisWprowadzone = "Foiling";
+            } else {
+              statusZKDzisWprowadzone = zamowienia[i].statusProdukcji;
+            }
+            zamowieniaDzisWprowadzoneTab.push(statusZKDzisWprowadzone);
+
+            wartoscZKDzisWprowadzone = zamowienia[i].kwotaNetto;
+            wartoscZKDzisWprowadzoneString =
+              wartoscZKDzisWprowadzone.toLocaleString("pl-PL", {
+                useGrouping: "true",
+                minimumFractionDigits: "2",
+                maximumFractionDigits: "2",
+              });
+
+            let wartoscZKDzisWprowadzoneObj = new NameValue(
+              wartoscZKDzisWprowadzone,
+              wartoscZKDzisWprowadzoneString
+            );
+            zamowieniaDzisWprowadzoneTab.push(wartoscZKDzisWprowadzoneObj);
+            zamowieniaDzisWprowadzoneTab.push(
+              new Date(dataRealizacjiZDzisWprowadzoneData).toLocaleDateString(
+                "pl-PL",
+                options
+              )
+            );
+
+            zamowieniaDzisWprowadzoneZbiorczeTab.push(
+              zamowieniaDzisWprowadzoneTab
+            );
+          }
+
+          if (zamowieniaDataRealizacji == datyMinus_0_Koniec) {
+            zamowieniaNaDzis = [];
+            let numerProdukcjiZKNaDzis;
+            let numerZKNaDzis;
+            let bokowiecZKNaDzis;
+            let kontrahentZKNaDzis;
+            let typProdukcjiZKNaDzis;
+            let statusZKNaDzis;
+            let akceptZKNaDzis;
+            let sampleZKNaDzis;
+            let wartoscZKNaDzis = 0;
+            let wartoscZKNaDzisString;
+            let dataUtworzeniaZKNaDzis = new Date(zamowienia[i].dataDokumentu);
+            let dataRealizacjiZKNaDzisData = new Date(
+              zamowienia[i].dataRealizacji
+            );
+            let mineloDniZKNaDzis = 0;
+            let mineloDniZKNaDzisString;
+
+            zamowieniaDoRealizacjiNaDzis++;
+
+            numerProdukcjiZKNaDzis = zamowienia[i].xNumer;
+            zamowieniaNaDzis.push(numerProdukcjiZKNaDzis.substr(0, 30));
+            numerZKNaDzis = zamowienia[i].nrDokumentu;
+            zamowieniaNaDzis.push(numerZKNaDzis);
+            bokowiecZKNaDzis = zamowienia[i].opiekun;
+            zamowieniaNaDzis.push(bokowiecZKNaDzis);
+            kontrahentZKNaDzis = zamowienia[i].kontrahent;
+            zamowieniaNaDzis.push(kontrahentZKNaDzis);
+            if (zamowienia[i].dział == "PŁYTY WINYLOWE") {
+              typProdukcjiZKNaDzis = "VIN";
+            } else if (zamowienia[i].dział == "PŁYTY CD") {
+              typProdukcjiZKNaDzis = "CD/DVD";
+            } else {
+              typProdukcjiZKNaDzis = "";
+            }
+            zamowieniaNaDzis.push(typProdukcjiZKNaDzis);
+            if (zamowienia[i].statusProdukcji == "Oczekuje") {
+              statusZKNaDzis = "Waiting";
+            } else if (zamowienia[i].statusProdukcji == "Zakończone") {
+              statusZKNaDzis = "Complete";
+            } else if (zamowienia[i].statusProdukcji == "Częściowo przyjęte") {
+              statusZKNaDzis = "Partially complete";
+            } else if (zamowienia[i].statusProdukcji == "Foliowanie") {
+              statusZKNaDzis = "Foiling";
+            } else {
+              statusZKNaDzis = zamowienia[i].statusProdukcji;
+            }
+            zamowieniaNaDzis.push(statusZKNaDzis);
+            if (zamowienia[i].brakAkceptu == false) {
+              akceptZKNaDzis = "";
+            } else {
+              akceptZKNaDzis = "NO";
+            }
+            zamowieniaNaDzis.push(akceptZKNaDzis);
+            if (zamowienia[i].sample == true) {
+              sampleZKNaDzis = true;
+            } else {
+              sampleZKNaDzis = false;
+            }
+            if (sampleZKNaDzis == false) {
+              zamowieniaNaDzis.push(
+                new NameStyle(sampleZKNaDzis, {
+                  style: "color: #FFB6C1;",
+                })
+              );
+            } else {
+              zamowieniaNaDzis.push(
+                new NameStyle(sampleZKNaDzis, {
+                  style: "color: #2E8B57; background-color: #90EE90",
+                })
+              );
+            }
+            wartoscZKNaDzis = zamowienia[i].kwotaNetto;
+            wartoscZKNaDzisString = wartoscZKNaDzis.toLocaleString("pl-PL", {
+              useGrouping: "true",
+              minimumFractionDigits: "2",
+              maximumFractionDigits: "2",
+            });
+            let wartoscZKNaDzisObj = new NameValue(
+              wartoscZKNaDzis,
+              wartoscZKNaDzisString
+            );
+            zamowieniaNaDzis.push(wartoscZKNaDzisObj);
+
+            (dataRealizacjiZKNaDzis = zamowienia[i].dataRealizacji.split("T")),
+              (sekund =
+                Math.abs(dataRealizacjiZKNaDzisData - dataUtworzeniaZKNaDzis) /
+                1000);
+            let minut = parseInt(sekund / 60);
+            let godzin = parseInt(minut / 60);
+            let dni = parseInt(godzin / 24);
+            zamowieniaNaDzis.push(
+              new Date(dataUtworzeniaZKNaDzis).toLocaleDateString(
+                "pl-PL",
+                options
+              )
+            );
+            mineloDniZKNaDzis = dni;
+            mineloDniZKNaDzisString = dni.toLocaleString("pl-PL", {
+              useGrouping: "true",
+              minimumFractionDigits: "0",
+              maximumFractionDigits: "0",
+            });
+
+            let mineloDniZKNaDzisObj = new NameValue(
+              mineloDniZKNaDzis,
+              mineloDniZKNaDzisString
+            );
+            zamowieniaNaDzis.push(mineloDniZKNaDzisObj);
+            zamowieniaNaDzisZbiorczaTab.push(zamowieniaNaDzis);
+          }
+        }
+      }
+
+      console.log(zamowieniaDzisWprowadzoneZbiorczeTab);
+
+      let zamowieniaAll_Dzis_Wprowadzone =
+        zamoweianiaCD_dzis_Wprowadzone + zamoweianiaVIN_dzis_Wprowadzone;
+      console.log(zamowieniaDzisWprowadzone);
+
+      google.charts.load("current", { packages: ["table"] });
+      google.charts.setOnLoadCallback(drawTable_zamowieniaNaDzis);
+      google.charts.setOnLoadCallback(drawTable_zamowieniaWprowadzoneDzis);
+      google.charts.setOnLoadCallback(drawTable_FakturyWystawioneDzis);
+
+      function drawTable_zamowieniaNaDzis() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "Production Number");
+        data.addColumn("string", "Order number");
+        data.addColumn("string", "Customer Care");
+        data.addColumn("string", "Client");
+        data.addColumn("string", "Type");
+        data.addColumn("string", "Status");
+        data.addColumn("string", "TP approve");
+        data.addColumn("boolean", "Sample");
+        data.addColumn("number", "Order value (PLN)");
+        data.addColumn("string", "Order entry date");
+        data.addColumn("number", "Days left");
+        data.addRows(zamowieniaNaDzisZbiorczaTab);
+
+        var table = new google.visualization.Table(
+          document.getElementById("orders-for-today_table")
+        );
+
+        var formatter = new google.visualization.ColorFormat();
+        formatter.addRange(100, 500, "#DC143C", null);
+        formatter.format(data, 10);
+
+        var formatter1 = new google.visualization.ColorFormat();
+        formatter1.addRange("Waiting", null, "#FF7F50", null);
+        formatter1.addRange("Partially complete", null, "#008B8B", null);
+        formatter1.addRange("Foiling", null, "#556B2F", null);
+        formatter1.addRange("Complete", null, "#006400", "#D7FBD8");
+        formatter1.format(data, 5);
+
+        var formatter2 = new google.visualization.ColorFormat();
+        formatter2.addRange("NO", null, "#DC143C", null);
+        formatter2.format(data, 6);
+
+        var cssClassNames = {
+          headerRow: "headerRow",
+          tableRow: "tableRow",
+          oddTableRow: "oddTableRow",
+        };
+
+        table.draw(data, {
+          allowHtml: true,
+          showRowNumber: true,
+          width: "100%",
+          height: "100%",
+          cssClassNames: cssClassNames,
+        });
+      }
+      function drawTable_zamowieniaWprowadzoneDzis() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "Production Number");
+        data.addColumn("string", "Order number");
+        data.addColumn("string", "Customer Care");
+        data.addColumn("string", "Client");
+        data.addColumn("string", "Type");
+        data.addColumn("string", "Status");
+        data.addColumn("number", "Order value (PLN)");
+        data.addColumn("string", "Target date");
+        data.addRows(zamowieniaDzisWprowadzoneZbiorczeTab);
+
+        var table1 = new google.visualization.Table(
+          document.getElementById("orders-entry-today_table")
+        );
+
+        var formatter3 = new google.visualization.ColorFormat();
+        formatter3.addRange("Waiting", null, "#FF7F50", null);
+        formatter3.addRange("Partially complete", null, "#008B8B", null);
+        formatter3.addRange("Foiling", null, "#556B2F", null);
+        formatter3.addRange("Complete", null, "#006400", "#D7FBD8");
+        formatter3.format(data, 5);
+
+        var cssClassNames = {
+          headerRow: "headerRow",
+          tableRow: "tableRow",
+          oddTableRow: "oddTableRow",
+        };
+
+        table1.draw(data, {
+          allowHtml: true,
+          showRowNumber: true,
+          width: "100%",
+          height: "100%",
+          cssClassNames: cssClassNames,
+        });
+      }
+
+      function drawTable_FakturyWystawioneDzis() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "Production Number");
+        data.addColumn("string", "Invoice number");
+        data.addColumn("string", "Customer Care");
+        data.addColumn("string", "Client");
+        data.addColumn("string", "Type");
+        data.addColumn("number", "Invoice value (PLN)");
+        data.addColumn("number", "Invoice profit (PLN)");
+        data.addColumn("string", "Profit Margin %");
+        data.addRows(fvDzisZbiorczaTab);
+
+        var table2 = new google.visualization.Table(
+          document.getElementById("invoice-today_table")
+        );
+
+        var formatter4 = new google.visualization.ColorFormat();
+        formatter4.addRange(-100000, -1, "#DC143C", null);
+        formatter4.format(data, 6);
+        formatter4.format(data, 5);
+
+        var formatter5 = new google.visualization.ColorFormat();
+        formatter5.addRange("0,00 %", "0,01 %", "#DC143C", null);
+        formatter5.format(data, 7);
+
+        var cssClassNames = {
+          headerRow: "headerRow",
+          tableRow: "tableRow",
+          oddTableRow: "oddTableRow",
+        };
+
+        table2.draw(data, {
+          allowHtml: true,
+          showRowNumber: true,
+          width: "100%",
+          height: "100%",
+          cssClassNames: cssClassNames,
+        });
+      }
+      $(
+        "#orders-today"
+      ).html(`<span class="container-right_firs_row_data_text_small"
+                >Entered Orders (T)</span
+              >
+              <br />${zamowieniaDzisWprowadzone}
+            `);
+
+      $(
+        "#today-order_value"
+      ).html(`<span class="container-right_second_row_data_text_small"
+            >Today Orders Value (PLN)</span
+          >
+          <br />${zamowieniaAll_Dzis_Wprowadzone.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })}
+                  `);
+
+      $(
+        "#orders-for_today"
+      ).html(`<span class="container-right_firs_row_data_text_small"
+            >Orders For Today</span
+          >
+          <br />${zamowieniaDoRealizacjiNaDzis}
+        `);
+
+      console.log(zamoweianiaCD_dzis_Wprowadzone);
     });
   });
 });
