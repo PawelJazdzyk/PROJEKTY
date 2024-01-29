@@ -131,8 +131,7 @@ body {
   width: 100%;
   margin-top: 25%;
   background-color: white;
-  -webkit-box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
-  -moz-box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
+
   box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
   border-radius: 15px;
   text-align: center;
@@ -179,8 +178,6 @@ body {
 .container-right_second_row_target {
   background-color: white;
   border-radius: 15px;
-  -webkit-box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
-  -moz-box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
   box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
   grid-row: 1/2;
   grid-column: 1/2;
@@ -190,8 +187,6 @@ body {
 .container-right_second_row_history {
   background-color: white;
   border-radius: 15px;
-  -webkit-box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
-  -moz-box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
   box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
   justify-self: center;
   grid-row: 1/2;
@@ -242,8 +237,6 @@ body {
   height: 20%;
   border-radius: 15px;
   background-color: white;
-  -webkit-box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
-  -moz-box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
   box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
   font-family: "Calibri";
   text-align: center;
@@ -533,6 +526,31 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 4%;
+}
+.container-right_seven_row {
+  width: 100%;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 4%;
+}
+.container-right_seven_row_bars {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-left: 5%;
+  background-color: white;
+  box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
+  border-radius: 15px;
+}
+.target-bars_left {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+#bar-target_cd {
+  scale: 0.8;
 }
 
 .dive-heads {

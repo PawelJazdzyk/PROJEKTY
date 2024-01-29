@@ -82,108 +82,108 @@ $(document).ready(function () {
   let mailHandlowiec;
   let welcomeUser;
 
-  while (true) {
-    let pinHandlowiec = Number(prompt("Podaj PIN"));
+  // while (true) {
+  //   let pinHandlowiec = Number(prompt("Podaj PIN"));
 
-    switch (pinHandlowiec) {
-      case aa:
-        handlowiec = "Maja Grunt";
-        target = [
-          70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
-          100000, 100000,
-        ];
-        mailHandlowiec = "maja.grunt@x-disc.pl";
-        welcomeUser = "Welcome, Maja Grunt";
-        break;
+  //   switch (pinHandlowiec) {
+  //     case aa:
+  //       handlowiec = "Maja Grunt";
+  //       target = [
+  //         70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+  //         100000, 100000,
+  //       ];
+  //       mailHandlowiec = "maja.grunt@x-disc.pl";
+  //       welcomeUser = "Welcome, Maja Grunt";
+  //       break;
 
-      case bb:
-        handlowiec = "Krzysztof Ciółkowski";
-        target = [
-          95000, 95000, 95000, 105000, 105000, 105000, 110000, 110000, 110000,
-          120000, 120000, 120000,
-        ];
-        welcomeUser = "Welcome, Krzysztof Ciółkowski";
-        mailHandlowiec = "krzysztof.ciolkowski@x-disc.pl";
-        break;
+  //     case bb:
+  //       handlowiec = "Krzysztof Ciółkowski";
+  //       target = [
+  //         95000, 95000, 95000, 105000, 105000, 105000, 110000, 110000, 110000,
+  //         120000, 120000, 120000,
+  //       ];
+  //       welcomeUser = "Welcome, Krzysztof Ciółkowski";
+  //       mailHandlowiec = "krzysztof.ciolkowski@x-disc.pl";
+  //       break;
 
-      case cc:
-        handlowiec = "Michał Durmowicz";
-        target = [
-          70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
-          100000, 100000,
-        ];
-        welcomeUser = "Welcome, Michał Durmowicz";
-        mailHandlowiec = "michal.durmowicz@x-disc.pl";
-        break;
+  //     case cc:
+  //       handlowiec = "Michał Durmowicz";
+  //       target = [
+  //         70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+  //         100000, 100000,
+  //       ];
+  //       welcomeUser = "Welcome, Michał Durmowicz";
+  //       mailHandlowiec = "michal.durmowicz@x-disc.pl";
+  //       break;
 
-      case dd:
-        handlowiec = "Marta Kierzkowska";
-        target = [
-          200000, 200000, 200000, 210000, 210000, 210000, 200000, 380000,
-          250000, 250000, 240000, 0,
-        ];
-        welcomeUser = "Welcome, Marta Kierzkowska";
-        mailHandlowiec = "marta.kierzkowska@x-disc.pl";
-        break;
+  //     case dd:
+  //       handlowiec = "Marta Kierzkowska";
+  //       target = [
+  //         200000, 200000, 200000, 210000, 210000, 210000, 200000, 380000,
+  //         250000, 250000, 240000, 0,
+  //       ];
+  //       welcomeUser = "Welcome, Marta Kierzkowska";
+  //       mailHandlowiec = "marta.kierzkowska@x-disc.pl";
+  //       break;
 
-      case ee:
-        handlowiec = "Lucyna Kozicka";
-        target = [
-          280000, 280000, 280000, 305000, 305000, 305000, 320000, 320000,
-          320000, 335000, 335000, 335000,
-        ];
-        welcomeUser = "Welcome, Lucyna Kozicka";
-        mailHandlowiec = "lucyna.kozicka@x-disc.pl";
-        break;
+  //     case ee:
+  //       handlowiec = "Lucyna Kozicka";
+  //       target = [
+  //         280000, 280000, 280000, 305000, 305000, 305000, 320000, 320000,
+  //         320000, 335000, 335000, 335000,
+  //       ];
+  //       welcomeUser = "Welcome, Lucyna Kozicka";
+  //       mailHandlowiec = "lucyna.kozicka@x-disc.pl";
+  //       break;
 
-      case ff:
-        handlowiec = "Jakub Mikliński";
-        target = [
-          335000, 335000, 335000, 335000, 335000, 335000, 370000, 370000,
-          370000, 385000, 375000, 375000,
-        ];
-        welcomeUser = "Welcome, Jakub Mikliński";
-        mailHandlowiec = "jakub.miklinski@x-disc.pl";
-        break;
+  //     case ff:
+  //       handlowiec = "Jakub Mikliński";
+  //       target = [
+  //         335000, 335000, 335000, 335000, 335000, 335000, 370000, 370000,
+  //         370000, 385000, 375000, 375000,
+  //       ];
+  //       welcomeUser = "Welcome, Jakub Mikliński";
+  //       mailHandlowiec = "jakub.miklinski@x-disc.pl";
+  //       break;
 
-      case gg:
-        handlowiec = "Małgorzata Roszkowska";
-        target = [
-          160000, 160000, 160000, 165000, 165000, 175000, 170000, 170000,
-          170000, 170000, 170000, 170000,
-        ];
-        welcomeUser = "Welcome, Małgorzata Roszkowska";
-        mailHandlowiec = "malgorzata.roszkowska@x-disc.pl";
-        break;
+  //     case gg:
+  //       handlowiec = "Małgorzata Roszkowska";
+  //       target = [
+  //         160000, 160000, 160000, 165000, 165000, 175000, 170000, 170000,
+  //         170000, 170000, 170000, 170000,
+  //       ];
+  //       welcomeUser = "Welcome, Małgorzata Roszkowska";
+  //       mailHandlowiec = "malgorzata.roszkowska@x-disc.pl";
+  //       break;
 
-      case hh:
-        handlowiec = "Ingo Kleimann";
-        target = [
-          56000, 122000, 146000, 39000, 130000, 68000, 145000, 200000, 84000,
-          125000, 100000, 100000,
-        ];
-        welcomeUser = "Welcome, Ingo Kleimann";
-        mailHandlowiec = "ingo.kleimann@x-disc.pl";
-        break;
+  //     case hh:
+  //       handlowiec = "Ingo Kleimann";
+  //       target = [
+  //         56000, 122000, 146000, 39000, 130000, 68000, 145000, 200000, 84000,
+  //         125000, 100000, 100000,
+  //       ];
+  //       welcomeUser = "Welcome, Ingo Kleimann";
+  //       mailHandlowiec = "ingo.kleimann@x-disc.pl";
+  //       break;
 
-      case ii:
-        handlowiec = "Jean-Remi BEL";
-        target = [
-          50000, 50000, 50000, 70000, 70000, 70000, 85000, 85000, 85000, 90000,
-          90000, 90000,
-        ];
-        welcomeUser = "Welcome, Jean-Remi Bel";
-        mailHandlowiec = "jean-remi.bel@x-disc.pl";
-        break;
+  //     case ii:
+  //       handlowiec = "Jean-Remi BEL";
+  //       target = [
+  //         50000, 50000, 50000, 70000, 70000, 70000, 85000, 85000, 85000, 90000,
+  //         90000, 90000,
+  //       ];
+  //       welcomeUser = "Welcome, Jean-Remi Bel";
+  //       mailHandlowiec = "jean-remi.bel@x-disc.pl";
+  //       break;
 
-      default:
-        setTimeout(function () {
-          window.location.href = "failPin.html";
-        }, 500);
-    }
+  //     default:
+  //       setTimeout(function () {
+  //         window.location.href = "failPin.html";
+  //       }, 500);
+  //   }
 
-    break;
-  }
+  //   break;
+  // }
 
   $("#welcome-user-id").html(welcomeUser);
 
@@ -893,7 +893,7 @@ $(document).ready(function () {
 
       let poczatekRoku = new Date(y, 0, 1);
 
-      //************************************************************** */
+      //***************************************************************/
 
       let roznica = datyMinus_0_Koniec - poczatekRoku.getTime();
 
@@ -948,6 +948,7 @@ $(document).ready(function () {
         CalendarTAb.push([new Date(dayToCalendar), wynik]);
         console.log(day);
       }
+
       console.log(CalendarTAb);
 
       function drawChart() {
@@ -1369,8 +1370,116 @@ $(document).ready(function () {
         }
       }
 
+      class WykresTarget {
+        constructor(y, label, indexLabel) {
+          this.y = y;
+          this.label = label;
+          this.indexLabel = indexLabel;
+        }
+      }
+
+      class WykresTargetForecast {
+        constructor(y, label, indexLabel) {
+          this.y = y;
+          this.label = label;
+          this.indexLabel = indexLabel;
+        }
+      }
+
+      let aktualnyMiesiac = new Date(dzis).getMonth();
+      console.log(aktualnyMiesiac);
+
       let yourSalesBar = [];
       let yourProfitBar = [];
+
+      let yourTargetCDBar = [];
+      let yourTargetVINBar = [];
+
+      let wykresTargetCD = new WykresTarget(
+        zyskCD_0,
+        month[m],
+        zyskCD_0.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+      yourTargetCDBar.push(wykresTargetCD);
+
+      if (aktualnyMiesiac > 0) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_1,
+          month[m - 1],
+          zyskCD_1.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+      }
+
+      if (aktualnyMiesiac > 1) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_2,
+          month[m - 2],
+          zyskCD_2.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+      }
+
+      if (aktualnyMiesiac > 2) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_3,
+          month[m - 3],
+          zyskCD_3.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+      }
+      if (aktualnyMiesiac > 3) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_4,
+          month[m - 4],
+          zyskCD_4.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+      }
+      if (aktualnyMiesiac > 4) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_5,
+          month[m - 5],
+          zyskCD_5.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+      }
+      if (aktualnyMiesiac > 5) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_6,
+          month[m - 6],
+          zyskCD_6.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+      }
 
       let sprzedazAll_6 = sprzedazCD_6 + sprzedazVIN_6;
       let wykresSprzedaz = new WykresSprzedaz(
@@ -1661,18 +1770,41 @@ $(document).ready(function () {
       });
       chart1.render();
 
-      function addSymbols(e) {
-        var suffixes = ["", "K", "M", "B"];
-        var order = Math.max(
-          Math.floor(Math.log(Math.abs(e.value)) / Math.log(1000)),
-          0
-        );
-
-        if (order > suffixes.length - 1) order = suffixes.length - 1;
-
-        var suffix = suffixes[order];
-        return CanvasJS.formatNumber(e.value / Math.pow(1000, order)) + suffix;
-      }
+      var chart2 = new CanvasJS.Chart("bar-target_cd", {
+        animationEnabled: true,
+        theme: "light2",
+        fontFamily: "calibri",
+        title: {
+          text: "Profit Target CD",
+          fontColor: "#A9A9A9",
+        },
+        axisX: {
+          ValueFormatString: "PLN # ### ###",
+        },
+        axisY: {
+          ValueFormatString: "PLN # ### ###",
+          minimum: 0,
+        },
+        toolTip: {
+          shared: true,
+        },
+        legend: {
+          cursor: "pointer",
+          itemclick: toggleDataSeries,
+        },
+        data: [
+          {
+            type: "column",
+            name: "Sales",
+            showInLegend: true,
+            indexLabelPlacement: "outside",
+            color: "#B0E0E6",
+            yValueFormatString: "PLN # ### ###",
+            dataPoints: yourTargetCDBar,
+          },
+        ],
+      });
+      chart2.render();
 
       function toggleDataSeries(e) {
         if (
