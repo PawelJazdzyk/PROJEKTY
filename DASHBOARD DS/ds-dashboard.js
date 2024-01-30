@@ -4,6 +4,8 @@ $(document).ready(function () {
     month: "2-digit",
     day: "2-digit",
   };
+  const profitCD = 0.3;
+  const profitVIN = 0.35;
   class NameStyle {
     constructor(v, p) {
       this.v = v;
@@ -16,6 +18,34 @@ $(document).ready(function () {
       this.f = f;
     }
   }
+  class WykresSprzedaz {
+    constructor(y, label, indexLabel) {
+      this.y = y;
+      this.label = label;
+      this.indexLabel = indexLabel;
+    }
+  }
+
+  class WykresZysk {
+    constructor(y, label) {
+      this.y = y;
+      this.label = label;
+    }
+  }
+  class WykresTarget {
+    constructor(y, label, indexLabel) {
+      this.y = y;
+      this.label = label;
+      this.indexLabel = indexLabel;
+    }
+  }
+  class WykresTargetForecast {
+    constructor(y, label) {
+      this.y = y;
+      this.label = label;
+    }
+  }
+
   $("#orders-for-Today_button, #orders-for_today").click(function () {
     $("html, body").animate(
       {
@@ -48,9 +78,17 @@ $(document).ready(function () {
       500
     );
   });
+  $("#target-details_button, #target-this_month").click(function () {
+    $("html, body").animate(
+      {
+        scrollTop: $(".container-right_seven_row").offset().top,
+      },
+      500
+    );
+  });
 
   let dataPoint = [
-    1266.890435345, 2443.8903455, 2674.8904345, 4872.8903555, 5339.894343,
+    1266.890435345, 2443.8903455, 2674.8904345, 4872.8903555, 3373.894343,
     2359.894343, 4322.894343, 4335.894343, 7739.894343,
   ];
 
@@ -76,8 +114,16 @@ $(document).ready(function () {
 
   let handlowiec = "Lucyna Kozicka";
   let target = [
-    1234567, 1234567, 1234567, 1234567, 1234567, 1234567, 1234567, 1234567,
-    1234567, 1234567, 1234567, 1234567,
+    280000, 280000, 280000, 305000, 305000, 305000, 320000, 320000, 320000,
+    335000, 335000, 335000,
+  ];
+  let targetCD = [
+    200000, 200000, 200000, 220000, 220000, 220000, 230000, 230000, 230000,
+    240000, 240000, 240000,
+  ];
+  let targetVIN = [
+    80000, 80000, 80000, 85000, 85000, 85000, 90000, 90000, 90000, 95000, 95000,
+    95000,
   ];
   let mailHandlowiec;
   let welcomeUser;
@@ -893,6 +939,8 @@ $(document).ready(function () {
 
       let poczatekRoku = new Date(y, 0, 1);
 
+      let koniecObecnegoMiesiaca = new Date(koniecData00).getTime();
+
       //***************************************************************/
 
       let roznica = datyMinus_0_Koniec - poczatekRoku.getTime();
@@ -1355,131 +1403,11 @@ $(document).ready(function () {
         >
         <br />${fakturyDzis}/${fakturyMiesiac}`);
 
-      class WykresSprzedaz {
-        constructor(y, label, indexLabel) {
-          this.y = y;
-          this.label = label;
-          this.indexLabel = indexLabel;
-        }
-      }
-
-      class WykresZysk {
-        constructor(y, label) {
-          this.y = y;
-          this.label = label;
-        }
-      }
-
-      class WykresTarget {
-        constructor(y, label, indexLabel) {
-          this.y = y;
-          this.label = label;
-          this.indexLabel = indexLabel;
-        }
-      }
-
-      class WykresTargetForecast {
-        constructor(y, label, indexLabel) {
-          this.y = y;
-          this.label = label;
-          this.indexLabel = indexLabel;
-        }
-      }
-
       let aktualnyMiesiac = new Date(dzis).getMonth();
       console.log(aktualnyMiesiac);
 
       let yourSalesBar = [];
       let yourProfitBar = [];
-
-      let yourTargetCDBar = [];
-      let yourTargetVINBar = [];
-
-      let wykresTargetCD = new WykresTarget(
-        zyskCD_0,
-        month[m],
-        zyskCD_0.toLocaleString("pl-PL", {
-          useGrouping: "true",
-          minimumFractionDigits: "0",
-          maximumFractionDigits: "0",
-        })
-      );
-      yourTargetCDBar.push(wykresTargetCD);
-
-      if (aktualnyMiesiac > 0) {
-        wykresTargetCD = new WykresTarget(
-          zyskCD_1,
-          month[m - 1],
-          zyskCD_1.toLocaleString("pl-PL", {
-            useGrouping: "true",
-            minimumFractionDigits: "0",
-            maximumFractionDigits: "0",
-          })
-        );
-        yourTargetCDBar.push(wykresTargetCD);
-      }
-
-      if (aktualnyMiesiac > 1) {
-        wykresTargetCD = new WykresTarget(
-          zyskCD_2,
-          month[m - 2],
-          zyskCD_2.toLocaleString("pl-PL", {
-            useGrouping: "true",
-            minimumFractionDigits: "0",
-            maximumFractionDigits: "0",
-          })
-        );
-        yourTargetCDBar.push(wykresTargetCD);
-      }
-
-      if (aktualnyMiesiac > 2) {
-        wykresTargetCD = new WykresTarget(
-          zyskCD_3,
-          month[m - 3],
-          zyskCD_3.toLocaleString("pl-PL", {
-            useGrouping: "true",
-            minimumFractionDigits: "0",
-            maximumFractionDigits: "0",
-          })
-        );
-        yourTargetCDBar.push(wykresTargetCD);
-      }
-      if (aktualnyMiesiac > 3) {
-        wykresTargetCD = new WykresTarget(
-          zyskCD_4,
-          month[m - 4],
-          zyskCD_4.toLocaleString("pl-PL", {
-            useGrouping: "true",
-            minimumFractionDigits: "0",
-            maximumFractionDigits: "0",
-          })
-        );
-        yourTargetCDBar.push(wykresTargetCD);
-      }
-      if (aktualnyMiesiac > 4) {
-        wykresTargetCD = new WykresTarget(
-          zyskCD_5,
-          month[m - 5],
-          zyskCD_5.toLocaleString("pl-PL", {
-            useGrouping: "true",
-            minimumFractionDigits: "0",
-            maximumFractionDigits: "0",
-          })
-        );
-        yourTargetCDBar.push(wykresTargetCD);
-      }
-      if (aktualnyMiesiac > 5) {
-        wykresTargetCD = new WykresTarget(
-          zyskCD_6,
-          month[m - 6],
-          zyskCD_6.toLocaleString("pl-PL", {
-            useGrouping: "true",
-            minimumFractionDigits: "0",
-            maximumFractionDigits: "0",
-          })
-        );
-        yourTargetCDBar.push(wykresTargetCD);
-      }
 
       let sprzedazAll_6 = sprzedazCD_6 + sprzedazVIN_6;
       let wykresSprzedaz = new WykresSprzedaz(
@@ -1770,42 +1698,6 @@ $(document).ready(function () {
       });
       chart1.render();
 
-      var chart2 = new CanvasJS.Chart("bar-target_cd", {
-        animationEnabled: true,
-        theme: "light2",
-        fontFamily: "calibri",
-        title: {
-          text: "Profit Target CD",
-          fontColor: "#A9A9A9",
-        },
-        axisX: {
-          ValueFormatString: "PLN # ### ###",
-        },
-        axisY: {
-          ValueFormatString: "PLN # ### ###",
-          minimum: 0,
-        },
-        toolTip: {
-          shared: true,
-        },
-        legend: {
-          cursor: "pointer",
-          itemclick: toggleDataSeries,
-        },
-        data: [
-          {
-            type: "column",
-            name: "Sales",
-            showInLegend: true,
-            indexLabelPlacement: "outside",
-            color: "#B0E0E6",
-            yValueFormatString: "PLN # ### ###",
-            dataPoints: yourTargetCDBar,
-          },
-        ],
-      });
-      chart2.render();
-
       function toggleDataSeries(e) {
         if (
           typeof e.dataSeries.visible === "undefined" ||
@@ -1828,7 +1720,8 @@ $(document).ready(function () {
       let zamowieniaDoRealizacjiNaDzis = 0;
       let zamowieniaDzisWprowadzone = 0;
       let zamowieniaMiesiacWprowadzone = 0;
-      let zamowieniaDoRealizacjiMiesiac = 0;
+      let zamowieniaDoRealizacjiMiesiacCd = 0;
+      let zamowieniaDoRealizacjiMiesiacVIN = 0;
 
       let zamowieniaNaDzisZbiorczaTab = [];
       let zamowieniaNaDzis;
@@ -1857,6 +1750,20 @@ $(document).ready(function () {
             } else {
               zamoweianiaVIN_0_Wprowadzone += zamowienia[i].kwotaNetto;
               zamowieniaMiesiacWprowadzone++;
+            }
+          }
+
+          if (
+            zamowieniaDataRealizacji >= datyMinus_0_Koniec &&
+            zamowieniaDataRealizacji <= koniecObecnegoMiesiaca
+          ) {
+            if (
+              zamowienia[i].dział == "PŁYTY CD" ||
+              zamowienia[i].dział == "INNE"
+            ) {
+              zamowieniaDoRealizacjiMiesiacCd += zamowienia[i].kwotaNetto;
+            } else {
+              zamowieniaDoRealizacjiMiesiacVIN += zamowienia[i].kwotaNetto;
             }
           }
 
@@ -2059,10 +1966,812 @@ $(document).ready(function () {
         zamoweianiaCD_dzis_Wprowadzone + zamoweianiaVIN_dzis_Wprowadzone;
       console.log(zamowieniaDzisWprowadzone);
 
+      //********************* TARGETY********************************* */
+
+      let profitCDOrder = zamowieniaDoRealizacjiMiesiacCd * profitCD;
+      let profitVINOrder = zamowieniaDoRealizacjiMiesiacVIN * profitVIN;
+
+      let yourTargetDetailsCDAllTab = [];
+
+      let yourTargetDetailsCD = [];
+
+      yourTargetDetailsCD.push(month[m]);
+
+      let salesValueCD_0 = new NameValue(
+        sprzedazCD_0,
+        sprzedazCD_0.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })
+      );
+      yourTargetDetailsCD.push(salesValueCD_0);
+
+      let salesProfitCD_0 = new NameValue(
+        zyskCD_0,
+        zyskCD_0.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })
+      );
+      yourTargetDetailsCD.push(salesProfitCD_0);
+
+      let averageProfitCD_0 = `${(
+        (zyskCD_0 / sprzedazCD_0) *
+        100
+      ).toLocaleString("pl-PL", {
+        useGrouping: "true",
+        minimumFractionDigits: "2",
+        maximumFractionDigits: "2",
+      })} %`;
+
+      yourTargetDetailsCD.push(averageProfitCD_0);
+      yourTargetDetailsCD.push(
+        targetCD[m - monthMinus].toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+
+      let progresProfitCD_0 = `${(
+        (zyskCD_0 / targetCD[m - monthMinus]) *
+        100
+      ).toLocaleString("pl-PL", {
+        useGrouping: "true",
+        minimumFractionDigits: "2",
+        maximumFractionDigits: "2",
+      })} %`;
+
+      yourTargetDetailsCD.push(progresProfitCD_0);
+
+      let openOrdersCD_0 = new NameValue(
+        zamowieniaDoRealizacjiMiesiacCd,
+        zamowieniaDoRealizacjiMiesiacCd.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })
+      );
+
+      yourTargetDetailsCD.push(openOrdersCD_0);
+
+      let forecastSaleCD_0 = new NameValue(
+        sprzedazCD_0 + zamowieniaDoRealizacjiMiesiacCd,
+        (sprzedazCD_0 + zamowieniaDoRealizacjiMiesiacCd).toLocaleString(
+          "pl-PL",
+          {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          }
+        )
+      );
+
+      yourTargetDetailsCD.push(forecastSaleCD_0);
+
+      let forecastProfitCD_0 = new NameValue(
+        zyskCD_0 + profitCDOrder,
+        (zyskCD_0 + profitCDOrder).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })
+      );
+
+      yourTargetDetailsCD.push(forecastProfitCD_0);
+
+      let targetRealizationForecastProcentCD = `${(
+        ((zyskCD_0 + profitCDOrder) / targetCD[m - monthMinus]) *
+        100
+      ).toLocaleString("pl-PL", {
+        useGrouping: "true",
+        minimumFractionDigits: "2",
+        maximumFractionDigits: "2",
+      })} %`;
+
+      yourTargetDetailsCD.push(targetRealizationForecastProcentCD);
+
+      yourTargetDetailsCDAllTab.push(yourTargetDetailsCD);
+
+      let yourTargetDetailsVINAllTab = [];
+
+      let yourTargetDetailsVIN = [];
+
+      yourTargetDetailsVIN.push(month[m]);
+
+      let salesValueVIN_0 = new NameValue(
+        sprzedazVIN_0,
+        sprzedazVIN_0.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })
+      );
+      yourTargetDetailsVIN.push(salesValueVIN_0);
+
+      let salesProfitVIN_0 = new NameValue(
+        zyskVIN_0,
+        zyskVIN_0.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })
+      );
+      yourTargetDetailsVIN.push(salesProfitVIN_0);
+
+      let averageProfitVIN_0 = `${(
+        (zyskVIN_0 / sprzedazVIN_0) *
+        100
+      ).toLocaleString("pl-PL", {
+        useGrouping: "true",
+        minimumFractionDigits: "2",
+        maximumFractionDigits: "2",
+      })} %`;
+
+      yourTargetDetailsVIN.push(averageProfitVIN_0);
+      yourTargetDetailsVIN.push(
+        targetVIN[m - monthMinus].toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+
+      let progresProfitVIN_0 = `${(
+        (zyskVIN_0 / targetVIN[m - monthMinus]) *
+        100
+      ).toLocaleString("pl-PL", {
+        useGrouping: "true",
+        minimumFractionDigits: "2",
+        maximumFractionDigits: "2",
+      })} %`;
+
+      yourTargetDetailsVIN.push(progresProfitVIN_0);
+
+      let openOrdersVIN_0 = new NameValue(
+        zamowieniaDoRealizacjiMiesiacVIN,
+        zamowieniaDoRealizacjiMiesiacVIN.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })
+      );
+
+      yourTargetDetailsVIN.push(openOrdersVIN_0);
+
+      let forecastSaleVIN_0 = new NameValue(
+        sprzedazVIN_0 + zamowieniaDoRealizacjiMiesiacVIN,
+        (sprzedazVIN_0 + zamowieniaDoRealizacjiMiesiacVIN).toLocaleString(
+          "pl-PL",
+          {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          }
+        )
+      );
+
+      yourTargetDetailsVIN.push(forecastSaleVIN_0);
+
+      let forecastProfitVIN_0 = new NameValue(
+        zyskVIN_0 + profitVINOrder,
+        (zyskVIN_0 + profitVINOrder).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })
+      );
+
+      yourTargetDetailsVIN.push(forecastProfitVIN_0);
+
+      let targetRealizationForecastProcentVIN = `${(
+        ((zyskVIN_0 + profitVINOrder) / targetVIN[m - monthMinus]) *
+        100
+      ).toLocaleString("pl-PL", {
+        useGrouping: "true",
+        minimumFractionDigits: "2",
+        maximumFractionDigits: "2",
+      })} %`;
+
+      yourTargetDetailsVIN.push(targetRealizationForecastProcentVIN);
+
+      yourTargetDetailsVINAllTab.push(yourTargetDetailsVIN);
+
+      console.log(yourTargetDetailsVINAllTab);
+
+      let yourTargetCDBar = [];
+      let yourTargetVINBar = [];
+
+      let yourTargetCDBarForecast = [];
+      let yourTargetVINBarForecast = [];
+
+      let yourTargetCDBarForecastPlusOrder = [];
+      let yourTargetVINBarForecastPlusOrder = [];
+
+      let wykresTargetCDForecast = new WykresTargetForecast(
+        profitCDOrder,
+        month[m]
+      );
+      yourTargetCDBarForecast.push(wykresTargetCDForecast);
+
+      let wykresTargetVINForecast = new WykresTargetForecast(
+        profitVINOrder,
+        month[m]
+      );
+      yourTargetVINBarForecast.push(wykresTargetVINForecast);
+
+      let wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
+        targetCD[m - monthMinus],
+        month[m]
+      );
+      yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+
+      let wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
+        targetVIN[m - monthMinus],
+        month[m]
+      );
+      yourTargetVINBarForecastPlusOrder.push(wykresTargetVINForecastPlusOrder);
+
+      let wykresTargetCD = new WykresTarget(
+        zyskCD_0,
+        month[m],
+        zyskCD_0.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+      yourTargetCDBar.push(wykresTargetCD);
+
+      let wykresTargetVIN = new WykresTarget(
+        zyskVIN_0,
+        month[m],
+        zyskVIN_0.toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "0",
+          maximumFractionDigits: "0",
+        })
+      );
+      yourTargetVINBar.push(wykresTargetVIN);
+
+      if (aktualnyMiesiac > 0) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_1,
+          month[m - 1],
+          zyskCD_1.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+
+        wykresTargetVIN = new WykresTarget(
+          zyskVIN_1,
+          month[m - 1],
+          zyskVIN_1.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetVINBar.push(wykresTargetVIN);
+
+        wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
+          targetCD[m - monthMinus - 1],
+          month[m - 1]
+        );
+        yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+
+        wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
+          targetVIN[m - monthMinus - 1],
+          month[m - 1]
+        );
+        yourTargetVINBarForecastPlusOrder.push(
+          wykresTargetVINForecastPlusOrder
+        );
+
+        yourTargetDetailsCD = [];
+
+        yourTargetDetailsCD.push(month[m - 1]);
+
+        let salesValueCD_1 = new NameValue(
+          sprzedazCD_1,
+          sprzedazCD_1.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })
+        );
+        yourTargetDetailsCD.push(salesValueCD_1);
+
+        let salesProfitCD_1 = new NameValue(
+          zyskCD_1,
+          zyskCD_1.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })
+        );
+        yourTargetDetailsCD.push(salesProfitCD_1);
+
+        let averageProfitCD_1 = `${(
+          (zyskCD_1 / sprzedazCD_1) *
+          100
+        ).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`;
+
+        yourTargetDetailsCD.push(averageProfitCD_1);
+        yourTargetDetailsCD.push(
+          targetCD[m - monthMinus - 1].toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        let progresProfitCD_1 = `${(
+          (zyskCD_1 / targetCD[m - monthMinus - 1]) *
+          100
+        ).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`;
+
+        yourTargetDetailsCD.push(progresProfitCD_1);
+
+        let openOrdersCD_1 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetDetailsCD.push(openOrdersCD_1);
+
+        let forecastSaleCD_1 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        yourTargetDetailsCD.push(forecastSaleCD_1);
+
+        let forecastProfitCD_1 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        yourTargetDetailsCD.push(forecastProfitCD_1);
+
+        let targetRealizationForecastProcentCD_1 = `${(0).toLocaleString(
+          "pl-PL",
+          {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          }
+        )} %`;
+
+        yourTargetDetailsCD.push(targetRealizationForecastProcentCD_1);
+
+        yourTargetDetailsCDAllTab.push(yourTargetDetailsCD);
+
+        yourTargetDetailsVIN = [];
+
+        yourTargetDetailsVIN.push(month[m - 1]);
+
+        let salesValueVIN_1 = new NameValue(
+          sprzedazVIN_1,
+          sprzedazVIN_1.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })
+        );
+        yourTargetDetailsVIN.push(salesValueVIN_1);
+
+        let salesProfitVIN_1 = new NameValue(
+          zyskVIN_1,
+          zyskVIN_1.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })
+        );
+        yourTargetDetailsVIN.push(salesProfitVIN_1);
+
+        let averageProfitVIN_1 = `${(
+          (zyskVIN_1 / sprzedazVIN_1) *
+          100
+        ).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`;
+
+        yourTargetDetailsVIN.push(averageProfitVIN_1);
+        yourTargetDetailsVIN.push(
+          targetVIN[m - monthMinus - 1].toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        let progresProfitVIN_1 = `${(
+          (zyskVIN_1 / targetVIN[m - monthMinus - 1]) *
+          100
+        ).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`;
+
+        yourTargetDetailsVIN.push(progresProfitVIN_1);
+
+        let openOrdersVIN_1 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetDetailsVIN.push(openOrdersVIN_1);
+
+        let forecastSaleVIN_1 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        yourTargetDetailsVIN.push(forecastSaleVIN_1);
+
+        let forecastProfitVIN_1 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        yourTargetDetailsVIN.push(forecastProfitVIN_1);
+
+        let targetRealizationForecastProcentVIN_1 = `${(0).toLocaleString(
+          "pl-PL",
+          {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          }
+        )} %`;
+
+        yourTargetDetailsVIN.push(targetRealizationForecastProcentVIN_1);
+
+        yourTargetDetailsVINAllTab.push(yourTargetDetailsVIN);
+      }
+
+      console.log(yourTargetDetailsCD);
+      console.log(yourTargetDetailsVIN);
+
+      //******target zrobiony tylko miesiąc do tyłu (na próbę) ********/
+
+      if (aktualnyMiesiac > 1) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_2,
+          month[m - 2],
+          zyskCD_2.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+
+        wykresTargetVIN = new WykresTarget(
+          zyskVIN_2,
+          month[m - 2],
+          zyskVIN_2.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetVINBar.push(wykresTargetVIN);
+
+        wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
+          targetCD[m - monthMinus],
+          month[m - 2]
+        );
+        yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+
+        wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
+          targetVIN[m - monthMinus],
+          month[m - 2]
+        );
+        yourTargetVINBarForecastPlusOrder.push(
+          wykresTargetVINForecastPlusOrder
+        );
+      }
+
+      if (aktualnyMiesiac > 2) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_3,
+          month[m - 3],
+          zyskCD_3.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+
+        wykresTargetVIN = new WykresTarget(
+          zyskVIN_3,
+          month[m - 3],
+          zyskVIN_3.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetVINBar.push(wykresTargetVIN);
+
+        wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
+          targetCD[m - monthMinus],
+          month[m - 3]
+        );
+        yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+
+        wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
+          targetVIN[m - monthMinus],
+          month[m - 3]
+        );
+        yourTargetVINBarForecastPlusOrder.push(
+          wykresTargetVINForecastPlusOrder
+        );
+      }
+      if (aktualnyMiesiac > 3) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_4,
+          month[m - 4],
+          zyskCD_4.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+
+        wykresTargetVIN = new WykresTarget(
+          zyskVIN_4,
+          month[m - 4],
+          zyskVIN_4.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetVINBar.push(wykresTargetVIN);
+
+        wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
+          targetCD[m - monthMinus],
+          month[m - 4]
+        );
+        yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+
+        wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
+          targetVIN[m - monthMinus],
+          month[m - 4]
+        );
+        yourTargetVINBarForecastPlusOrder.push(
+          wykresTargetVINForecastPlusOrder
+        );
+      }
+      if (aktualnyMiesiac > 4) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_5,
+          month[m - 5],
+          zyskCD_5.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+
+        wykresTargetVIN = new WykresTarget(
+          zyskVIN_5,
+          month[m - 5],
+          zyskVIN_5.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetVINBar.push(wykresTargetVIN);
+
+        wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
+          targetCD[m - monthMinus],
+          month[m - 5]
+        );
+        yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+
+        wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
+          targetVIN[m - monthMinus],
+          month[m - 5]
+        );
+        yourTargetVINBarForecastPlusOrder.push(
+          wykresTargetVINForecastPlusOrder
+        );
+      }
+      if (aktualnyMiesiac > 5) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_6,
+          month[m - 6],
+          zyskCD_6.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+
+        wykresTargetVIN = new WykresTarget(
+          zyskVIN_6,
+          month[m - 6],
+          zyskVIN_6.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetVINBar.push(wykresTargetVIN);
+
+        wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
+          targetCD[m - monthMinus],
+          month[m - 6]
+        );
+        yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+
+        wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
+          targetVIN[m - monthMinus],
+          month[m - 6]
+        );
+        yourTargetVINBarForecastPlusOrder.push(
+          wykresTargetVINForecastPlusOrder
+        );
+      }
+
+      var chart2 = new CanvasJS.Chart("bar-target_cd", {
+        animationEnabled: true,
+        theme: "light2",
+        fontFamily: "calibri",
+        title: {
+          text: "Profit Target CD",
+          fontColor: "#A9A9A9",
+        },
+        axisX: {
+          ValueFormatString: "PLN # ### ###",
+        },
+        axisY: {
+          ValueFormatString: "PLN # ### ###",
+          minimum: 0,
+        },
+        toolTip: {
+          shared: true,
+        },
+        legend: {
+          cursor: "pointer",
+          itemclick: toggleDataSeries,
+        },
+        data: [
+          {
+            type: "stackedColumn",
+            name: "Current Profit",
+            showInLegend: true,
+            indexLabelPlacement: "outside",
+            color: "#B0E0E6",
+            yValueFormatString: "PLN # ### ###",
+            dataPoints: yourTargetCDBar,
+          },
+          {
+            type: "stackedColumn",
+            name: "Profit Forecast",
+            showInLegend: true,
+            color: "#D3D3D3",
+            yValueFormatString: "PLN # ### ###",
+            dataPoints: yourTargetCDBarForecast,
+          },
+          {
+            type: "line",
+            name: "Expected Profit",
+            showInLegend: true,
+            yValueFormatString: "PLN # ### ###",
+            color: "red",
+            dataPoints: yourTargetCDBarForecastPlusOrder,
+          },
+        ],
+      });
+      chart2.render();
+
+      var chart3 = new CanvasJS.Chart("bar-target_vin", {
+        animationEnabled: true,
+        theme: "light2",
+        fontFamily: "calibri",
+        title: {
+          text: "Profit Target Vinyl",
+          fontColor: "#A9A9A9",
+        },
+        axisX: {
+          ValueFormatString: "PLN # ### ###",
+        },
+        axisY: {
+          ValueFormatString: "PLN # ### ###",
+          minimum: 0,
+        },
+        toolTip: {
+          shared: true,
+        },
+        legend: {
+          cursor: "pointer",
+          itemclick: toggleDataSeries,
+        },
+        data: [
+          {
+            type: "stackedColumn",
+            name: "Current Profit",
+            showInLegend: true,
+            indexLabelPlacement: "outside",
+            color: "#B0E0E6",
+            yValueFormatString: "PLN # ### ###",
+            dataPoints: yourTargetVINBar,
+          },
+          {
+            type: "stackedColumn",
+            name: "Profit Forecast",
+            showInLegend: true,
+            color: "#D3D3D3",
+            yValueFormatString: "PLN # ### ###",
+            dataPoints: yourTargetVINBarForecast,
+          },
+          {
+            type: "line",
+            name: "Expected Profit",
+            showInLegend: true,
+            yValueFormatString: "PLN # ### ###",
+            color: "red",
+            dataPoints: yourTargetVINBarForecastPlusOrder,
+          },
+        ],
+      });
+      chart3.render();
+
       google.charts.load("current", { packages: ["table"] });
       google.charts.setOnLoadCallback(drawTable_zamowieniaNaDzis);
       google.charts.setOnLoadCallback(drawTable_zamowieniaWprowadzoneDzis);
       google.charts.setOnLoadCallback(drawTable_FakturyWystawioneDzis);
+      google.charts.setOnLoadCallback(drawTable_tergetCDDetails);
+      google.charts.setOnLoadCallback(drawTable_tergetVINDetails);
 
       function drawTable_zamowieniaNaDzis() {
         var data = new google.visualization.DataTable();
@@ -2175,6 +2884,9 @@ $(document).ready(function () {
         formatter5.addRange("0,00 %", "0,01 %", "#DC143C", null);
         formatter5.format(data, 7);
 
+        var formatter8 = new google.visualization.BarFormat({ width: 50 });
+        formatter8.format(data, 6);
+
         var cssClassNames = {
           headerRow: "headerRow",
           tableRow: "tableRow",
@@ -2182,6 +2894,86 @@ $(document).ready(function () {
         };
 
         table2.draw(data, {
+          allowHtml: true,
+          showRowNumber: true,
+          width: "100%",
+          height: "100%",
+          cssClassNames: cssClassNames,
+        });
+      }
+      function drawTable_tergetCDDetails() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "Month");
+        data.addColumn("number", "Sales PLN");
+        data.addColumn("number", "Profit PLN");
+        data.addColumn("string", "Margin Profit");
+        data.addColumn("string", "Profit Target PLN");
+        data.addColumn("string", "Target Realisation");
+        data.addColumn("number", "Open Orders PLN");
+        data.addColumn("number", "Sale Forecast PLN");
+        data.addColumn("number", "Profit Forecast PLN");
+        data.addColumn("string", "Target Realisation Forecast");
+        data.addRows(yourTargetDetailsCDAllTab);
+
+        var table3 = new google.visualization.Table(
+          document.getElementById("cd-target_details_table")
+        );
+
+        var formatter6 = new google.visualization.ColorFormat();
+        formatter6.addRange(null, null, null, "#90EE90");
+        formatter6.format(data, 5);
+
+        var formatter7 = new google.visualization.ColorFormat();
+        formatter7.addRange(null, null, null, "#ADD8E6");
+        formatter7.format(data, 9);
+
+        var cssClassNames = {
+          headerRow: "headerRow",
+          tableRow: "tableRow",
+          oddTableRow: "oddTableRow",
+        };
+
+        table3.draw(data, {
+          allowHtml: true,
+          showRowNumber: true,
+          width: "100%",
+          height: "100%",
+          cssClassNames: cssClassNames,
+        });
+      }
+      function drawTable_tergetVINDetails() {
+        var data = new google.visualization.DataTable();
+        data.addColumn("string", "Month");
+        data.addColumn("number", "Sales PLN");
+        data.addColumn("number", "Profit PLN");
+        data.addColumn("string", "Margin Profit");
+        data.addColumn("string", "Profit Target PLN");
+        data.addColumn("string", "Target Realisation");
+        data.addColumn("number", "Open Orders PLN");
+        data.addColumn("number", "Sale Forecast PLN");
+        data.addColumn("number", "Profit Forecast PLN");
+        data.addColumn("string", "Target Realisation Forecast");
+        data.addRows(yourTargetDetailsVINAllTab);
+
+        var table4 = new google.visualization.Table(
+          document.getElementById("vinyl-target_details_table")
+        );
+
+        var formatter8 = new google.visualization.ColorFormat();
+        formatter8.addRange(null, null, null, "#90EE90");
+        formatter8.format(data, 5);
+
+        var formatter9 = new google.visualization.ColorFormat();
+        formatter9.addRange(null, null, null, "#ADD8E6");
+        formatter9.format(data, 9);
+
+        var cssClassNames = {
+          headerRow: "headerRow",
+          tableRow: "tableRow",
+          oddTableRow: "oddTableRow",
+        };
+
+        table4.draw(data, {
           allowHtml: true,
           showRowNumber: true,
           width: "100%",

@@ -537,19 +537,21 @@ body {
 .container-right_seven_row_bars {
   width: 100%;
   height: 50%;
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  padding-left: 5%;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: 100%;
   background-color: white;
   box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
   border-radius: 15px;
+  box-sizing: border-box;
 }
-.target-bars_left {
-  padding-top: 1%;
-  padding-bottom: 1%;
+.target-bars {
+  margin-bottom: 1%;
 }
 #bar-target_cd {
+  scale: 0.8;
+}
+#bar-target_vin {
   scale: 0.8;
 }
 
@@ -559,6 +561,20 @@ body {
   font-family: "Calibri";
   font-weight: 100;
   text-align: center;
+}
+
+.dive-heads_small {
+  font-size: 200%;
+  color: darkgray;
+  font-family: "Calibri";
+  font-weight: 100;
+  text-align: center;
+}
+
+.container-target_details {
+  width: 100%;
+  height: fit-content;
+  display: flex;
 }
 
 #orders-for-today_table {
