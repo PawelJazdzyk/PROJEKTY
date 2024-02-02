@@ -122,16 +122,17 @@ body {
 #sales_callendar {
   grid-column: 5/6;
   grid-row: 1/2;
-  margin-top: 18%;
-  margin-right: -20%;
+  margin-top: 10em;
+  margin-right: 0em;
+  scale: 0.85;
 }
+
 .container-right_firs_row_data {
   display: flex;
   height: 80%;
   width: 100%;
   margin-top: 25%;
   background-color: white;
-
   box-shadow: 8px 8px 26px 7px rgba(210, 218, 218, 1);
   border-radius: 15px;
   text-align: center;
@@ -529,7 +530,7 @@ body {
 }
 .container-right_seven_row {
   width: 100%;
-  height: 95vh;
+  height: 54em;
   display: flex;
   flex-direction: column;
   margin-top: 4%;
@@ -546,7 +547,9 @@ body {
   box-sizing: border-box;
 }
 .target-bars {
+  margin-top: 1%;
   margin-bottom: 1%;
+  height: fit-content;
 }
 #bar-target_cd {
   scale: 0.8;
@@ -593,6 +596,88 @@ body {
   width: 99%;
   height: fit-content;
   align-self: center;
+}
+.table4head {
+  font-family: "Calibri";
+  font-weight: 100;
+  text-align: center;
+  color: rgb(70, 70, 70);
+  height: 1em;
+  border: 1px solid rgb(145, 175, 194);
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 1em;
+  background-color: #dfe2e6;
+  box-sizing: border-box;
+}
+.table4 {
+  height: 1em;
+  border: 1px solid rgb(145, 175, 194);
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.98em;
+  background-color: #f0f2f5;
+}
+.table4row {
+  height: 1em;
+  border: 1px solid rgb(145, 175, 194);
+  width: 100%;
+  table-layout: fixed;
+  border-radius: 4px;
+  border-collapse: collapse;
+  font-size: 0.98em;
+  background-color: #ffffff;
+}
+
+.tablemargin {
+  font-family: "Calibri";
+  font-size: 0.97em;
+  color: #a9a9a9;
+}
+
+.container-right_eight_row {
+  width: 100%;
+  height: 54em;
+  display: flex;
+  flex-direction: column;
+  margin-top: 4%;
+}
+
+.container-right_eight_row_table {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  background-color: white;
+}
+.alertClassRed {
+  background-color: rgb(255, 32, 32);
+  color: white;
+  font-weight: 800;
+  scale: 0.96;
+  opacity: 0.7;
+}
+.alertClassOrange {
+  background-color: rgb(255, 123, 0);
+  color: white;
+  font-weight: 800;
+  scale: 0.96;
+  opacity: 0.7;
+}
+.alertClassSredniaOrange {
+  background-color: rgb(255, 167, 67);
+  color: white;
+  font-weight: 800;
+  scale: 0.96;
+  opacity: 0.7;
+}
+.alertClassSredniaGreen {
+  background-color: rgb(33, 201, 33);
+  color: white;
+  font-weight: 800;
+  scale: 0.96;
+  opacity: 0.7;
 }
 
 @media only screen and (max-width: 1500px) {
