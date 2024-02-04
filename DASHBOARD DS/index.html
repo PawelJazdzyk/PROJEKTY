@@ -91,12 +91,13 @@
           >
             Profit target details
           </button>
-          <!--<button
-            class="ui-button ui-widget ui-corner-all container-left_button"
-          >
-            Orders Review
-          </button>
           <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+            id="sales-history_button"
+          >
+            Sales History
+          </button>
+          <!--<button
             class="ui-button ui-widget ui-corner-all container-left_button"
           >
             Customer Analysis
@@ -223,6 +224,55 @@
           ></div>
         </div>
         <div class="container-right_eight_row">
+          <p class="dive-heads">Sales history</p>
+          <div class="container-right_eight_row_buttons">
+            <div class="select-customer">
+              <select
+                class="ui-button ui-widget ui-corner-all select-customer_class buttons-customer"
+                id="kontrahent-customer"
+              ></select>
+            </div>
+            <div class="select-bok">
+              <select
+                class="ui-button ui-widget ui-corner-all buttons-customer"
+                id="opiekun-bok"
+              ></select>
+            </div>
+            <div class="radio-type">
+              <fieldset
+                class="ui-button ui-widget ui-corner-all radio-type_class"
+              >
+                <div>
+                  <label for="radio-1">All</label>
+                  <input
+                    checked
+                    class="buttons-customer_count"
+                    type="radio"
+                    name="radio-1"
+                    id="radio-1"
+                  />
+                </div>
+                <div>
+                  <label for="radio-2">CD</label>
+                  <input
+                    class="buttons-customer_count"
+                    type="radio"
+                    name="radio-1"
+                    id="radio-2"
+                  />
+                </div>
+                <div>
+                  <label for="radio-3">VIN</label>
+                  <input
+                    class="buttons-customer_count"
+                    type="radio"
+                    name="radio-1"
+                    id="radio-3"
+                  />
+                </div>
+              </fieldset>
+            </div>
+          </div>
           <div class="container-right_eight_table" id="tabelaKontrahent"></div>
         </div>
       </div>

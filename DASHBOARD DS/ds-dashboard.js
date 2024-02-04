@@ -86,6 +86,14 @@ $(document).ready(function () {
       500
     );
   });
+  $("#sales-history_button").click(function () {
+    $("html, body").animate(
+      {
+        scrollTop: $(".container-right_eight_row").offset().top,
+      },
+      500
+    );
+  });
 
   let dataPoint = [
     1266.890435345, 2443.8903455, 2674.8904345, 4872.8903555, 3373.894343,
@@ -1631,6 +1639,23 @@ $(document).ready(function () {
         circProgrsTarget_empty = progrsTarget_empty;
       }
 
+      let descriebeLabel = `${(circProgresTarget * 100).toLocaleString(
+        "pl-PL",
+        {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        }
+      )} %`;
+
+      let descriebeLabelEmpty = `${(
+        circProgrsTarget_empty * 100
+      ).toLocaleString("pl-PL", {
+        useGrouping: "true",
+        minimumFractionDigits: "2",
+        maximumFractionDigits: "2",
+      })} %`;
+
       var chart = new CanvasJS.Chart("target_bar", {
         animationEnabled: true,
         animationDuration: 2000,
@@ -1655,10 +1680,18 @@ $(document).ready(function () {
             type: "doughnut",
             startAngle: 90,
             innerRadius: 30,
-            toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+            toolTipContent: "(#percent%)",
             dataPoints: [
-              { y: circProgresTarget, label: "Relisation", color: "#008000" },
-              { y: circProgrsTarget_empty, color: circleColour },
+              {
+                y: circProgresTarget,
+                color: "#008000",
+                indexLabel: descriebeLabel,
+              },
+              {
+                y: circProgrsTarget_empty,
+                color: circleColour,
+                indexLabel: descriebeLabelEmpty,
+              },
             ],
           },
         ],
@@ -2791,6 +2824,47 @@ $(document).ready(function () {
       console.log(fakturyZamowieniaTab);
       console.log(kontrahentAllTab);
 
+      let bokowiec = new Set();
+      let kontrahent = new Set();
+
+      function dodajSelectory() {
+        let htmlBokowiec = null;
+        let htmlKontrahent = null;
+        let bokowiecTab = [];
+        let kontrahentTab = [];
+        for (k = 0; k < fakturyZamowieniaTab.length; k++) {
+          bokowiec.add(fakturyZamowieniaTab[k].opiekun);
+          kontrahent.add(fakturyZamowieniaTab[k].kontrahent);
+        }
+
+        for (let x of bokowiec) {
+          bokowiecTab.push(x);
+        }
+        for (let x of kontrahent) {
+          kontrahentTab.push(x);
+        }
+
+        bokowiecTab.sort();
+        kontrahentTab.sort();
+
+        htmlBokowiec = "<option>BOK</option>";
+
+        for (i = 0; i < bokowiecTab.length; i++) {
+          htmlBokowiec += `<option>${bokowiecTab[i]}</option>`;
+        }
+
+        htmlKontrahent = "<option>Customer</option>";
+
+        for (i = 0; i < kontrahentTab.length; i++) {
+          htmlKontrahent += `<option>${kontrahentTab[i]}</option>`;
+        }
+
+        $("#opiekun-bok").html(htmlBokowiec);
+        $("#kontrahent-customer").html(htmlKontrahent);
+      }
+
+      dodajSelectory();
+
       function analizujKontrahenta() {
         listaKontrahentow = [];
         let kontrahentSprzedazWszyscy_CD = 0;
@@ -2902,270 +2976,376 @@ $(document).ready(function () {
           let kontrahentAlertSredniaOrange;
           const dzielnik = 120;
 
+          let selectedBOK = $("#opiekun-bok :selected").text();
+          let selectedKontrahent = $("#kontrahent-customer :selected").text();
+
           for (j = 0; j < fakturyZamowieniaTab.length; j++) {
-            let dataDokumentu = new Date(
-              fakturyZamowieniaTab[j].dataDokumentu
-            ).getTime();
-            let dataRealizacji = new Date(
-              fakturyZamowieniaTab[j].dataRealizacji
-            ).getTime();
+            let selectBOK;
+            let selectKontrahent;
 
-            if (kontrahentNazwa == fakturyZamowieniaTab[j].kontrahent) {
-              kontrahentKraj = fakturyZamowieniaTab[j].kodKrajuKontrahenta;
-              kontrahentOpiekun = fakturyZamowieniaTab[j].opiekun;
-              if (
-                fakturyZamowieniaTab[j].kategoria == "Sprzedaż" ||
-                fakturyZamowieniaTab[j].kategoria == "KorektaSprzedaży"
-              ) {
-                if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
-                  if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                    kontrahentFaktury_VIN++;
-                  } else {
-                    kontrahentFaktury_CD++;
-                  }
-                } else {
-                  if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                    kontrahentFaktury_VIN++;
-                  } else {
-                    kontrahentFaktury_CD++;
-                  }
-                }
-
-                if (
-                  dataDokumentu >= datyMinus_0_Poczatek &&
-                  dataDokumentu <= datyMinus_0_Koniec
-                ) {
-                  if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_0_VIN +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_0_VIN += fakturyZamowieniaTab[j].zysk;
-                    } else {
-                      kontrahentSprzedaz_0_CD +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_0_CD += fakturyZamowieniaTab[j].zysk;
-                    }
-                  } else {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_0_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_0_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                    } else {
-                      kontrahentSprzedaz_0_CD +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_0_CD += fakturyZamowieniaTab[j].kwotaNetto;
-                    }
-                  }
-                }
-                if (
-                  dataDokumentu >= datyMinus_1_Poczatek &&
-                  dataDokumentu <= datyMinus_1_Koniec
-                ) {
-                  if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_1_VIN +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_1_VIN += fakturyZamowieniaTab[j].zysk;
-                    } else {
-                      kontrahentSprzedaz_1_CD +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_1_CD += fakturyZamowieniaTab[j].zysk;
-                    }
-                  } else {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_1_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_1_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                    } else {
-                      kontrahentSprzedaz_1_CD +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_1_CD += fakturyZamowieniaTab[j].kwotaNetto;
-                    }
-                  }
-                }
-                if (
-                  dataDokumentu >= datyMinus_2_Poczatek &&
-                  dataDokumentu <= datyMinus_2_Koniec
-                ) {
-                  if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_2_VIN +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_2_VIN += fakturyZamowieniaTab[j].zysk;
-                    } else {
-                      kontrahentSprzedaz_2_CD +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_2_CD += fakturyZamowieniaTab[j].zysk;
-                    }
-                  } else {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_2_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_2_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                    } else {
-                      kontrahentSprzedaz_2_CD +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_2_CD += fakturyZamowieniaTab[j].kwotaNetto;
-                    }
-                  }
-                }
-                if (
-                  dataDokumentu >= datyMinus_3_Poczatek &&
-                  dataDokumentu <= datyMinus_3_Koniec
-                ) {
-                  if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_3_VIN +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_3_VIN += fakturyZamowieniaTab[j].zysk;
-                    } else {
-                      kontrahentSprzedaz_3_CD +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_3_CD += fakturyZamowieniaTab[j].zysk;
-                    }
-                  } else {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_3_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_3_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                    } else {
-                      kontrahentSprzedaz_3_CD +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_3_CD += fakturyZamowieniaTab[j].kwotaNetto;
-                    }
-                  }
-                }
-                if (
-                  dataDokumentu >= datyMinus_4_Poczatek &&
-                  dataDokumentu <= datyMinus_4_Koniec
-                ) {
-                  if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_4_VIN +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_4_VIN += fakturyZamowieniaTab[j].zysk;
-                    } else {
-                      kontrahentSprzedaz_4_CD +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_4_CD += fakturyZamowieniaTab[j].zysk;
-                    }
-                  } else {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_4_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_4_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                    } else {
-                      kontrahentSprzedaz_4_CD +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_4_CD += fakturyZamowieniaTab[j].kwotaNetto;
-                    }
-                  }
-                }
-                if (
-                  dataDokumentu >= datyMinus_5_Poczatek &&
-                  dataDokumentu <= datyMinus_5_Koniec
-                ) {
-                  if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_5_VIN +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_5_VIN += fakturyZamowieniaTab[j].zysk;
-                    } else {
-                      kontrahentSprzedaz_5_CD +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_5_CD += fakturyZamowieniaTab[j].zysk;
-                    }
-                  } else {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_5_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_5_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                    } else {
-                      kontrahentSprzedaz_5_CD +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_5_CD += fakturyZamowieniaTab[j].kwotaNetto;
-                    }
-                  }
-                }
-                if (
-                  dataDokumentu >= datyMinus_6_Poczatek &&
-                  dataDokumentu <= datyMinus_6_Koniec
-                ) {
-                  if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_6_VIN +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_6_VIN += fakturyZamowieniaTab[j].zysk;
-                    } else {
-                      kontrahentSprzedaz_6_CD +=
-                        fakturyZamowieniaTab[j].kwotaPozycjiNetto;
-                      kontrahentZysk_6_CD += fakturyZamowieniaTab[j].zysk;
-                    }
-                  } else {
-                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                      kontrahentSprzedaz_6_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_6_VIN +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                    } else {
-                      kontrahentSprzedaz_6_CD +=
-                        fakturyZamowieniaTab[j].kwotaNetto;
-                      kontrahentZysk_6_CD += fakturyZamowieniaTab[j].kwotaNetto;
-                    }
-                  }
-                }
-              }
+            if (selectedBOK == "BOK") {
+              selectBOK = "BOK";
+            } else {
+              selectBOK = fakturyZamowieniaTab[j].opiekun;
+            }
+            if (selectedKontrahent == "Customer") {
+              selectKontrahent = "Customer";
+            } else {
+              selectKontrahent = fakturyZamowieniaTab[j].kontrahent;
             }
 
             if (
-              kontrahentNazwa == fakturyZamowieniaTab[j].kontrahent &&
-              fakturyZamowieniaTab[j].kategoria == "ZamówienieOdbiorcy"
+              selectedBOK == selectBOK &&
+              selectedKontrahent == selectKontrahent
             ) {
-              if (
-                dataRealizacji >= datyMinus_0_Poczatek &&
-                dataRealizacji <= datyMinus_0_Koniec
-              ) {
-                if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                  kontrahentZamowienia_0_VIN +=
-                    fakturyZamowieniaTab[j].kwotaNetto;
-                  kontrahentZyskZamowienia_0_VIN +=
-                    fakturyZamowieniaTab[j].zysk;
-                } else {
-                  kontrahentZamowienia_0_CD +=
-                    fakturyZamowieniaTab[j].kwotaNetto;
-                  kontrahentZyskZamowienia_0_CD += fakturyZamowieniaTab[j].zysk;
-                }
-              }
-              if (
-                dataRealizacji >= datyPlus_1_Poczatek &&
-                dataRealizacji <= datyPlus_1_Koniec
-              ) {
-                if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
-                  kontrahentZamowienia_next_1_VIN +=
-                    fakturyZamowieniaTab[j].kwotaNetto;
-                  kontrahentZyskZamowienia_next_1_VIN +=
-                    fakturyZamowieniaTab[j].zysk;
-                } else {
-                  kontrahentZamowienia_next_1_CD +=
-                    fakturyZamowieniaTab[j].kwotaNetto;
-                  kontrahentZyskZamowienia_next_1_CD +=
-                    fakturyZamowieniaTab[j].zysk;
+              let dataDokumentu = new Date(
+                fakturyZamowieniaTab[j].dataDokumentu
+              ).getTime();
+              let dataRealizacji = new Date(
+                fakturyZamowieniaTab[j].dataRealizacji
+              ).getTime();
+
+              if (kontrahentNazwa == fakturyZamowieniaTab[j].kontrahent) {
+                kontrahentKraj = fakturyZamowieniaTab[j].kodKrajuKontrahenta;
+                kontrahentOpiekun = fakturyZamowieniaTab[j].opiekun;
+                if (
+                  fakturyZamowieniaTab[j].kategoria == "Sprzedaż" ||
+                  fakturyZamowieniaTab[j].kategoria == "KorektaSprzedaży"
+                ) {
+                  if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
+                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                      kontrahentFaktury_VIN++;
+                    } else {
+                      kontrahentFaktury_CD++;
+                    }
+                  } else {
+                    if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                      kontrahentFaktury_VIN++;
+                    } else {
+                      kontrahentFaktury_CD++;
+                    }
+                  }
+
+                  if (
+                    dataDokumentu >= datyMinus_0_Poczatek &&
+                    dataDokumentu <= datyMinus_0_Koniec
+                  ) {
+                    if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_0_VIN +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_0_VIN += fakturyZamowieniaTab[j].zysk;
+                      } else {
+                        kontrahentSprzedaz_0_CD +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_0_CD += fakturyZamowieniaTab[j].zysk;
+                      }
+                    } else {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_0_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_0_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      } else {
+                        kontrahentSprzedaz_0_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_0_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      }
+                    }
+                  }
+                  if (
+                    dataDokumentu >= datyMinus_1_Poczatek &&
+                    dataDokumentu <= datyMinus_1_Koniec
+                  ) {
+                    if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_1_VIN +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_1_VIN += fakturyZamowieniaTab[j].zysk;
+                      } else {
+                        kontrahentSprzedaz_1_CD +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_1_CD += fakturyZamowieniaTab[j].zysk;
+                      }
+                    } else {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_1_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_1_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      } else {
+                        kontrahentSprzedaz_1_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_1_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      }
+                    }
+                  }
+                  if (
+                    dataDokumentu >= datyMinus_2_Poczatek &&
+                    dataDokumentu <= datyMinus_2_Koniec
+                  ) {
+                    if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_2_VIN +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_2_VIN += fakturyZamowieniaTab[j].zysk;
+                      } else {
+                        kontrahentSprzedaz_2_CD +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_2_CD += fakturyZamowieniaTab[j].zysk;
+                      }
+                    } else {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_2_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_2_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      } else {
+                        kontrahentSprzedaz_2_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_2_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      }
+                    }
+                  }
+                  if (
+                    dataDokumentu >= datyMinus_3_Poczatek &&
+                    dataDokumentu <= datyMinus_3_Koniec
+                  ) {
+                    if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_3_VIN +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_3_VIN += fakturyZamowieniaTab[j].zysk;
+                      } else {
+                        kontrahentSprzedaz_3_CD +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_3_CD += fakturyZamowieniaTab[j].zysk;
+                      }
+                    } else {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_3_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_3_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      } else {
+                        kontrahentSprzedaz_3_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_3_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      }
+                    }
+                  }
+                  if (
+                    dataDokumentu >= datyMinus_4_Poczatek &&
+                    dataDokumentu <= datyMinus_4_Koniec
+                  ) {
+                    if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_4_VIN +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_4_VIN += fakturyZamowieniaTab[j].zysk;
+                      } else {
+                        kontrahentSprzedaz_4_CD +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_4_CD += fakturyZamowieniaTab[j].zysk;
+                      }
+                    } else {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_4_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_4_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      } else {
+                        kontrahentSprzedaz_4_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_4_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      }
+                    }
+                  }
+                  if (
+                    dataDokumentu >= datyMinus_5_Poczatek &&
+                    dataDokumentu <= datyMinus_5_Koniec
+                  ) {
+                    if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_5_VIN +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_5_VIN += fakturyZamowieniaTab[j].zysk;
+                      } else {
+                        kontrahentSprzedaz_5_CD +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_5_CD += fakturyZamowieniaTab[j].zysk;
+                      }
+                    } else {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_5_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_5_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      } else {
+                        kontrahentSprzedaz_5_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_5_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      }
+                    }
+                  }
+                  if (
+                    dataDokumentu >= datyMinus_6_Poczatek &&
+                    dataDokumentu <= datyMinus_6_Koniec
+                  ) {
+                    if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_6_VIN +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_6_VIN += fakturyZamowieniaTab[j].zysk;
+                      } else {
+                        kontrahentSprzedaz_6_CD +=
+                          fakturyZamowieniaTab[j].kwotaPozycjiNetto;
+                        kontrahentZysk_6_CD += fakturyZamowieniaTab[j].zysk;
+                      }
+                    } else {
+                      if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                        kontrahentSprzedaz_6_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_6_VIN +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      } else {
+                        kontrahentSprzedaz_6_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                        kontrahentZysk_6_CD +=
+                          fakturyZamowieniaTab[j].kwotaNetto;
+                      }
+                    }
+                  }
                 }
               }
 
               if (
-                dataRealizacji >= datyMinus_0_Koniec &&
-                dataRealizacji <= dzisPlus7Dni
+                kontrahentNazwa == fakturyZamowieniaTab[j].kontrahent &&
+                fakturyZamowieniaTab[j].kategoria == "ZamówienieOdbiorcy"
               ) {
-                zamowieniaDzisPlus7 += fakturyZamowieniaTab[j].kwotaNetto;
+                if (
+                  dataRealizacji >= datyMinus_0_Poczatek &&
+                  dataRealizacji <= datyMinus_0_Koniec
+                ) {
+                  if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                    let val = fakturyZamowieniaTab[j].kwotaNetto;
+
+                    if (Number.isNaN(val)) {
+                      val = 0;
+                    }
+
+                    kontrahentZamowienia_0_VIN +=
+                      fakturyZamowieniaTab[j].kwotaNetto;
+                    kontrahentZyskZamowienia_0_VIN +=
+                      fakturyZamowieniaTab[j].zysk;
+                  } else {
+                    let val = fakturyZamowieniaTab[j].kwotaNetto;
+
+                    if (Number.isNaN(val)) {
+                      val = 0;
+                    }
+
+                    kontrahentZamowienia_0_CD +=
+                      fakturyZamowieniaTab[j].kwotaNetto;
+                    kontrahentZyskZamowienia_0_CD +=
+                      fakturyZamowieniaTab[j].zysk;
+                  }
+                }
+                if (
+                  dataRealizacji >= datyPlus_1_Poczatek &&
+                  dataRealizacji <= datyPlus_1_Koniec
+                ) {
+                  if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                    let val = fakturyZamowieniaTab[j].kwotaNetto;
+
+                    if (Number.isNaN(val)) {
+                      val = 0;
+                    }
+
+                    kontrahentZamowienia_next_1_VIN +=
+                      fakturyZamowieniaTab[j].kwotaNetto;
+
+                    let val1 = fakturyZamowieniaTab[j].zysk;
+
+                    if (Number.isNaN(val)) {
+                      val1 = 0;
+                    }
+                    kontrahentZyskZamowienia_next_1_VIN +=
+                      fakturyZamowieniaTab[j].zysk;
+                  } else {
+                    let val = fakturyZamowieniaTab[j].kwotaNetto;
+
+                    if (Number.isNaN(val)) {
+                      val = 0;
+                    }
+
+                    kontrahentZamowienia_next_1_CD +=
+                      fakturyZamowieniaTab[j].kwotaNetto;
+
+                    let val1 = fakturyZamowieniaTab[j].zysk;
+
+                    if (Number.isNaN(val)) {
+                      val1 = 0;
+                    }
+
+                    kontrahentZyskZamowienia_next_1_CD +=
+                      fakturyZamowieniaTab[j].zysk;
+                  }
+                }
+
+                if (
+                  dataRealizacji >= datyMinus_0_Koniec &&
+                  dataRealizacji <= dzisPlus7Dni
+                ) {
+                  zamowieniaDzisPlus7 += fakturyZamowieniaTab[j].kwotaNetto;
+                }
               }
             }
+          }
+
+          if ($("#radio-2").is(":checked")) {
+            kontrahentZysk_0_VIN = 0;
+            kontrahentZysk_1_VIN = 0;
+            kontrahentZysk_2_VIN = 0;
+            kontrahentZysk_3_VIN = 0;
+            kontrahentZysk_4_VIN = 0;
+            kontrahentZysk_5_VIN = 0;
+            kontrahentZysk_6_VIN = 0;
+            kontrahentSprzedaz_0_VIN = 0;
+            kontrahentSprzedaz_1_VIN = 0;
+            kontrahentSprzedaz_2_VIN = 0;
+            kontrahentSprzedaz_3_VIN = 0;
+            kontrahentSprzedaz_4_VIN = 0;
+            kontrahentSprzedaz_5_VIN = 0;
+            kontrahentSprzedaz_6_VIN = 0;
+            kontrahentZamowienia_0_VIN = 0;
+            kontrahentZyskZamowienia_0_VIN = 0;
+            kontrahentZamowienia_next_1_VIN = 0;
+          }
+          if ($("#radio-3").is(":checked")) {
+            kontrahentZysk_0_CD = 0;
+            kontrahentZysk_1_CD = 0;
+            kontrahentZysk_2_CD = 0;
+            kontrahentZysk_3_CD = 0;
+            kontrahentZysk_4_CD = 0;
+            kontrahentZysk_5_CD = 0;
+            kontrahentZysk_6_CD = 0;
+            kontrahentSprzedaz_0_CD = 0;
+            kontrahentSprzedaz_1_CD = 0;
+            kontrahentSprzedaz_2_CD = 0;
+            kontrahentSprzedaz_3_CD = 0;
+            kontrahentSprzedaz_4_CD = 0;
+            kontrahentSprzedaz_5_CD = 0;
+            kontrahentSprzedaz_6_CD = 0;
+            kontrahentZamowienia_0_CD = 0;
+            kontrahentZyskZamowienia_0_CD = 0;
+            kontrahentZamowienia_next_1_CD = 0;
           }
 
           kontrahentZyskAll_CD =
@@ -3272,8 +3452,16 @@ $(document).ready(function () {
           kontrahentUdzial_CD =
             (kontrahentSprzedazAll_CD / kontrahentSprzedazAll) * 100;
 
+          if (Number.isNaN(kontrahentUdzial_CD)) {
+            kontrahentUdzial_CD = 0;
+          }
+
           kontrahentUdzial_VIN =
             (kontrahentSprzedazAll_VIN / kontrahentSprzedazAll) * 100;
+
+          if (Number.isNaN(kontrahentUdzial_VIN)) {
+            kontrahentUdzial_VIN = 0;
+          }
 
           sredniaHistoryczna =
             (kontrahentSprzedazAll - kontrahentSprzedaz_0) / dzielnik;
@@ -3320,6 +3508,9 @@ $(document).ready(function () {
           kontrahentMarzaProcent =
             (kontrahentZyskAll / kontrahentSprzedazAll) * 100;
 
+          if (Number.isNaN(kontrahentMarzaProcent)) {
+            kontrahentMarzaProcent = 0;
+          }
           let kontrahentObj = new Kontrahent(
             kontrahentNazwa,
             kontrahentKraj,
@@ -3466,11 +3657,21 @@ $(document).ready(function () {
         listaKontrahentow.sort(posortujPoWartosci);
 
         console.log(listaKontrahentow);
+        pokaTabeleKontrahenci();
       }
 
       analizujKontrahenta();
 
       //***********************WYŚWIETLANIE TABELI Z KONTRAHENTAMI *******************
+
+      $(".buttons-customer").click(function () {
+        analizujKontrahenta();
+        pokaTabeleKontrahenci();
+      });
+      $(".buttons-customer_count").on("click", function () {
+        analizujKontrahenta();
+        pokaTabeleKontrahenci();
+      });
 
       function pokaTabeleKontrahenci() {
         let htmlListaKontrahentow = `<table class="table4head" class="table5" id="tabelaWinyl">
@@ -3502,43 +3703,64 @@ $(document).ready(function () {
         let alertClass;
         let alertArrow;
 
+        let selectedBOK = $("#opiekun-bok :selected").text();
+        let selectedKontrahent = $("#kontrahent-customer :selected").text();
+
         for (i = 0; i < listaKontrahentow.length; i++) {
+          let selectBOK;
+          let selectKontrahent;
+
+          if (selectedBOK == "BOK") {
+            selectBOK = "BOK";
+          } else {
+            selectBOK = listaKontrahentow[i].kontrahentOpiekun;
+          }
+          if (selectedKontrahent == "Customer") {
+            selectKontrahent = "Customer";
+          } else {
+            selectKontrahent = listaKontrahentow[i].kontrahentNazwa;
+          }
+
           backRowCount++;
 
-          if (listaKontrahentow[i].kontrahentAlertRed == true) {
-            alertClass = "alertClassRed";
-            alertArrow = "!!!";
-          } else if (listaKontrahentow[i].kontrahentAlertOrange == true) {
-            alertClass = "alertClassOrange";
-            alertArrow = "!";
-          } else if (
-            listaKontrahentow[i].kontrahentAlertSredniaOrange == true
+          if (
+            selectedBOK == selectBOK &&
+            selectedKontrahent == selectKontrahent
           ) {
-            alertClass = "alertClassSredniaOrange";
-            alertArrow = "↘";
-          } else {
-            alertClass = "alertClassSredniaGreen";
-            alertArrow = "↗";
-          }
+            if (listaKontrahentow[i].kontrahentAlertRed == true) {
+              alertClass = "alertClassRed";
+              alertArrow = "!!!";
+            } else if (listaKontrahentow[i].kontrahentAlertOrange == true) {
+              alertClass = "alertClassOrange";
+              alertArrow = "!";
+            } else if (
+              listaKontrahentow[i].kontrahentAlertSredniaOrange == true
+            ) {
+              alertClass = "alertClassSredniaOrange";
+              alertArrow = "↘";
+            } else {
+              alertClass = "alertClassSredniaGreen";
+              alertArrow = "↗";
+            }
 
-          if (backRowCount % 2 == 0) {
-            backRow = "table4";
-          } else {
-            backRow = "table4row";
-          }
+            if (backRowCount % 2 == 0) {
+              backRow = "table4";
+            } else {
+              backRow = "table4row";
+            }
 
-          htmlListaKontrahentow += `<tr>
+            htmlListaKontrahentow += `<tr>
 <td class="${backRow}" rowspan="2" width: 50%;>${i + 1}</td>
 <td class="${backRow}" style="width: 290%;" rowspan="2">${
-            listaKontrahentow[i].kontrahentNazwa
-          } (${listaKontrahentow[i].kontrahentKraj})</td>
+              listaKontrahentow[i].kontrahentNazwa
+            } (${listaKontrahentow[i].kontrahentKraj})</td>
 <td class="${backRow} , ${alertClass}" rowspan="2" width: 50%;>${alertArrow}</td>
 <td class="${backRow}" rowspan="2" width: 50%;>${
-            listaKontrahentow[i].kontrahentUdzial_CD
-          } / ${listaKontrahentow[i].kontrahentUdzial_VIN}</td>
+              listaKontrahentow[i].kontrahentUdzial_CD
+            } / ${listaKontrahentow[i].kontrahentUdzial_VIN}</td>
 <td class="${backRow}" rowspan="2" width: 50%;>${
-            listaKontrahentow[i].kontrahentOpiekun
-          }</td>
+              listaKontrahentow[i].kontrahentOpiekun
+            }</td>
 <td class="${backRow}">${listaKontrahentow[i].kontrahentSprzedaz_6}</td>
 <td class="${backRow}">${listaKontrahentow[i].kontrahentSprzedaz_5}</td>
 <td class="${backRow}">${listaKontrahentow[i].kontrahentSprzedaz_4}</td>
@@ -3546,33 +3768,33 @@ $(document).ready(function () {
 <td class="${backRow}">${listaKontrahentow[i].kontrahentSprzedaz_2}</td>
 <td class="${backRow}">${listaKontrahentow[i].kontrahentSprzedaz_1}</td>
 <td class="${backRow}" style="background-color: rgb(253, 234, 237)">${
-            listaKontrahentow[i].kontrahentSprzedaz_0
-          }</td>
+              listaKontrahentow[i].kontrahentSprzedaz_0
+            }</td>
 <td class="${backRow}" style="background-color: rgb(252, 245, 246)">${
-            listaKontrahentow[i].kontrahentZamowienia_0
-          }</td>
+              listaKontrahentow[i].kontrahentZamowienia_0
+            }</td>
 <td class="${backRow}" style="background-color: rgb(252, 245, 246)">${
-            listaKontrahentow[i].kontrahentSprzedaz_zamowienia_0
-          }</td>
+              listaKontrahentow[i].kontrahentSprzedaz_zamowienia_0
+            }</td>
 <td class="${backRow}" style="background-color: aliceblue;">${
-            listaKontrahentow[i].kontrahentZamowienia_next_1
-          }</td>
+              listaKontrahentow[i].kontrahentZamowienia_next_1
+            }</td>
 <td class="${backRow}" colspan="2">${listaKontrahentow[
-            i
-          ].kontrahentSprzedazAll.toLocaleString("pl-PL", {
-            useGrouping: "true",
-            minimumFractionDigits: "0",
-            maximumFractionDigits: "0",
-          })}</td>
+              i
+            ].kontrahentSprzedazAll.toLocaleString("pl-PL", {
+              useGrouping: "true",
+              minimumFractionDigits: "0",
+              maximumFractionDigits: "0",
+            })}</td>
 <td class="${backRow}" rowspan="2" width: 50%;>${
-            listaKontrahentow[i].kontrahentFaktury
-          }</td>
+              listaKontrahentow[i].kontrahentFaktury
+            }</td>
 <td class="${backRow}" rowspan="2" width: 50%;>${
-            listaKontrahentow[i].kontrahentUdzial
-          }</td>
+              listaKontrahentow[i].kontrahentUdzial
+            }</td>
 </tr>`;
 
-          htmlListaKontrahentow += `<tr>
+            htmlListaKontrahentow += `<tr>
 <td class="${backRow} , tablemargin">${listaKontrahentow[i].kontrahentZysk_6}</td>
 <td class="${backRow} , tablemargin">${listaKontrahentow[i].kontrahentZysk_5}</td>
 <td class="${backRow} , tablemargin">${listaKontrahentow[i].kontrahentZysk_4}</td>
@@ -3586,13 +3808,13 @@ $(document).ready(function () {
 <td class="${backRow} , tablemargin">${listaKontrahentow[i].kontrahentZyskAll}</td>
 <td class="${backRow} , tablemargin">${listaKontrahentow[i].kontrahentMarzaProcent}</td>
 </tr>`;
+          }
         }
-
         htmlListaKontrahentow += `</table>`;
         $("#tabelaKontrahent").html(htmlListaKontrahentow);
       }
 
-      pokaTabeleKontrahenci();
+      //pokaTabeleKontrahenci();
 
       console.log(
         new Date(datyPlus_1_Poczatek).toLocaleDateString("pl-PL", options)
