@@ -9,8 +9,10 @@ $(document).ready(function () {
     month: "2-digit",
     year: "numeric",
   };
+
   const profitCD = 0.3;
   const profitVIN = 0.35;
+
   class NameStyle {
     constructor(v, p) {
       this.v = v;
@@ -125,187 +127,200 @@ $(document).ready(function () {
   // console.log(hh);
   // console.log(ii);
 
-  let handlowiec;
-  let target = [];
-  let targetCD = [];
-  let targetVIN = [];
+  let handlowiec = "Maja Grunt";
+
+  target = [
+    70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+    100000, 100000,
+  ];
+  targetCD = [
+    45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000, 60000,
+    60000,
+  ];
+  targetVIN = [
+    25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000, 40000,
+    40000,
+  ];
+  // let target = [];
+  // let targetCD = [];
+  // let targetVIN = [];
   let mailHandlowiec;
   let welcomeUser;
 
-  while (true) {
-    let pinHandlowiec = Number(prompt("Podaj PIN"));
+  // while (true) {
+  //   let pinHandlowiec = Number(prompt("Podaj PIN"));
 
-    switch (pinHandlowiec) {
-      case aa:
-        handlowiec = "Maja Grunt";
-        target = [
-          70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
-          100000, 100000,
-        ];
-        targetCD = [
-          45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000,
-          60000, 60000,
-        ];
-        targetVIN = [
-          25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
-          40000, 40000,
-        ];
-        mailHandlowiec = "maja.grunt@x-disc.pl";
-        welcomeUser = "Welcome, Maja Grunt";
-        break;
+  //   switch (pinHandlowiec) {
+  //     case aa:
+  //       handlowiec = "Maja Grunt";
+  //       target = [
+  //         70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+  //         100000, 100000,
+  //       ];
+  //       targetCD = [
+  //         45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000,
+  //         60000, 60000,
+  //       ];
+  //       targetVIN = [
+  //         25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
+  //         40000, 40000,
+  //       ];
+  //       mailHandlowiec = "maja.grunt@x-disc.pl";
+  //       welcomeUser = "Welcome, Maja Grunt";
+  //       break;
 
-      case bb:
-        handlowiec = "Krzysztof Ciółkowski";
-        target = [
-          95000, 95000, 95000, 105000, 105000, 105000, 110000, 110000, 110000,
-          120000, 120000, 120000,
-        ];
-        targetCD = [
-          70000, 70000, 70000, 75000, 75000, 75000, 75000, 75000, 75000, 80000,
-          80000, 80000,
-        ];
-        targetVIN = [
-          25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
-          40000, 40000,
-        ];
-        welcomeUser = "Welcome, Krzysztof Ciółkowski";
-        mailHandlowiec = "krzysztof.ciolkowski@x-disc.pl";
-        break;
+  //     case bb:
+  //       handlowiec = "Krzysztof Ciółkowski";
+  //       target = [
+  //         95000, 95000, 95000, 105000, 105000, 105000, 110000, 110000, 110000,
+  //         120000, 120000, 120000,
+  //       ];
+  //       targetCD = [
+  //         70000, 70000, 70000, 75000, 75000, 75000, 75000, 75000, 75000, 80000,
+  //         80000, 80000,
+  //       ];
+  //       targetVIN = [
+  //         25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
+  //         40000, 40000,
+  //       ];
+  //       welcomeUser = "Welcome, Krzysztof Ciółkowski";
+  //       mailHandlowiec = "krzysztof.ciolkowski@x-disc.pl";
+  //       break;
 
-      case cc:
-        handlowiec = "Michał Durmowicz";
-        target = [
-          70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
-          100000, 100000,
-        ];
-        targetCD = [
-          45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000,
-          60000, 60000,
-        ];
-        targetVIN = [
-          25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
-          40000, 40000,
-        ];
-        welcomeUser = "Welcome, Michał Durmowicz";
-        mailHandlowiec = "michal.durmowicz@x-disc.pl";
-        break;
+  //     case cc:
+  //       handlowiec = "Michał Durmowicz";
+  //       target = [
+  //         70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+  //         100000, 100000,
+  //       ];
+  //       targetCD = [
+  //         45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000,
+  //         60000, 60000,
+  //       ];
+  //       targetVIN = [
+  //         25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
+  //         40000, 40000,
+  //       ];
+  //       welcomeUser = "Welcome, Michał Durmowicz";
+  //       mailHandlowiec = "michal.durmowicz@x-disc.pl";
+  //       break;
 
-      case dd:
-        handlowiec = "Marta Kierzkowska";
-        target = [
-          200000, 200000, 200000, 210000, 210000, 210000, 200000, 380000,
-          250000, 250000, 240000, 0,
-        ];
-        targetCD = [
-          100000, 100000, 100000, 105000, 105000, 105000, 100000, 300000,
-          130000, 130000, 120000, 0,
-        ];
-        targetVIN = [
-          100000, 100000, 100000, 105000, 105000, 105000, 100000, 80000, 120000,
-          120000, 120000, 0,
-        ];
-        welcomeUser = "Welcome, Marta Kierzkowska";
-        mailHandlowiec = "marta.kierzkowska@x-disc.pl";
-        break;
+  //     case dd:
+  //       handlowiec = "Marta Kierzkowska";
+  //       target = [
+  //         200000, 200000, 200000, 210000, 210000, 210000, 200000, 380000,
+  //         250000, 250000, 240000, 0,
+  //       ];
+  //       targetCD = [
+  //         100000, 100000, 100000, 105000, 105000, 105000, 100000, 300000,
+  //         130000, 130000, 120000, 0,
+  //       ];
+  //       targetVIN = [
+  //         100000, 100000, 100000, 105000, 105000, 105000, 100000, 80000, 120000,
+  //         120000, 120000, 0,
+  //       ];
+  //       welcomeUser = "Welcome, Marta Kierzkowska";
+  //       mailHandlowiec = "marta.kierzkowska@x-disc.pl";
+  //       break;
 
-      case ee:
-        handlowiec = "Lucyna Kozicka";
-        target = [
-          280000, 280000, 280000, 305000, 305000, 305000, 320000, 320000,
-          320000, 335000, 335000, 335000,
-        ];
-        targetCD = [
-          200000, 200000, 200000, 220000, 220000, 220000, 230000, 230000,
-          230000, 240000, 240000, 240000,
-        ];
-        targetVIN = [
-          80000, 80000, 80000, 85000, 85000, 85000, 90000, 90000, 90000, 95000,
-          95000, 95000,
-        ];
-        welcomeUser = "Welcome, Lucyna Kozicka";
-        mailHandlowiec = "lucyna.kozicka@x-disc.pl";
-        break;
+  //     case ee:
+  //       handlowiec = "Lucyna Kozicka";
+  //       target = [
+  //         280000, 280000, 280000, 305000, 305000, 305000, 320000, 320000,
+  //         320000, 335000, 335000, 335000,
+  //       ];
+  //       targetCD = [
+  //         200000, 200000, 200000, 220000, 220000, 220000, 230000, 230000,
+  //         230000, 240000, 240000, 240000,
+  //       ];
+  //       targetVIN = [
+  //         80000, 80000, 80000, 85000, 85000, 85000, 90000, 90000, 90000, 95000,
+  //         95000, 95000,
+  //       ];
+  //       welcomeUser = "Welcome, Lucyna Kozicka";
+  //       mailHandlowiec = "lucyna.kozicka@x-disc.pl";
+  //       break;
 
-      case ff:
-        handlowiec = "Jakub Mikliński";
-        target = [
-          335000, 335000, 335000, 335000, 335000, 335000, 370000, 370000,
-          370000, 385000, 375000, 375000,
-        ];
-        targetCD = [
-          55000, 55000, 55000, 65000, 65000, 65000, 70000, 70000, 70000, 75000,
-          75000, 75000,
-        ];
-        targetVIN = [
-          280000, 280000, 280000, 290000, 290000, 290000, 300000, 300000,
-          300000, 310000, 300000, 300000,
-        ];
-        welcomeUser = "Welcome, Jakub Mikliński";
-        mailHandlowiec = "jakub.miklinski@x-disc.pl";
-        break;
+  //     case ff:
+  //       handlowiec = "Jakub Mikliński";
+  //       target = [
+  //         335000, 335000, 335000, 335000, 335000, 335000, 370000, 370000,
+  //         370000, 385000, 375000, 375000,
+  //       ];
+  //       targetCD = [
+  //         55000, 55000, 55000, 65000, 65000, 65000, 70000, 70000, 70000, 75000,
+  //         75000, 75000,
+  //       ];
+  //       targetVIN = [
+  //         280000, 280000, 280000, 290000, 290000, 290000, 300000, 300000,
+  //         300000, 310000, 300000, 300000,
+  //       ];
+  //       welcomeUser = "Welcome, Jakub Mikliński";
+  //       mailHandlowiec = "jakub.miklinski@x-disc.pl";
+  //       break;
 
-      case gg:
-        handlowiec = "Małgorzata Roszkowska";
-        target = [
-          160000, 160000, 160000, 165000, 165000, 175000, 170000, 170000,
-          170000, 170000, 170000, 170000,
-        ];
-        targetCD = [
-          100000, 100000, 100000, 105000, 105000, 115000, 110000, 110000,
-          110000, 110000, 110000, 110000,
-        ];
-        targetVIN = [
-          60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000,
-          60000, 60000,
-        ];
-        welcomeUser = "Welcome, Małgorzata Roszkowska";
-        mailHandlowiec = "malgorzata.roszkowska@x-disc.pl";
-        break;
+  //     case gg:
+  //       handlowiec = "Małgorzata Roszkowska";
+  //       target = [
+  //         160000, 160000, 160000, 165000, 165000, 175000, 170000, 170000,
+  //         170000, 170000, 170000, 170000,
+  //       ];
+  //       targetCD = [
+  //         100000, 100000, 100000, 105000, 105000, 115000, 110000, 110000,
+  //         110000, 110000, 110000, 110000,
+  //       ];
+  //       targetVIN = [
+  //         60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000,
+  //         60000, 60000,
+  //       ];
+  //       welcomeUser = "Welcome, Małgorzata Roszkowska";
+  //       mailHandlowiec = "malgorzata.roszkowska@x-disc.pl";
+  //       break;
 
-      case hh:
-        handlowiec = "Ingo Kleimann";
-        target = [
-          56000, 122000, 146000, 39000, 130000, 68000, 145000, 200000, 84000,
-          125000, 100000, 100000,
-        ];
-        targetCD = [
-          11000, 52000, 68000, 34000, 11000, 45000, 140000, 90000, 60000,
-          100000, 80000, 80000,
-        ];
-        targetVIN = [
-          45000, 70000, 78000, 5000, 20000, 23000, 5000, 110000, 24000, 25000,
-          20000, 20000,
-        ];
-        welcomeUser = "Welcome, Ingo Kleimann";
-        mailHandlowiec = "ingo.kleimann@x-disc.pl";
-        break;
+  //     case hh:
+  //       handlowiec = "Ingo Kleimann";
+  //       target = [
+  //         56000, 122000, 146000, 39000, 130000, 68000, 145000, 200000, 84000,
+  //         125000, 100000, 100000,
+  //       ];
+  //       targetCD = [
+  //         11000, 52000, 68000, 34000, 11000, 45000, 140000, 90000, 60000,
+  //         100000, 80000, 80000,
+  //       ];
+  //       targetVIN = [
+  //         45000, 70000, 78000, 5000, 20000, 23000, 5000, 110000, 24000, 25000,
+  //         20000, 20000,
+  //       ];
+  //       welcomeUser = "Welcome, Ingo Kleimann";
+  //       mailHandlowiec = "ingo.kleimann@x-disc.pl";
+  //       break;
 
-      case ii:
-        handlowiec = "Jean-Remi BEL";
-        target = [
-          50000, 50000, 50000, 70000, 70000, 70000, 85000, 85000, 85000, 90000,
-          90000, 90000,
-        ];
-        targetCD = [
-          10000, 10000, 10000, 20000, 20000, 20000, 25000, 25000, 25000, 30000,
-          30000, 30000,
-        ];
-        targetVIN = [
-          40000, 40000, 40000, 50000, 50000, 50000, 60000, 60000, 60000, 60000,
-          60000, 60000,
-        ];
-        welcomeUser = "Welcome, Jean-Remi Bel";
-        mailHandlowiec = "jean-remi.bel@x-disc.pl";
-        break;
+  //     case ii:
+  //       handlowiec = "Jean-Remi BEL";
+  //       target = [
+  //         50000, 50000, 50000, 70000, 70000, 70000, 85000, 85000, 85000, 90000,
+  //         90000, 90000,
+  //       ];
+  //       targetCD = [
+  //         10000, 10000, 10000, 20000, 20000, 20000, 25000, 25000, 25000, 30000,
+  //         30000, 30000,
+  //       ];
+  //       targetVIN = [
+  //         40000, 40000, 40000, 50000, 50000, 50000, 60000, 60000, 60000, 60000,
+  //         60000, 60000,
+  //       ];
+  //       welcomeUser = "Welcome, Jean-Remi Bel";
+  //       mailHandlowiec = "jean-remi.bel@x-disc.pl";
+  //       break;
 
-      default:
-        setTimeout(function () {
-          window.location.href = "failPin.html";
-        }, 500);
-    }
+  //     default:
+  //       setTimeout(function () {
+  //         window.location.href = "failPin.html";
+  //       }, 500);
+  //   }
 
-    break;
-  }
+  //   break;
+  // }
 
   $("#welcome-user-id").html(welcomeUser);
 
@@ -1088,7 +1103,10 @@ $(document).ready(function () {
 
         wynik = 0;
         for (j = 0; j < faktury.length; j++) {
-          if (faktury[j].handlowiec == handlowiec) {
+          if (
+            faktury[j].handlowiec == handlowiec &&
+            faktury[j].nrDokumentu.includes("ZAL", 0) == false
+          ) {
             if (`${day}` == faktury[j].dataDokumentu) {
               wynik += Math.round(faktury[j].kwotaPozycjiNetto);
             }
@@ -2953,7 +2971,8 @@ $(document).ready(function () {
               kontrahentSprzedazWszyscy_CD +=
                 fakturyZamowieniaTab[k].kwotaPozycjiNetto;
             }
-          } else {
+          }
+          if (fakturyZamowieniaTab[k].kategoria == "KorektaSprzedaży") {
             if (fakturyZamowieniaTab[k].dział == "PŁYTY WINYLOWE") {
               kontrahentSprzedazWszyscy_VIN +=
                 fakturyZamowieniaTab[k].kwotaNetto;
@@ -3128,8 +3147,9 @@ $(document).ready(function () {
                     }
                   }
                   if (
-                    dataDokumentu >= datyMinus_1_Poczatek &&
-                    dataDokumentu <= datyMinus_1_Koniec
+                    (dataDokumentu >= datyMinus_1_Poczatek &&
+                      dataDokumentu <= datyMinus_1_Koniec) ||
+                    fakturyZamowieniaTab[j].dataDokumentu == "2024-01-31"
                   ) {
                     if (fakturyZamowieniaTab[j].kategoria == "Sprzedaż") {
                       if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
@@ -3363,7 +3383,7 @@ $(document).ready(function () {
 
                     let val1 = fakturyZamowieniaTab[j].zysk;
 
-                    if (Number.isNaN(val)) {
+                    if (Number.isNaN(val1)) {
                       val1 = 0;
                     }
 
@@ -3577,6 +3597,9 @@ $(document).ready(function () {
             kontrahentAlertSredniaGreen = false;
             kontrahentAlertRed = false;
           }
+
+          console.log("all  " + kontrahentSprzedazAll);
+          console.log("wszyscy  " + kontrahentSprzedazWszyscy);
 
           kontrahentMarzaProcent =
             (kontrahentZyskAll / kontrahentSprzedazAll) * 100;
@@ -4248,13 +4271,6 @@ $(document).ready(function () {
           >
           <br />${zamowieniaDoRealizacjiNaDzis}
         `);
-
-      console.log(zamoweianiaCD_dzis_Wprowadzone);
-      let proby = new Date(datyMinus_1_Koniec).toLocaleDateString(
-        "pl-PL",
-        options2
-      );
-      console.log(proby);
     });
   });
 });
