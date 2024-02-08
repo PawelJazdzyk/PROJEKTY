@@ -2810,7 +2810,6 @@ $(document).ready(function () {
       }
 
       //***************************KONTRAHENCI OBROTY************************************* */
-
       class Kontrahent {
         constructor(
           kontrahentNazwa,
@@ -3093,6 +3092,7 @@ $(document).ready(function () {
               let dataDokumentu = new Date(
                 fakturyZamowieniaTab[j].dataDokumentu
               ).getTime();
+
               let dataRealizacji = new Date(
                 fakturyZamowieniaTab[j].dataRealizacji
               ).getTime();
@@ -3324,7 +3324,7 @@ $(document).ready(function () {
               ) {
                 if (
                   dataRealizacji >= datyMinus_0_Poczatek &&
-                  dataRealizacji <= datyMinus_0_Koniec
+                  dataRealizacji <= koniecObecnegoMiesiaca
                 ) {
                   if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
                     let val = fakturyZamowieniaTab[j].kwotaNetto;
@@ -3366,7 +3366,7 @@ $(document).ready(function () {
 
                     let val1 = fakturyZamowieniaTab[j].zysk;
 
-                    if (Number.isNaN(val)) {
+                    if (Number.isNaN(val1)) {
                       val1 = 0;
                     }
                     kontrahentZyskZamowienia_next_1_VIN +=
