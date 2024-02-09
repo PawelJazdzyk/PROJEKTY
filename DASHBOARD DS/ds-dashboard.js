@@ -53,6 +53,16 @@ $(document).ready(function () {
     }
   }
 
+  $(".alerts_green, .alerts_yellow, .alerts_orange .alerts_red").click(
+    function () {
+      $("html, body").animate(
+        {
+          scrollTop: $(".container-right_eight_row").offset().top,
+        },
+        500
+      );
+    }
+  );
   $("#orders-for-Today_button, #orders-for_today").click(function () {
     $("html, body").animate(
       {
@@ -696,6 +706,12 @@ $(document).ready(function () {
     m - monthMinus + 1,
     koncowkiMiesiaca[m - monthMinus + 1]
   );
+  let poczatekMiesiac06_6month = new Date(y, m - monthMinus + 2, 1);
+  let koniecMiesiac06_6month = new Date(
+    y,
+    m - monthMinus + 6,
+    koncowkiMiesiaca[m - monthMinus + 6]
+  );
 
   console.log(poczatekMiesiac6);
   console.log(koniecMiesiac6);
@@ -714,6 +730,62 @@ $(document).ready(function () {
   console.log(koniecMiesiac0_koniecTegoMiesiaca);
   console.log(poczatekMiesiac06);
   console.log(koniecMiesiac06);
+  console.log(koniecMiesiac06_6month);
+  console.log(poczatekMiesiac06_6month);
+
+  dK08 = new Date(poczatekMiesiac06_6month).getDate();
+  mP08 = new Date(poczatekMiesiac06_6month).getMonth();
+  mK08 = new Date(poczatekMiesiac06_6month).getMonth();
+  yP08 = new Date(poczatekMiesiac06_6month).getFullYear();
+  yK08 = new Date(poczatekMiesiac06_6month).getFullYear();
+
+  if (dK08 >= 10) {
+    dIK08 = d;
+  } else {
+    diK08 = `0${dK08}`;
+  }
+
+  if (mP08 >= 9) {
+    msP08 = mP08 + 1;
+  } else {
+    msP08 = `0${mP08 + 1}`;
+  }
+
+  if (mK08 >= 9) {
+    msK08 = mK08 + 1;
+  } else {
+    msK08 = `0${mK08 + 1}`;
+  }
+
+  let poczatekData06_6month = `${yK08}-${msK08}-01`;
+
+  dK07 = new Date(koniecMiesiac06_6month).getDate();
+  mP07 = new Date(koniecMiesiac06_6month).getMonth();
+  mK07 = new Date(koniecMiesiac06_6month).getMonth();
+  yP07 = new Date(koniecMiesiac06_6month).getFullYear();
+  yK07 = new Date(koniecMiesiac06_6month).getFullYear();
+
+  if (dK07 >= 10) {
+    dIK07 = d;
+  } else {
+    diK07 = `0${dK07}`;
+  }
+
+  if (mP07 >= 9) {
+    msP07 = mP07 + 1;
+  } else {
+    msP07 = `0${mP07 + 1}`;
+  }
+
+  if (mK07 >= 9) {
+    msK07 = mK07 + 1;
+  } else {
+    msK07 = `0${mK07 + 1}`;
+  }
+
+  let koniecData06_6month = `${yK07}-${msK07}-${
+    koncowkiMiesiaca[m - monthMinus + 6]
+  }`;
 
   dK06 = new Date(koniecMiesiac06).getDate();
   mP06 = new Date(poczatekMiesiac06).getMonth();
@@ -744,6 +816,7 @@ $(document).ready(function () {
 
   console.log(poczatekData06);
   console.log(koniecData06);
+  console.log(koniecData06_6month);
 
   dK6 = new Date(koniecMiesiac6).getDate();
   mP6 = new Date(poczatekMiesiac6).getMonth();
@@ -985,7 +1058,7 @@ $(document).ready(function () {
       //"DataOd": '2023-09-01',
       //"DataDo": '2023-09-05',
       DataOd: poczatekData0,
-      DataDo: koniecData06,
+      DataDo: koniecData06_6month,
       BazaDanych: "XDISC",
 
       KategorieDokumentow: ["ZamówienieOdbiorcy"],
@@ -1043,10 +1116,10 @@ $(document).ready(function () {
       let datyMinus_0_Koniec = new Date(dzis).getTime();
       let datyPlus_1_Poczatek = new Date(poczatekData06).getTime();
       let datyPlus_1_Koniec = new Date(koniecMiesiac06).getTime();
-
-      let datyMinus_1_KoniecString = new Date(
-        koniecMiesiac1
-      ).toLocaleDateString("pl-PL", options2);
+      let datyPlus_Future_Poczatek = new Date(
+        poczatekMiesiac06_6month
+      ).getTime();
+      let datyPlus_Future_Koniec = new Date(koniecMiesiac06_6month).getTime();
 
       let fakturyDataDokumentu;
       let zamowieniaDataDokumentu;
@@ -1618,6 +1691,11 @@ $(document).ready(function () {
       let sprzedazAll_Dzis = sprzedazCD_dzis + sprzedazVIN_dzis;
       let zyskAll_Dzis = zyskCD_dzis + zyskVIN_dzis;
       let zyskProcent_Dzis = (zyskAll_Dzis / sprzedazAll_Dzis) * 100;
+
+      if (Number.isNaN(zyskProcent_Dzis)) {
+        zyskProcent_Dzis = 0;
+      }
+
       let winylProcent = (sprzedazVIN_0 / sprzedazAll_0) * 100;
       let cdProcent = (sprzedazCD_0 / sprzedazAll_0) * 100;
 
@@ -2248,14 +2326,24 @@ $(document).ready(function () {
       );
       yourTargetDetailsVIN.push(salesProfitVIN_0);
 
-      let averageProfitVIN_0 = `${(
-        (zyskVIN_0 / sprzedazVIN_0) *
-        100
-      ).toLocaleString("pl-PL", {
-        useGrouping: "true",
-        minimumFractionDigits: "2",
-        maximumFractionDigits: "2",
-      })} %`;
+      let averageProfitVIN_0 = zyskVIN_0 / sprzedazVIN_0;
+
+      if (Number.isNaN(averageProfitVIN_0)) {
+        averageProfitVIN_0 = `${(0).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`;
+      } else {
+        averageProfitVIN_0 = `${(
+          (zyskVIN_0 / sprzedazVIN_0) *
+          100
+        ).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`;
+      }
 
       yourTargetDetailsVIN.push(averageProfitVIN_0);
       yourTargetDetailsVIN.push(
@@ -2542,14 +2630,24 @@ $(document).ready(function () {
         );
         yourTargetDetailsVIN.push(salesProfitVIN_1);
 
-        let averageProfitVIN_1 = `${(
-          (zyskVIN_1 / sprzedazVIN_1) *
-          100
-        ).toLocaleString("pl-PL", {
-          useGrouping: "true",
-          minimumFractionDigits: "2",
-          maximumFractionDigits: "2",
-        })} %`;
+        let averageProfitVIN_1 = zyskVIN_1 / sprzedazVIN_1;
+
+        if (Number.isNaN(averageProfitVIN_1)) {
+          averageProfitVIN_1 = `${(0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })} %`;
+        } else {
+          averageProfitVIN_1 = `${(
+            (zyskVIN_1 / sprzedazVIN_1) *
+            100
+          ).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })} %`;
+        }
 
         yourTargetDetailsVIN.push(averageProfitVIN_1);
         yourTargetDetailsVIN.push(
@@ -2845,7 +2943,9 @@ $(document).ready(function () {
           kontrahentAlertSredniaOrange,
           kontrahentUdzial_CD,
           kontrahentUdzial_VIN,
-          kontrahentMarzaProcent
+          kontrahentMarzaProcent,
+          kontrahentZamowieniaPrzyszle,
+          kontrahentAlertBlue
         ) {
           this.kontrahentNazwa = kontrahentNazwa;
           this.kontrahentKraj = kontrahentKraj;
@@ -2884,6 +2984,8 @@ $(document).ready(function () {
           this.kontrahentUdzial_CD = kontrahentUdzial_CD;
           this.kontrahentUdzial_VIN = kontrahentUdzial_VIN;
           this.kontrahentMarzaProcent = kontrahentMarzaProcent;
+          this.kontrahentZamowieniaPrzyszle = kontrahentZamowieniaPrzyszle;
+          this.kontrahentAlertBlue = kontrahentAlertBlue;
         }
       }
 
@@ -3065,6 +3167,11 @@ $(document).ready(function () {
           let sredniaObecna = 0;
           let kontrahentAlertSredniaGreen;
           let kontrahentAlertSredniaOrange;
+          let kontrahentAlertBlue;
+          let kontrahentZamowienia_Future_CD = 0;
+          let kontrahentZamowienia_Future_VIN = 0;
+          let kontrahentZamowienia_Future = 0;
+
           const dzielnik = 120;
 
           let selectedBOK = $("#opiekun-bok :selected").text();
@@ -3391,7 +3498,30 @@ $(document).ready(function () {
                       fakturyZamowieniaTab[j].zysk;
                   }
                 }
+                if (
+                  dataRealizacji >= datyPlus_Future_Poczatek &&
+                  dataRealizacji <= datyPlus_Future_Koniec
+                ) {
+                  if (fakturyZamowieniaTab[j].dział == "PŁYTY WINYLOWE") {
+                    let val = fakturyZamowieniaTab[j].kwotaNetto;
 
+                    if (Number.isNaN(val)) {
+                      val = 0;
+                    }
+
+                    kontrahentZamowienia_Future_VIN +=
+                      fakturyZamowieniaTab[j].kwotaNetto;
+                  } else {
+                    let val = fakturyZamowieniaTab[j].kwotaNetto;
+
+                    if (Number.isNaN(val)) {
+                      val = 0;
+                    }
+
+                    kontrahentZamowienia_Future_CD +=
+                      fakturyZamowieniaTab[j].kwotaNetto;
+                  }
+                }
                 if (
                   dataRealizacji >= datyMinus_0_Koniec &&
                   dataRealizacji <= dzisPlus7Dni
@@ -3420,6 +3550,7 @@ $(document).ready(function () {
             kontrahentZamowienia_0_VIN = 0;
             kontrahentZyskZamowienia_0_VIN = 0;
             kontrahentZamowienia_next_1_VIN = 0;
+            kontrahentZamowienia_Future_VIN = 0;
           }
           if ($("#radio-3").is(":checked")) {
             kontrahentZysk_0_CD = 0;
@@ -3439,6 +3570,7 @@ $(document).ready(function () {
             kontrahentZamowienia_0_CD = 0;
             kontrahentZyskZamowienia_0_CD = 0;
             kontrahentZamowienia_next_1_CD = 0;
+            kontrahentZamowienia_Future_CD = 0;
           }
 
           kontrahentZyskAll_CD =
@@ -3534,6 +3666,9 @@ $(document).ready(function () {
             kontrahentZyskZamowienia_next_1_CD +
             kontrahentZyskZamowienia_next_1_VIN;
 
+          kontrahentZamowienia_Future =
+            kontrahentZamowienia_Future_CD + kontrahentZamowienia_Future_VIN;
+
           kontrahentSprzedazWszyscy =
             kontrahentSprzedazWszyscy_CD + kontrahentSprzedazWszyscy_VIN;
 
@@ -3567,12 +3702,14 @@ $(document).ready(function () {
             kontrahentAlertSredniaOrange = true;
             kontrahentAlertOrange = false;
             kontrahentAlertRed = false;
+            kontrahentAlertBlue = false;
           }
           if (sredniaObecna > sredniaHistoryczna) {
             kontrahentAlertSredniaGreen = true;
             kontrahentAlertSredniaOrange = false;
             kontrahentAlertOrange = false;
             kontrahentAlertRed = false;
+            kontrahentAlertBlue = false;
           }
           if (
             kontrahentSprzedaz_0 == 0 &&
@@ -3584,6 +3721,7 @@ $(document).ready(function () {
             kontrahentAlertSredniaOrange = false;
             kontrahentAlertSredniaGreen = false;
             kontrahentAlertOrange = false;
+            kontrahentAlertBlue = false;
           }
 
           if (
@@ -3596,7 +3734,22 @@ $(document).ready(function () {
             kontrahentAlertSredniaOrange = false;
             kontrahentAlertSredniaGreen = false;
             kontrahentAlertRed = false;
+            kontrahentAlertBlue = false;
           }
+
+          ///***** tu jakby co mozna odpalić Alert Blue ******** */
+
+          // if (
+          //   kontrahentZamowienia_Future > 0 &&
+          //   kontrahentSprzedaz_zamowienia_0 == 0 &&
+          //   kontrahentZamowienia_next_1 == 0
+          // ) {
+          //   kontrahentAlertBlue = true;
+          //   kontrahentAlertOrange = false;
+          //   kontrahentAlertSredniaOrange = false;
+          //   kontrahentAlertSredniaGreen = false;
+          //   kontrahentAlertRed = false;
+          // }
 
           console.log("all  " + kontrahentSprzedazAll);
           console.log("wszyscy  " + kontrahentSprzedazWszyscy);
@@ -3741,7 +3894,13 @@ $(document).ready(function () {
               useGrouping: "true",
               minimumFractionDigits: "2",
               maximumFractionDigits: "2",
-            })}%`
+            })}%`,
+            `${kontrahentZamowienia_Future.toLocaleString("pl-PL", {
+              useGrouping: "true",
+              minimumFractionDigits: "2",
+              maximumFractionDigits: "2",
+            })}`,
+            kontrahentAlertBlue
           );
           listaKontrahentow.push(kontrahentObj);
         }
@@ -3751,8 +3910,8 @@ $(document).ready(function () {
         }
 
         listaKontrahentow.sort(posortujPoWartosci);
-
         console.log(listaKontrahentow);
+
         pokaTabeleKontrahenci();
       }
 
@@ -3799,6 +3958,11 @@ $(document).ready(function () {
         let alertClass;
         let alertArrow;
 
+        let alertCountRed = 0;
+        let alertCountGreen = 0;
+        let alertCountYellow = 0;
+        let alertCountOrange = 0;
+
         let selectedBOK = $("#opiekun-bok :selected").text();
         let selectedKontrahent = $("#kontrahent-customer :selected").text();
 
@@ -3826,17 +3990,24 @@ $(document).ready(function () {
             if (listaKontrahentow[i].kontrahentAlertRed == true) {
               alertClass = "alertClassRed";
               alertArrow = "!!!";
+              alertCountRed++;
             } else if (listaKontrahentow[i].kontrahentAlertOrange == true) {
               alertClass = "alertClassOrange";
               alertArrow = "!";
+              alertCountOrange++;
+            } else if (listaKontrahentow[i].kontrahentAlertBlue == true) {
+              alertClass = "alertClassBlue";
+              alertArrow = "→";
             } else if (
               listaKontrahentow[i].kontrahentAlertSredniaOrange == true
             ) {
               alertClass = "alertClassSredniaOrange";
               alertArrow = "↘";
+              alertCountYellow++;
             } else {
               alertClass = "alertClassSredniaGreen";
               alertArrow = "↗";
+              alertCountGreen++;
             }
 
             if (backRowCount % 2 == 0) {
@@ -3908,6 +4079,10 @@ $(document).ready(function () {
         }
         htmlListaKontrahentow += `</table>`;
         $("#tabelaKontrahent").html(htmlListaKontrahentow);
+        $("#alerts_green_count").html(alertCountGreen);
+        $("#alerts_yellow_count").html(alertCountYellow);
+        $("#alerts_orange_count").html(alertCountOrange);
+        $("#alerts_red_count").html(alertCountRed);
       }
 
       //pokaTabeleKontrahenci();

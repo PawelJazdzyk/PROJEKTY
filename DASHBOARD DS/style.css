@@ -275,11 +275,10 @@ body {
   font-weight: 100;
   color: darkgray;
   font-size: 150%;
-  text-align: center;
 }
 
 .alerts_gray {
-  visibility: hidden;
+  /* visibility: hidden; */
   display: flex;
   height: 100%;
   background-color: white;
@@ -293,7 +292,7 @@ body {
 }
 
 .alerts_green {
-  visibility: hidden;
+  /* visibility: hidden; */
   display: flex;
   height: 100%;
   background-color: rgb(170, 250, 170);
@@ -313,20 +312,21 @@ body {
   align-content: center;
   color: green;
   opacity: 0.7;
-  font-size: 120%;
+  font-size: 1.5em;
   transition: font-size 0.3s, background-color 0.3s, font-weight 0.3s,
     color 0.3s;
 }
 .alerts_green:hover {
-  visibility: hidden;
+  /* visibility: hidden; */
   background: none;
   background-color: green;
   color: white;
   font-weight: 800;
-  font-size: 180%;
+  font-size: 2em;
+  cursor: pointer;
 }
 .alerts_yellow {
-  visibility: hidden;
+  /* visibility: hidden; */
   display: flex;
   height: 100%;
   background-color: rgb(248, 247, 153);
@@ -346,21 +346,22 @@ body {
   align-content: center;
   color: rgb(240, 147, 25);
   opacity: 0.7;
-  font-size: 120%;
+  font-size: 1.5em;
   transition: font-size 0.3s, background-color 0.3s, font-weight 0.3s,
     color 0.3s;
 }
 .alerts_yellow:hover {
-  visibility: hidden;
+  /* visibility: hidden; */
   background: none;
   background-color: yellow;
   color: white;
   font-weight: 800;
-  font-size: 180%;
+  font-size: 2em;
+  cursor: pointer;
 }
 
 .alerts_orange {
-  visibility: hidden;
+  /* visibility: hidden; */
   display: flex;
   height: 100%;
   background-color: rgb(255, 211, 145);
@@ -380,21 +381,22 @@ body {
   align-content: center;
   color: rgb(250, 115, 4);
   opacity: 0.7;
-  font-size: 120%;
+  font-size: 1.5em;
   transition: font-size 0.3s, background-color 0.3s, font-weight 0.3s,
     color 0.3s;
 }
 .alerts_orange:hover {
-  visibility: hidden;
+  /* visibility: hidden; */
   background: none;
   background-color: orangered;
   color: white;
   font-weight: 800;
-  font-size: 180%;
+  font-size: 2em;
+  cursor: pointer;
 }
 
 .alerts_red {
-  visibility: hidden;
+  /* visibility: hidden; */
   display: flex;
   height: 100%;
   background-color: rgb(255, 145, 145);
@@ -417,18 +419,19 @@ body {
   align-content: center;
   color: rgb(241, 41, 41);
   opacity: 0.7;
-  font-size: 120%;
+  font-size: 1.5em;
   transition: font-size 0.3s, background-color 0.3s, font-weight 0.3s,
     color 0.3s;
 }
 
 .alerts_red:hover {
-  visibility: hidden;
+  /* visibility: hidden; */
   background: none;
   background-color: rgb(248, 23, 23);
   color: white;
-  font-size: 180%;
+  font-size: 2em;
   font-weight: 800;
+  cursor: pointer;
 }
 
 .alerts_vinyl {
@@ -702,6 +705,13 @@ body {
 
 .alertClassRed {
   background-color: rgb(255, 32, 32);
+  color: white;
+  font-weight: 800;
+  scale: 0.96;
+  opacity: 0.7;
+}
+.alertClassBlue {
+  background-color: rgb(161, 202, 248);
   color: white;
   font-weight: 800;
   scale: 0.96;
