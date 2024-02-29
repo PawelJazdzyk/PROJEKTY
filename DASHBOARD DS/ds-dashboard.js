@@ -127,210 +127,210 @@ $(document).ready(function () {
   let hh = Math.round(Math.round(dataPoint[7]) * 1.11);
   let ii = Math.round(Math.round(dataPoint[8]) * 1.11);
 
-  // console.log(aa);
-  // console.log(bb);
-  // console.log(cc);
-  // console.log(dd);
-  // console.log(ee);
-  // console.log(ff);
-  // console.log(gg);
-  // console.log(hh);
-  // console.log(ii);
+  console.log(aa);
+  console.log(bb);
+  console.log(cc);
+  console.log(dd);
+  console.log(ee);
+  console.log(ff);
+  console.log(gg);
+  console.log(hh);
+  console.log(ii);
 
-  let handlowiec = "Maja Grunt";
-
-  target = [
-    70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
-    100000, 100000,
-  ];
-  targetCD = [
-    45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000, 60000,
-    60000,
-  ];
-  targetVIN = [
-    25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000, 40000,
-    40000,
-  ];
-  // let target = [];
-  // let targetCD = [];
-  // let targetVIN = [];
+  let handlowiec;
+  //****poniżej target Mai Grunt do prób */
+  // target = [
+  //   70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+  //   100000, 100000,
+  // ];
+  // targetCD = [
+  //   45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000, 60000,
+  //   60000,
+  // ];
+  // targetVIN = [
+  //   25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000, 40000,
+  //   40000,
+  // ];
+  let target = [];
+  let targetCD = [];
+  let targetVIN = [];
   let mailHandlowiec;
   let welcomeUser;
 
-  // while (true) {
-  //   let pinHandlowiec = Number(prompt("Podaj PIN"));
+  while (true) {
+    let pinHandlowiec = Number(prompt("Podaj PIN"));
 
-  //   switch (pinHandlowiec) {
-  //     case aa:
-  //       handlowiec = "Maja Grunt";
-  //       target = [
-  //         70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
-  //         100000, 100000,
-  //       ];
-  //       targetCD = [
-  //         45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000,
-  //         60000, 60000,
-  //       ];
-  //       targetVIN = [
-  //         25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
-  //         40000, 40000,
-  //       ];
-  //       mailHandlowiec = "maja.grunt@x-disc.pl";
-  //       welcomeUser = "Welcome, Maja Grunt";
-  //       break;
+    switch (pinHandlowiec) {
+      case aa:
+        handlowiec = "Maja Grunt";
+        target = [
+          70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+          100000, 100000,
+        ];
+        targetCD = [
+          45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000,
+          60000, 60000,
+        ];
+        targetVIN = [
+          25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
+          40000, 40000,
+        ];
+        mailHandlowiec = "maja.grunt@x-disc.pl";
+        welcomeUser = "Welcome, Maja Grunt";
+        break;
 
-  //     case bb:
-  //       handlowiec = "Krzysztof Ciółkowski";
-  //       target = [
-  //         95000, 95000, 95000, 105000, 105000, 105000, 110000, 110000, 110000,
-  //         120000, 120000, 120000,
-  //       ];
-  //       targetCD = [
-  //         70000, 70000, 70000, 75000, 75000, 75000, 75000, 75000, 75000, 80000,
-  //         80000, 80000,
-  //       ];
-  //       targetVIN = [
-  //         25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
-  //         40000, 40000,
-  //       ];
-  //       welcomeUser = "Welcome, Krzysztof Ciółkowski";
-  //       mailHandlowiec = "krzysztof.ciolkowski@x-disc.pl";
-  //       break;
+      case bb:
+        handlowiec = "Krzysztof Ciółkowski";
+        target = [
+          95000, 95000, 95000, 105000, 105000, 105000, 110000, 110000, 110000,
+          120000, 120000, 120000,
+        ];
+        targetCD = [
+          70000, 70000, 70000, 75000, 75000, 75000, 75000, 75000, 75000, 80000,
+          80000, 80000,
+        ];
+        targetVIN = [
+          25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
+          40000, 40000,
+        ];
+        welcomeUser = "Welcome, Krzysztof Ciółkowski";
+        mailHandlowiec = "krzysztof.ciolkowski@x-disc.pl";
+        break;
 
-  //     case cc:
-  //       handlowiec = "Michał Durmowicz";
-  //       target = [
-  //         70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
-  //         100000, 100000,
-  //       ];
-  //       targetCD = [
-  //         45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000,
-  //         60000, 60000,
-  //       ];
-  //       targetVIN = [
-  //         25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
-  //         40000, 40000,
-  //       ];
-  //       welcomeUser = "Welcome, Michał Durmowicz";
-  //       mailHandlowiec = "michal.durmowicz@x-disc.pl";
-  //       break;
+      case cc:
+        handlowiec = "Michał Durmowicz";
+        target = [
+          70000, 70000, 70000, 80000, 80000, 80000, 90000, 90000, 90000, 100000,
+          100000, 100000,
+        ];
+        targetCD = [
+          45000, 45000, 45000, 50000, 50000, 50000, 55000, 55000, 55000, 60000,
+          60000, 60000,
+        ];
+        targetVIN = [
+          25000, 25000, 25000, 30000, 30000, 30000, 35000, 35000, 35000, 40000,
+          40000, 40000,
+        ];
+        welcomeUser = "Welcome, Michał Durmowicz";
+        mailHandlowiec = "michal.durmowicz@x-disc.pl";
+        break;
 
-  //     case dd:
-  //       handlowiec = "Marta Kierzkowska";
-  //       target = [
-  //         200000, 200000, 200000, 210000, 210000, 210000, 200000, 380000,
-  //         250000, 250000, 240000, 0,
-  //       ];
-  //       targetCD = [
-  //         100000, 100000, 100000, 105000, 105000, 105000, 100000, 300000,
-  //         130000, 130000, 120000, 0,
-  //       ];
-  //       targetVIN = [
-  //         100000, 100000, 100000, 105000, 105000, 105000, 100000, 80000, 120000,
-  //         120000, 120000, 0,
-  //       ];
-  //       welcomeUser = "Welcome, Marta Kierzkowska";
-  //       mailHandlowiec = "marta.kierzkowska@x-disc.pl";
-  //       break;
+      case dd:
+        handlowiec = "Marta Kierzkowska";
+        target = [
+          200000, 200000, 200000, 210000, 210000, 210000, 200000, 380000,
+          250000, 250000, 240000, 0,
+        ];
+        targetCD = [
+          100000, 100000, 100000, 105000, 105000, 105000, 100000, 300000,
+          130000, 130000, 120000, 0,
+        ];
+        targetVIN = [
+          100000, 100000, 100000, 105000, 105000, 105000, 100000, 80000, 120000,
+          120000, 120000, 0,
+        ];
+        welcomeUser = "Welcome, Marta Kierzkowska";
+        mailHandlowiec = "marta.kierzkowska@x-disc.pl";
+        break;
 
-  //     case ee:
-  //       handlowiec = "Lucyna Kozicka";
-  //       target = [
-  //         280000, 280000, 280000, 305000, 305000, 305000, 320000, 320000,
-  //         320000, 335000, 335000, 335000,
-  //       ];
-  //       targetCD = [
-  //         200000, 200000, 200000, 220000, 220000, 220000, 230000, 230000,
-  //         230000, 240000, 240000, 240000,
-  //       ];
-  //       targetVIN = [
-  //         80000, 80000, 80000, 85000, 85000, 85000, 90000, 90000, 90000, 95000,
-  //         95000, 95000,
-  //       ];
-  //       welcomeUser = "Welcome, Lucyna Kozicka";
-  //       mailHandlowiec = "lucyna.kozicka@x-disc.pl";
-  //       break;
+      case ee:
+        handlowiec = "Lucyna Kozicka";
+        target = [
+          280000, 280000, 280000, 305000, 305000, 305000, 320000, 320000,
+          320000, 335000, 335000, 335000,
+        ];
+        targetCD = [
+          200000, 200000, 200000, 220000, 220000, 220000, 230000, 230000,
+          230000, 240000, 240000, 240000,
+        ];
+        targetVIN = [
+          80000, 80000, 80000, 85000, 85000, 85000, 90000, 90000, 90000, 95000,
+          95000, 95000,
+        ];
+        welcomeUser = "Welcome, Lucyna Kozicka";
+        mailHandlowiec = "lucyna.kozicka@x-disc.pl";
+        break;
 
-  //     case ff:
-  //       handlowiec = "Jakub Mikliński";
-  //       target = [
-  //         335000, 335000, 335000, 335000, 335000, 335000, 370000, 370000,
-  //         370000, 385000, 375000, 375000,
-  //       ];
-  //       targetCD = [
-  //         55000, 55000, 55000, 65000, 65000, 65000, 70000, 70000, 70000, 75000,
-  //         75000, 75000,
-  //       ];
-  //       targetVIN = [
-  //         280000, 280000, 280000, 290000, 290000, 290000, 300000, 300000,
-  //         300000, 310000, 300000, 300000,
-  //       ];
-  //       welcomeUser = "Welcome, Jakub Mikliński";
-  //       mailHandlowiec = "jakub.miklinski@x-disc.pl";
-  //       break;
+      case ff:
+        handlowiec = "Jakub Mikliński";
+        target = [
+          335000, 335000, 335000, 335000, 335000, 335000, 370000, 370000,
+          370000, 385000, 375000, 375000,
+        ];
+        targetCD = [
+          55000, 55000, 55000, 65000, 65000, 65000, 70000, 70000, 70000, 75000,
+          75000, 75000,
+        ];
+        targetVIN = [
+          280000, 280000, 280000, 290000, 290000, 290000, 300000, 300000,
+          300000, 310000, 300000, 300000,
+        ];
+        welcomeUser = "Welcome, Jakub Mikliński";
+        mailHandlowiec = "jakub.miklinski@x-disc.pl";
+        break;
 
-  //     case gg:
-  //       handlowiec = "Małgorzata Roszkowska";
-  //       target = [
-  //         160000, 160000, 160000, 165000, 165000, 175000, 170000, 170000,
-  //         170000, 170000, 170000, 170000,
-  //       ];
-  //       targetCD = [
-  //         100000, 100000, 100000, 105000, 105000, 115000, 110000, 110000,
-  //         110000, 110000, 110000, 110000,
-  //       ];
-  //       targetVIN = [
-  //         60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000,
-  //         60000, 60000,
-  //       ];
-  //       welcomeUser = "Welcome, Małgorzata Roszkowska";
-  //       mailHandlowiec = "malgorzata.roszkowska@x-disc.pl";
-  //       break;
+      case gg:
+        handlowiec = "Małgorzata Roszkowska";
+        target = [
+          160000, 160000, 160000, 165000, 165000, 175000, 170000, 170000,
+          170000, 170000, 170000, 170000,
+        ];
+        targetCD = [
+          100000, 100000, 100000, 105000, 105000, 115000, 110000, 110000,
+          110000, 110000, 110000, 110000,
+        ];
+        targetVIN = [
+          60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000, 60000,
+          60000, 60000,
+        ];
+        welcomeUser = "Welcome, Małgorzata Roszkowska";
+        mailHandlowiec = "malgorzata.roszkowska@x-disc.pl";
+        break;
 
-  //     case hh:
-  //       handlowiec = "Ingo Kleimann";
-  //       target = [
-  //         56000, 122000, 146000, 39000, 130000, 68000, 145000, 200000, 84000,
-  //         125000, 100000, 100000,
-  //       ];
-  //       targetCD = [
-  //         11000, 52000, 68000, 34000, 11000, 45000, 140000, 90000, 60000,
-  //         100000, 80000, 80000,
-  //       ];
-  //       targetVIN = [
-  //         45000, 70000, 78000, 5000, 20000, 23000, 5000, 110000, 24000, 25000,
-  //         20000, 20000,
-  //       ];
-  //       welcomeUser = "Welcome, Ingo Kleimann";
-  //       mailHandlowiec = "ingo.kleimann@x-disc.pl";
-  //       break;
+      case hh:
+        handlowiec = "Ingo Kleimann";
+        target = [
+          56000, 122000, 146000, 39000, 130000, 68000, 145000, 200000, 84000,
+          125000, 100000, 100000,
+        ];
+        targetCD = [
+          11000, 52000, 68000, 34000, 11000, 45000, 140000, 90000, 60000,
+          100000, 80000, 80000,
+        ];
+        targetVIN = [
+          45000, 70000, 78000, 5000, 20000, 23000, 5000, 110000, 24000, 25000,
+          20000, 20000,
+        ];
+        welcomeUser = "Welcome, Ingo Kleimann";
+        mailHandlowiec = "ingo.kleimann@x-disc.pl";
+        break;
 
-  //     case ii:
-  //       handlowiec = "Jean-Remi BEL";
-  //       target = [
-  //         50000, 50000, 50000, 70000, 70000, 70000, 85000, 85000, 85000, 90000,
-  //         90000, 90000,
-  //       ];
-  //       targetCD = [
-  //         10000, 10000, 10000, 20000, 20000, 20000, 25000, 25000, 25000, 30000,
-  //         30000, 30000,
-  //       ];
-  //       targetVIN = [
-  //         40000, 40000, 40000, 50000, 50000, 50000, 60000, 60000, 60000, 60000,
-  //         60000, 60000,
-  //       ];
-  //       welcomeUser = "Welcome, Jean-Remi Bel";
-  //       mailHandlowiec = "jean-remi.bel@x-disc.pl";
-  //       break;
+      case ii:
+        handlowiec = "Jean-Remi BEL";
+        target = [
+          50000, 50000, 50000, 70000, 70000, 70000, 85000, 85000, 85000, 90000,
+          90000, 90000,
+        ];
+        targetCD = [
+          10000, 10000, 10000, 20000, 20000, 20000, 25000, 25000, 25000, 30000,
+          30000, 30000,
+        ];
+        targetVIN = [
+          40000, 40000, 40000, 50000, 50000, 50000, 60000, 60000, 60000, 60000,
+          60000, 60000,
+        ];
+        welcomeUser = "Welcome, Jean-Remi Bel";
+        mailHandlowiec = "jean-remi.bel@x-disc.pl";
+        break;
 
-  //     default:
-  //       setTimeout(function () {
-  //         window.location.href = "failPin.html";
-  //       }, 500);
-  //   }
+      default:
+        setTimeout(function () {
+          window.location.href = "failPin.html";
+        }, 500);
+    }
 
-  //   break;
-  // }
+    break;
+  }
 
   $("#welcome-user-id").html(welcomeUser);
 
@@ -2711,6 +2711,252 @@ $(document).ready(function () {
         )} %`;
 
         yourTargetDetailsVIN.push(targetRealizationForecastProcentVIN_1);
+
+        yourTargetDetailsVINAllTab.push(yourTargetDetailsVIN);
+      }
+      //***tu kończy się warunek liczący wykonanie targetu na zeszły miesiąc - trzeba zrobić na dwa miesiące do tyłu
+      // czyli kopijemy ifa od 2747 do 2717 i podkładamy dane minus dwa*/
+
+      if (aktualnyMiesiac > 1) {
+        wykresTargetCD = new WykresTarget(
+          zyskCD_2,
+          month[m - 2],
+          zyskCD_2.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetCDBar.push(wykresTargetCD);
+
+        wykresTargetVIN = new WykresTarget(
+          zyskVIN_2,
+          month[m - 2],
+          zyskVIN_2.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetVINBar.push(wykresTargetVIN);
+
+        wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
+          targetCD[m - monthMinus - 2],
+          month[m - 2]
+        );
+        yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+
+        wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
+          targetVIN[m - monthMinus - 2],
+          month[m - 2]
+        );
+        yourTargetVINBarForecastPlusOrder.push(
+          wykresTargetVINForecastPlusOrder
+        );
+
+        yourTargetDetailsCD = [];
+
+        yourTargetDetailsCD.push(month[m - 2]);
+
+        let salesValueCD_2 = new NameValue(
+          sprzedazCD_2,
+          sprzedazCD_2.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })
+        );
+        yourTargetDetailsCD.push(salesValueCD_2);
+
+        let salesProfitCD_2 = new NameValue(
+          zyskCD_2,
+          zyskCD_2.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })
+        );
+        yourTargetDetailsCD.push(salesProfitCD_2);
+
+        let averageProfitCD_2 = `${(
+          (zyskCD_2 / sprzedazCD_2) *
+          100
+        ).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`;
+
+        yourTargetDetailsCD.push(averageProfitCD_2);
+        yourTargetDetailsCD.push(
+          targetCD[m - monthMinus - 2].toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        let progresProfitCD_2 = `${(
+          (zyskCD_2 / targetCD[m - monthMinus - 2]) *
+          100
+        ).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`;
+
+        yourTargetDetailsCD.push(progresProfitCD_2);
+
+        let openOrdersCD_2 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetDetailsCD.push(openOrdersCD_2);
+
+        let forecastSaleCD_2 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        yourTargetDetailsCD.push(forecastSaleCD_2);
+
+        let forecastProfitCD_2 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        yourTargetDetailsCD.push(forecastProfitCD_2);
+
+        let targetRealizationForecastProcentCD_2 = `${(0).toLocaleString(
+          "pl-PL",
+          {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          }
+        )} %`;
+
+        yourTargetDetailsCD.push(targetRealizationForecastProcentCD_2);
+
+        yourTargetDetailsCDAllTab.push(yourTargetDetailsCD);
+
+        yourTargetDetailsVIN = [];
+
+        yourTargetDetailsVIN.push(month[m - 2]);
+
+        let salesValueVIN_2 = new NameValue(
+          sprzedazVIN_2,
+          sprzedazVIN_2.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })
+        );
+        yourTargetDetailsVIN.push(salesValueVIN_2);
+
+        let salesProfitVIN_2 = new NameValue(
+          zyskVIN_2,
+          zyskVIN_2.toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })
+        );
+        yourTargetDetailsVIN.push(salesProfitVIN_2);
+
+        let averageProfitVIN_2 = zyskVIN_2 / sprzedazVIN_2;
+
+        if (Number.isNaN(averageProfitVIN_2)) {
+          averageProfitVIN_2 = `${(0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })} %`;
+        } else {
+          averageProfitVIN_2 = `${(
+            (zyskVIN_2 / sprzedazVIN_2) *
+            100
+          ).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "2",
+            maximumFractionDigits: "2",
+          })} %`;
+        }
+
+        yourTargetDetailsVIN.push(averageProfitVIN_2);
+        yourTargetDetailsVIN.push(
+          targetVIN[m - monthMinus - 2].toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        let progresProfitVIN_2 = `${(
+          (zyskVIN_2 / targetVIN[m - monthMinus - 2]) *
+          100
+        ).toLocaleString("pl-PL", {
+          useGrouping: "true",
+          minimumFractionDigits: "2",
+          maximumFractionDigits: "2",
+        })} %`;
+
+        yourTargetDetailsVIN.push(progresProfitVIN_2);
+
+        let openOrdersVIN_2 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+        yourTargetDetailsVIN.push(openOrdersVIN_2);
+
+        let forecastSaleVIN_2 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        yourTargetDetailsVIN.push(forecastSaleVIN_2);
+
+        let forecastProfitVIN_2 = new NameValue(
+          0,
+          (0).toLocaleString("pl-PL", {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          })
+        );
+
+        yourTargetDetailsVIN.push(forecastProfitVIN_2);
+
+        let targetRealizationForecastProcentVIN_2 = `${(0).toLocaleString(
+          "pl-PL",
+          {
+            useGrouping: "true",
+            minimumFractionDigits: "0",
+            maximumFractionDigits: "0",
+          }
+        )} %`;
+
+        yourTargetDetailsVIN.push(targetRealizationForecastProcentVIN_2);
 
         yourTargetDetailsVINAllTab.push(yourTargetDetailsVIN);
       }
