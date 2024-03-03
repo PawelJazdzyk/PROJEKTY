@@ -1,8 +1,8 @@
 $(document).ready(function () {
   const options = {
-    year: "numeric",
-    month: "2-digit",
     day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
   };
   const options2 = {
     day: "2-digit",
@@ -439,9 +439,9 @@ $(document).ready(function () {
     yearMinus5 = 1;
     yearMinus4 = 1;
     yearMinus3 = 1;
-    yearMinus2 = 0;
+    yearMinus2 = 1;
     yearMinus1 = 0;
-    monthMinus = 10;
+    monthMinus = 11;
   } else if (m == 3) {
     yearMinus6 = 1;
     yearMinus5 = 1;
@@ -680,37 +680,37 @@ $(document).ready(function () {
     mis = `0${mi}`;
   }
 
-  let poczatekMiesiac6 = new Date(y - yearMinus6, m - 5, 1);
-  let koniecMiesiac6 = new Date(y - yearMinus6, m - 5, koncowkiMiesiaca[m - 5]);
-  let poczatekMiesiac5 = new Date(y - yearMinus5, m - 4, 1);
-  let koniecMiesiac5 = new Date(y - yearMinus5, m - 4, koncowkiMiesiaca[m - 4]);
-  let poczatekMiesiac4 = new Date(y - yearMinus4, m - 3, 1);
-  let koniecMiesiac4 = new Date(y - yearMinus4, m - 3, koncowkiMiesiaca[m - 3]);
-  let poczatekMiesiac3 = new Date(y - yearMinus3, m - 2, 1);
-  let koniecMiesiac3 = new Date(y - yearMinus3, m - 2, koncowkiMiesiaca[m - 2]);
-  let poczatekMiesiac2 = new Date(y - yearMinus2, m - 1, 1);
-  let koniecMiesiac2 = new Date(y - yearMinus2, m - 1, koncowkiMiesiaca[m - 1]);
-  let poczatekMiesiac1 = new Date(y - yearMinus2, m, 1);
-  let koniecMiesiac1 = new Date(y - yearMinus2, m, koncowkiMiesiaca[m - 1]);
-  let poczatekMiesiac0 = new Date(y, m - monthMinus, 1);
-  let koniecMiesiac0 = new Date(y, m - monthMinus, d);
+  let poczatekMiesiac6 = new Date(y - yearMinus6, m - 4, 1);
+  let koniecMiesiac6 = new Date(y - yearMinus6, m - 4, koncowkiMiesiaca[m - 4]);
+  let poczatekMiesiac5 = new Date(y - yearMinus5, m - 3, 1);
+  let koniecMiesiac5 = new Date(y - yearMinus5, m - 3, koncowkiMiesiaca[m - 3]);
+  let poczatekMiesiac4 = new Date(y - yearMinus4, m - 2, 1);
+  let koniecMiesiac4 = new Date(y - yearMinus4, m - 2, koncowkiMiesiaca[m - 2]);
+  let poczatekMiesiac3 = new Date(y - yearMinus3, m - 1, 1);
+  let koniecMiesiac3 = new Date(y - yearMinus3, m - 1, koncowkiMiesiaca[m - 1]);
+  let poczatekMiesiac2 = new Date(y - yearMinus2, m, 1);
+  let koniecMiesiac2 = new Date(y - yearMinus2, m, koncowkiMiesiaca[m]);
+  let poczatekMiesiac1 = new Date(y - yearMinus2, m + 1, 1);
+  let koniecMiesiac1 = new Date(y - yearMinus2, m + 1, koncowkiMiesiaca[m + 1]);
+  let poczatekMiesiac0 = new Date(y - yearMinus2, m + 2, 1);
+  let koniecMiesiac0 = new Date(y - yearMinus2, m + 2, d);
   let koniecMiesiac0_koniecTegoMiesiaca = new Date(
-    y,
-    m - monthMinus,
-    koncowkiMiesiaca[m - monthMinus]
-  );
-
-  let poczatekMiesiac06 = new Date(y, m - monthMinus + 1, 1);
-  let koniecMiesiac06 = new Date(
     y,
     m - monthMinus + 1,
     koncowkiMiesiaca[m - monthMinus + 1]
   );
-  let poczatekMiesiac06_6month = new Date(y, m - monthMinus + 2, 1);
+
+  let poczatekMiesiac06 = new Date(y, m - monthMinus + 2, 1);
+  let koniecMiesiac06 = new Date(
+    y,
+    m - monthMinus + 2,
+    koncowkiMiesiaca[m - monthMinus + 2]
+  );
+  let poczatekMiesiac06_6month = new Date(y, m - monthMinus + 3, 1);
   let koniecMiesiac06_6month = new Date(
     y,
-    m - monthMinus + 6,
-    koncowkiMiesiaca[m - monthMinus + 6]
+    m - monthMinus + 7,
+    koncowkiMiesiaca[m - monthMinus + 7]
   );
 
   console.log(poczatekMiesiac6);
@@ -784,7 +784,7 @@ $(document).ready(function () {
   }
 
   let koniecData06_6month = `${yK07}-${msK07}-${
-    koncowkiMiesiaca[m - monthMinus + 6]
+    koncowkiMiesiaca[m - monthMinus + 7]
   }`;
 
   dK06 = new Date(koniecMiesiac06).getDate();
@@ -1043,6 +1043,7 @@ $(document).ready(function () {
   console.log(koniecData00);
 
   console.log(poczatekData0);
+  console.log(koniecData06_6month);
   console.log(koniecData06);
 
   var settings1 = {
@@ -1065,6 +1066,8 @@ $(document).ready(function () {
       NazwyMagazynow: ["GŁÓWNY-TŁOCZNIA"],
     }),
   };
+
+  console.log(dzis);
 
   $.ajax(settings1).done(function (response1) {
     const result1 = JSON.stringify(response1);
@@ -1130,6 +1133,10 @@ $(document).ready(function () {
       let koniecObecnegoMiesiaca = new Date(koniecData00).getTime();
 
       let dzisPlus7Dni = new Date(dzisPlus7).getTime();
+
+      console.log(
+        new Date(datyMinus_1_Koniec).toLocaleDateString("pl-PL", options)
+      );
 
       //***************************************************************/
 
@@ -1253,8 +1260,13 @@ $(document).ready(function () {
       let fvDzisTab;
       let fvDzisZbiorczaTab = [];
 
+      let tetstowaDataDok = [];
+
       for (i = 0; i < faktury.length; i++) {
-        if (faktury[i].handlowiec == handlowiec) {
+        if (
+          faktury[i].handlowiec == handlowiec &&
+          !faktury[i].nrDokumentu.includes("ZAL")
+        ) {
           fakturyDataDokumentu = new Date(faktury[i].dataDokumentu).getTime();
 
           if (
@@ -1294,7 +1306,7 @@ $(document).ready(function () {
           if (
             (fakturyDataDokumentu >= datyMinus_1_Poczatek &&
               fakturyDataDokumentu <= datyMinus_1_Koniec) ||
-            faktury[i].dataDokumentu == "2024-01-31"
+            faktury[i].dataDokumentu == "2024-02-29"
           ) {
             if (faktury[i].kategoria == "Sprzedaż") {
               if (
@@ -1323,9 +1335,11 @@ $(document).ready(function () {
             }
           }
           if (
-            fakturyDataDokumentu >= datyMinus_2_Poczatek &&
-            fakturyDataDokumentu <= datyMinus_2_Koniec
+            (fakturyDataDokumentu >= datyMinus_2_Poczatek &&
+              fakturyDataDokumentu <= datyMinus_2_Koniec) ||
+            faktury[i].dataDokumentu == "2024-01-31"
           ) {
+            tetstowaDataDok.push(faktury[i].dataDokumentu);
             if (faktury[i].kategoria == "Sprzedaż") {
               if (
                 faktury[i].dział == "PŁYTY CD" ||
@@ -1353,8 +1367,9 @@ $(document).ready(function () {
             }
           }
           if (
-            fakturyDataDokumentu >= datyMinus_3_Poczatek &&
-            fakturyDataDokumentu <= datyMinus_3_Koniec
+            (fakturyDataDokumentu >= datyMinus_3_Poczatek &&
+              fakturyDataDokumentu <= datyMinus_3_Koniec) ||
+            faktury[i].dataDokumentu == "2023-12-31"
           ) {
             if (faktury[i].kategoria == "Sprzedaż") {
               if (
@@ -1383,8 +1398,9 @@ $(document).ready(function () {
             }
           }
           if (
-            fakturyDataDokumentu >= datyMinus_4_Poczatek &&
-            fakturyDataDokumentu <= datyMinus_4_Koniec
+            (fakturyDataDokumentu >= datyMinus_4_Poczatek &&
+              fakturyDataDokumentu <= datyMinus_4_Koniec) ||
+            faktury[i].dataDokumentu == "2023-11-30"
           ) {
             if (faktury[i].kategoria == "Sprzedaż") {
               if (
@@ -1413,8 +1429,9 @@ $(document).ready(function () {
             }
           }
           if (
-            fakturyDataDokumentu >= datyMinus_5_Poczatek &&
-            fakturyDataDokumentu <= datyMinus_5_Koniec
+            (fakturyDataDokumentu >= datyMinus_5_Poczatek &&
+              fakturyDataDokumentu <= datyMinus_5_Koniec) ||
+            faktury[i].dataDokumentu == "2023-10-31"
           ) {
             if (faktury[i].kategoria == "Sprzedaż") {
               if (
@@ -1443,8 +1460,9 @@ $(document).ready(function () {
             }
           }
           if (
-            fakturyDataDokumentu >= datyMinus_6_Poczatek &&
-            fakturyDataDokumentu <= datyMinus_6_Koniec
+            (fakturyDataDokumentu >= datyMinus_6_Poczatek &&
+              fakturyDataDokumentu <= datyMinus_6_Koniec) ||
+            faktury[i].dataDokumentu == "2023-09-30"
           ) {
             if (faktury[i].kategoria == "Sprzedaż") {
               if (
@@ -1587,7 +1605,7 @@ $(document).ready(function () {
           }
         }
       }
-
+      console.log(tetstowaDataDok);
       console.log(fakturyMiesiac);
       console.log(fakturyDzis);
 
@@ -1697,8 +1715,14 @@ $(document).ready(function () {
       }
 
       let winylProcent = (sprzedazVIN_0 / sprzedazAll_0) * 100;
-      let cdProcent = (sprzedazCD_0 / sprzedazAll_0) * 100;
 
+      if (Number.isNaN(winylProcent)) {
+        winylProcent = 0;
+      }
+      let cdProcent = (sprzedazCD_0 / sprzedazAll_0) * 100;
+      if (Number.isNaN(cdProcent)) {
+        cdProcent = 0;
+      }
       $(
         "#today-sales"
       ).html(` <span class="container-right_second_row_data_text_small"
@@ -2741,13 +2765,13 @@ $(document).ready(function () {
         yourTargetVINBar.push(wykresTargetVIN);
 
         wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
-          targetCD[m - monthMinus - 2],
+          targetCD[m - monthMinus],
           month[m - 2]
         );
         yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
-
+        console.log(wykresTargetCDForecastPlusOrder);
         wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
-          targetVIN[m - monthMinus - 2],
+          targetVIN[m - monthMinus],
           month[m - 2]
         );
         yourTargetVINBarForecastPlusOrder.push(
@@ -2789,7 +2813,7 @@ $(document).ready(function () {
 
         yourTargetDetailsCD.push(averageProfitCD_2);
         yourTargetDetailsCD.push(
-          targetCD[m - monthMinus - 2].toLocaleString("pl-PL", {
+          targetCD[m - monthMinus].toLocaleString("pl-PL", {
             useGrouping: "true",
             minimumFractionDigits: "0",
             maximumFractionDigits: "0",
@@ -2797,7 +2821,7 @@ $(document).ready(function () {
         );
 
         let progresProfitCD_2 = `${(
-          (zyskCD_2 / targetCD[m - monthMinus - 2]) *
+          (zyskCD_2 / targetCD[m - monthMinus]) *
           100
         ).toLocaleString("pl-PL", {
           useGrouping: "true",
@@ -2897,7 +2921,7 @@ $(document).ready(function () {
 
         yourTargetDetailsVIN.push(averageProfitVIN_2);
         yourTargetDetailsVIN.push(
-          targetVIN[m - monthMinus - 2].toLocaleString("pl-PL", {
+          targetVIN[m - monthMinus].toLocaleString("pl-PL", {
             useGrouping: "true",
             minimumFractionDigits: "0",
             maximumFractionDigits: "0",
@@ -2905,7 +2929,7 @@ $(document).ready(function () {
         );
 
         let progresProfitVIN_2 = `${(
-          (zyskVIN_2 / targetVIN[m - monthMinus - 2]) *
+          (zyskVIN_2 / targetVIN[m - monthMinus]) *
           100
         ).toLocaleString("pl-PL", {
           useGrouping: "true",
@@ -2976,7 +3000,7 @@ $(document).ready(function () {
             maximumFractionDigits: "0",
           })
         );
-        yourTargetCDBar.push(wykresTargetCD);
+        //yourTargetCDBar.push(wykresTargetCD);
 
         wykresTargetVIN = new WykresTarget(
           zyskVIN_2,
@@ -2987,21 +3011,21 @@ $(document).ready(function () {
             maximumFractionDigits: "0",
           })
         );
-        yourTargetVINBar.push(wykresTargetVIN);
+        //yourTargetVINBar.push(wykresTargetVIN);
 
         wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
           targetCD[m - monthMinus],
           month[m - 2]
         );
-        yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+        //yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
 
         wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
           targetVIN[m - monthMinus],
           month[m - 2]
         );
-        yourTargetVINBarForecastPlusOrder.push(
-          wykresTargetVINForecastPlusOrder
-        );
+        //yourTargetVINBarForecastPlusOrder.push(
+        //wykresTargetVINForecastPlusOrder
+        //);
       }
 
       if (aktualnyMiesiac > 2) {
@@ -3014,7 +3038,7 @@ $(document).ready(function () {
             maximumFractionDigits: "0",
           })
         );
-        yourTargetCDBar.push(wykresTargetCD);
+        //yourTargetCDBar.push(wykresTargetCD);
 
         wykresTargetVIN = new WykresTarget(
           zyskVIN_3,
@@ -3025,21 +3049,19 @@ $(document).ready(function () {
             maximumFractionDigits: "0",
           })
         );
-        yourTargetVINBar.push(wykresTargetVIN);
+        //yourTargetVINBar.push(wykresTargetVIN);
 
         wykresTargetCDForecastPlusOrder = new WykresTargetForecast(
           targetCD[m - monthMinus],
           month[m - 3]
         );
-        yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
+        //yourTargetCDBarForecastPlusOrder.push(wykresTargetCDForecastPlusOrder);
 
         wykresTargetVINForecastPlusOrder = new WykresTargetForecast(
           targetVIN[m - monthMinus],
           month[m - 3]
         );
-        yourTargetVINBarForecastPlusOrder.push(
-          wykresTargetVINForecastPlusOrder
-        );
+        //yourTargetVINBarForecastPlusOrder.push(wykresTargetVINForecastPlusOrder);
       }
       if (aktualnyMiesiac > 3) {
         wykresTargetCD = new WykresTarget(
@@ -4393,6 +4415,8 @@ $(document).ready(function () {
         ],
       });
       chart2.render();
+
+      console.log(yourTargetCDBarForecastPlusOrder);
 
       var chart3 = new CanvasJS.Chart("bar-target_vin", {
         animationEnabled: true,
