@@ -1,0 +1,20 @@
+{
+  "name": "testmodule",
+  "version": "1.0.0",
+  "description": "\"testy\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pawel",
+  "license": "ISC",
+  "bin": "npx.js",
+  "type": "module",
+  "dependencies": {
+    "json-server": "^0.16.3",
+    "@types/node": "latest",
+    "ts-node": "latest",
+    "typescript": "latest"
+  }
+
+}
