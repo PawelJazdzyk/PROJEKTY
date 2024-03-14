@@ -1308,6 +1308,7 @@ $(document).ready(function () {
               fakturyDataDokumentu <= datyMinus_1_Koniec) ||
             faktury[i].dataDokumentu == "2024-02-29"
           ) {
+            tetstowaDataDok.push(faktury[i].nrDokumentu);
             if (faktury[i].kategoria == "Sprzedaż") {
               if (
                 faktury[i].dział == "PŁYTY CD" ||
@@ -1339,7 +1340,6 @@ $(document).ready(function () {
               fakturyDataDokumentu <= datyMinus_2_Koniec) ||
             faktury[i].dataDokumentu == "2024-01-31"
           ) {
-            tetstowaDataDok.push(faktury[i].dataDokumentu);
             if (faktury[i].kategoria == "Sprzedaż") {
               if (
                 faktury[i].dział == "PŁYTY CD" ||
