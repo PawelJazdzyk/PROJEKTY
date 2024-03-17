@@ -5,8 +5,10 @@ export const funkcjaDat = (data) => {
 
   function podajDzien(rokFunc, miesiacFunc) {
     let dzienFunc;
+    let miesiacNazwa;
     let rokPrzestepny = 2020;
     let rokPrzestepnyTab = [];
+    let dzienMiesiacNazwa = [];
     let luty = 28;
     for (let i = 0; i < 20; i++) {
       rokPrzestepny = rokPrzestepny + 4;
@@ -29,6 +31,20 @@ export const funkcjaDat = (data) => {
       "11",
       "12",
     ];
+    let miesiacNazwaTab = [
+      "Styczeń",
+      "Luty",
+      "Marzec",
+      "Kwiecień",
+      "Maj",
+      "Czerwiec",
+      "Lipiec",
+      "Sierpień",
+      "Wrzesień",
+      "Październik",
+      "Listopad",
+      "Grudzień",
+    ];
     let dzienTab = [
       "31",
       luty,
@@ -47,10 +63,11 @@ export const funkcjaDat = (data) => {
     for (let i = 0; i < miesiacTab.length; i++) {
       if (miesiacFunc == miesiacTab[i]) {
         dzienFunc = dzienTab[i];
+        miesiacNazwa = miesiacNazwaTab[i];
       }
     }
 
-    return dzienFunc;
+    return (dzienMiesiacNazwa = [dzienFunc, miesiacNazwa]);
   }
   //*** tu 6 miesiecy wstecz */
   let miesiacMinus_6;
@@ -86,7 +103,8 @@ export const funkcjaDat = (data) => {
 
   let dzienMinus_6 = podajDzien(rokMinus_6, miesiacMinus_6);
   let dataMinus6_poczatek = `${rokMinus_6}-${miesiacMinus_6}-01`;
-  let dataMinus6_koniec = `${rokMinus_6}-${miesiacMinus_6}-${dzienMinus_6}`;
+  let dataMinus6_koniec = `${rokMinus_6}-${miesiacMinus_6}-${dzienMinus_6[0]}`;
+  let dataMinus6_miesiacNazwa = dzienMinus_6[1];
 
   //*** tu 5 miesiecy wstecz */
 
@@ -123,7 +141,8 @@ export const funkcjaDat = (data) => {
 
   let dzienMinus_5 = podajDzien(rokMinus_5, miesiacMinus_5);
   let dataMinus5_poczatek = `${rokMinus_5}-${miesiacMinus_5}-01`;
-  let dataMinus5_koniec = `${rokMinus_5}-${miesiacMinus_5}-${dzienMinus_5}`;
+  let dataMinus5_koniec = `${rokMinus_5}-${miesiacMinus_5}-${dzienMinus_5[0]}`;
+  let dataMinus5_miesiacNazwa = dzienMinus_5[1];
 
   //*** tu 4 miesiecy wstecz */
 
@@ -160,7 +179,8 @@ export const funkcjaDat = (data) => {
 
   let dzienMinus_4 = podajDzien(rokMinus_4, miesiacMinus_4);
   let dataMinus4_poczatek = `${rokMinus_4}-${miesiacMinus_4}-01`;
-  let dataMinus4_koniec = `${rokMinus_4}-${miesiacMinus_4}-${dzienMinus_4}`;
+  let dataMinus4_koniec = `${rokMinus_4}-${miesiacMinus_4}-${dzienMinus_4[0]}`;
+  let dataMinus4_miesiacNazwa = dzienMinus_4[1];
 
   //*** tu 3 miesiecy wstecz */
 
@@ -197,7 +217,8 @@ export const funkcjaDat = (data) => {
 
   let dzienMinus_3 = podajDzien(rokMinus_3, miesiacMinus_3);
   let dataMinus3_poczatek = `${rokMinus_3}-${miesiacMinus_3}-01`;
-  let dataMinus3_koniec = `${rokMinus_3}-${miesiacMinus_3}-${dzienMinus_3}`;
+  let dataMinus3_koniec = `${rokMinus_3}-${miesiacMinus_3}-${dzienMinus_3[0]}`;
+  let dataMinus3_miesiacNazwa = dzienMinus_3[1];
 
   //*** tu 2 miesiecy wstecz */
 
@@ -234,7 +255,8 @@ export const funkcjaDat = (data) => {
 
   let dzienMinus_2 = podajDzien(rokMinus_2, miesiacMinus_2);
   let dataMinus2_poczatek = `${rokMinus_2}-${miesiacMinus_2}-01`;
-  let dataMinus2_koniec = `${rokMinus_2}-${miesiacMinus_2}-${dzienMinus_2}`;
+  let dataMinus2_koniec = `${rokMinus_2}-${miesiacMinus_2}-${dzienMinus_2[0]}`;
+  let dataMinus2_miesiacNazwa = dzienMinus_2[1];
 
   //*** tu 1 miesiecy wstecz */
 
@@ -271,7 +293,8 @@ export const funkcjaDat = (data) => {
 
   let dzienMinus_1 = podajDzien(rokMinus_1, miesiacMinus_1);
   let dataMinus1_poczatek = `${rokMinus_1}-${miesiacMinus_1}-01`;
-  let dataMinus1_koniec = `${rokMinus_1}-${miesiacMinus_1}-${dzienMinus_1}`;
+  let dataMinus1_koniec = `${rokMinus_1}-${miesiacMinus_1}-${dzienMinus_1[0]}`;
+  let dataMinus1_miesiacNazwa = dzienMinus_1[1];
 
   //*** tu 0 miesiecy wstecz - poczatek i koniec obecnego miesiąca*/
 
@@ -308,7 +331,8 @@ export const funkcjaDat = (data) => {
 
   let dzienMinus_0 = podajDzien(rokMinus_0, miesiacMinus_0);
   let dataMinus0_poczatek = `${rokMinus_0}-${miesiacMinus_0}-01`;
-  let dataMinus0_koniec = `${rokMinus_0}-${miesiacMinus_0}-${dzienMinus_0}`;
+  let dataMinus0_koniec = `${rokMinus_0}-${miesiacMinus_0}-${dzienMinus_0[0]}`;
+  let dataMinus0_miesiacNazwa = dzienMinus_0[1];
 
   //*** tu plus 1 miesiecy do przodu */
 
@@ -348,7 +372,8 @@ export const funkcjaDat = (data) => {
 
   let dzienPlus_1 = podajDzien(rokPlus_1, miesiacPlus_1);
   let dataPlus1_poczatek = `${rokPlus_1}-${miesiacPlus_1}-01`;
-  let dataPlus1_koniec = `${rokPlus_1}-${miesiacPlus_1}-${dzienPlus_1}`;
+  let dataPlus1_koniec = `${rokPlus_1}-${miesiacPlus_1}-${dzienPlus_1[0]}`;
+  let dataPlus1_miesiacNazwa = dzienPlus_1[1];
 
   //*** tu plus 6 miesiecy do przodu - tylko data końca miesiaca*/
 
@@ -384,7 +409,7 @@ export const funkcjaDat = (data) => {
   }
 
   let dzienPlus_6 = podajDzien(rokPlus_6, miesiacPlus_6);
-  let dataPlus6_koniec = `${rokPlus_6}-${miesiacPlus_6}-${dzienPlus_6}`;
+  let dataPlus6_koniec = `${rokPlus_6}-${miesiacPlus_6}-${dzienPlus_6[0]}`;
 
   //*** data wejściowa () */
   if (miesiac < 9) {
@@ -404,20 +429,28 @@ export const funkcjaDat = (data) => {
     dzis: entranceData,
     minus_6_poczatek: dataMinus6_poczatek,
     minus_6_koniec: dataMinus6_koniec,
+    minus_6_miesiacNazwa: dataMinus6_miesiacNazwa,
     minus_5_poczatek: dataMinus5_poczatek,
     minus_5_koniec: dataMinus5_koniec,
+    minus_5_miesiacNazwa: dataMinus5_miesiacNazwa,
     minus_4_poczatek: dataMinus4_poczatek,
     minus_4_koniec: dataMinus4_koniec,
+    minus_4_miesiacNazwa: dataMinus4_miesiacNazwa,
     minus_3_poczatek: dataMinus3_poczatek,
     minus_3_koniec: dataMinus3_koniec,
+    minus_3_miesiacNazwa: dataMinus3_miesiacNazwa,
     minus_2_poczatek: dataMinus2_poczatek,
     minus_2_koniec: dataMinus2_koniec,
+    minus_2_miesiacNazwa: dataMinus2_miesiacNazwa,
     minus_1_poczatek: dataMinus1_poczatek,
     minus_1_koniec: dataMinus1_koniec,
+    minus_1_miesiacNazwa: dataMinus1_miesiacNazwa,
     minus_0_poczatek: dataMinus0_poczatek,
     minus_0_koniec: dataMinus0_koniec,
+    minus_0_miesiacNazwa: dataMinus0_miesiacNazwa,
     plus_1_poczatek: dataPlus1_poczatek,
     plus_1_koniec: dataPlus1_koniec,
+    plus_1_miesiacNazwa: dataPlus1_miesiacNazwa,
     plus_6_koniec: dataPlus6_koniec,
   };
 
