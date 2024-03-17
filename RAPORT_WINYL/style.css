@@ -1,0 +1,105 @@
+body {
+  display: flex;
+}
+
+.navigation {
+  display: grid;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  grid-template-columns: 20% 40% 40%;
+  grid-template-rows: 100%;
+  height: 6%;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    95deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(247, 156, 156, 1) 38%,
+    rgba(246, 16, 16, 1) 100%
+  );
+}
+#logo-Xdisc {
+  margin: auto auto auto 16%;
+}
+.dashboard_title {
+  font-family: "Calibri";
+  font-size: 200%;
+  margin: auto auto auto 5%;
+  color: rgb(255, 0, 0);
+  font-weight: 300;
+}
+.container-left {
+  display: flex;
+  flex-direction: column;
+  width: 11%;
+  height: 100vh;
+  background-color: rgb(243, 243, 243);
+  box-sizing: border-box;
+}
+
+.container-left_buttons_container {
+  position: fixed;
+  width: 10%;
+  text-align: center;
+}
+.container-left_button {
+  width: 99%;
+  font-family: "Calibri";
+  font-size: 1em;
+  font-weight: 300;
+  border-radius: 10px;
+  color: darkgrey;
+  margin-top: 5%;
+}
+.container-left_button:hover {
+  color: rgb(252, 12, 12);
+  font-weight: 500;
+  background-color: rgb(255, 212, 210);
+  letter-spacing: 1px;
+}
+.ui-button {
+  border-radius: 7px;
+}
+.container-right {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4%;
+  margin-left: 1%;
+  width: 90%;
+  height: 100%;
+}
+.container-right_navigation_head {
+  display: grid;
+  height: 5em;
+  grid-template-columns: 20% 20% 60%;
+  grid-template-rows: 100%;
+  align-items: center;
+  justify-items: center;
+}
+.datepickerClass_1 {
+  grid-column: 1/2;
+  height: 2em;
+  width: 16em;
+  text-align: center;
+  border-width: 1px;
+  border-radius: 7px;
+  border-color: rgb(226, 13, 13);
+  font-family: "Calibri";
+  color: rgb(131, 131, 131);
+}
+.datepickerClass_2 {
+  grid-column: 2/3;
+  height: 2em;
+  width: 16em;
+  text-align: center;
+  border-width: 1px;
+  border-radius: 7px;
+  border-color: rgb(226, 13, 13);
+  font-family: "Calibri";
+  color: rgb(131, 131, 131);
+}
+
+.ui-widget {
+  border-width: 1px;
+}

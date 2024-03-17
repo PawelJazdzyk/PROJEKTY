@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="Images/faviconX.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Winyl-Raport</title>
+  </head>
+  <body>
+    <nav class="navigation">
+      <img
+        id="logo-Xdisc"
+        src="Images/xdisc_group_logo_3_male.png"
+        alt="logo X disc group"
+      />
+      <h1 class="dashboard_title">Winyl Report</h1>
+    </nav>
+    <div class="container-left">
+      <div class="container-left_buttons_container">
+        <button
+          class="ui-button ui-widget ui-corner-all container-left_button buttons_sticky"
+          style="margin-top: 40%"
+          id="overwiev_button"
+        >
+          Parametry
+        </button>
+        <!-- <button
+          class="ui-button ui-widget ui-corner-all container-left_button"
+          id="orders-for-Today_button"
+        >
+          Orders for Today
+        </button>
+        <button
+          class="ui-button ui-widget ui-corner-all container-left_button"
+          id="orders-entry-Today_button"
+        >
+          Entered Orders
+        </button>
+        <button
+          class="ui-button ui-widget ui-corner-all container-left_button"
+          id="invoice-Today_button"
+        >
+          Invoice Today
+        </button>
+        <button
+          class="ui-button ui-widget ui-corner-all container-left_button"
+          id="target-details_button"
+        >
+          Profit target details
+        </button>
+        <button
+          class="ui-button ui-widget ui-corner-all container-left_button"
+          id="sales-history_button"
+        >
+          Sales History
+        </button> -->
+        <!--<button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Customer Analysis
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Invoices
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Pricelists
+          </button>
+          <button
+            class="ui-button ui-widget ui-corner-all container-left_button"
+          >
+            Calculators
+          </button> -->
+      </div>
+    </div>
+    <div class="container-right">
+      <div class="container-right_navigation_head">
+        <div>
+          <input
+            type="text"
+            class="datepickerClass_1"
+            id="datepicker_1"
+            placeholder="Data wprowadzenia od..."
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            class="datepickerClass_2"
+            id="datepicker_2"
+            placeholder="Data wprowadzenia do..."
+          />
+        </div>
+      </div>
+    </div>
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
