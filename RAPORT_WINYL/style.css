@@ -1,5 +1,6 @@
 body {
   display: flex;
+  background-color: rgb(243, 243, 243);
 }
 
 .navigation {
@@ -68,11 +69,12 @@ body {
   margin-left: 1%;
   width: 90%;
   height: 100%;
+  visibility: hidden;
 }
 .container-right_navigation_head {
   display: grid;
   height: 5em;
-  grid-template-columns: 20% 20% 60%;
+  grid-template-columns: 18% 18% 64%;
   grid-template-rows: 100%;
   align-items: center;
   justify-items: center;
@@ -102,4 +104,11 @@ body {
 
 .ui-widget {
   border-width: 1px;
+}
+
+#lista_table {
+  background-color: white;
+  width: 99%;
+  height: fit-content;
+  align-self: center;
 }

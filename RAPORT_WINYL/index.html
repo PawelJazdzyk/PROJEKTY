@@ -4,13 +4,43 @@
     <meta charset="UTF-8" />
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="Images/faviconX.png" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
     />
+    <style>
+      .headerRow {
+        font-family: "Calibri";
+        font-size: 100%;
+        color: rgb(66, 65, 66);
+        background-color: rgb(192, 188, 188);
+      }
+      .tableRow {
+        font-family: "Calibri";
+        font-size: 103%;
+        word-wrap: break-word;
+        text-align: center;
+        color: rgb(97, 97, 97);
+        text-align: center;
+      }
+      .oddTableRow {
+        font-family: "Calibri";
+        font-size: 103%;
+        word-wrap: break-word;
+        text-align: center;
+        background-color: rgb(248, 248, 248);
+        color: rgb(97, 97, 97);
+        text-align: center;
+      }
+    </style>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="loader.css" />
     <title>Winyl-Raport</title>
   </head>
   <body>
@@ -84,6 +114,7 @@
       </div>
     </div>
     <div class="container-right">
+      <div class="loader"></div>
       <div class="container-right_navigation_head">
         <div>
           <input
@@ -102,6 +133,7 @@
           />
         </div>
       </div>
+      <div id="lista_table"></div>
     </div>
     <script type="module" src="index.js"></script>
   </body>
