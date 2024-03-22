@@ -19,6 +19,7 @@ body {
     rgba(247, 156, 156, 1) 38%,
     rgba(246, 16, 16, 1) 100%
   );
+  z-index: 1;
 }
 #logo-Xdisc {
   margin: auto auto auto 16%;
@@ -69,7 +70,6 @@ body {
   margin-left: 1%;
   width: 90%;
   height: 100%;
-  visibility: hidden;
 }
 .container-right_navigation_head {
   display: grid;
@@ -100,6 +100,27 @@ body {
   border-color: rgb(226, 13, 13);
   font-family: "Calibri";
   color: rgb(131, 131, 131);
+}
+
+.poka_liste-button {
+  justify-self: baseline;
+  grid-column: 3/4;
+  height: 2.4em;
+  width: 10em;
+  text-align: center;
+  border-width: 1px;
+  border-radius: 7px;
+  border-color: rgb(226, 13, 13);
+  font-family: "Calibri";
+  color: rgb(82, 77, 77);
+  background-color: rgba(226, 13, 13, 0.068);
+}
+
+.poka_liste-button:hover {
+  color: rgb(240, 39, 39);
+  font-weight: 600;
+  background-color: rgba(226, 13, 13, 0.247);
+  cursor: pointer;
 }
 
 .ui-widget {

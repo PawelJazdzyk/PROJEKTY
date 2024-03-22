@@ -44,13 +44,18 @@
   overflow: hidden;
   margin-left: 45%;
   margin-top: 20%;
-  position: absolute;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -50px;
   white-space: nowrap;
   text-shadow: calc(-1 * var(--w)) 0, calc(-2 * var(--w)) 0,
     calc(-3 * var(--w)) 0, calc(-4 * var(--w)) 0, calc(-5 * var(--w)) 0,
     calc(-6 * var(--w)) 0, calc(-7 * var(--w)) 0, calc(-8 * var(--w)) 0,
     calc(-9 * var(--w)) 0;
   animation: l16 2s infinite;
+  z-index: 2;
 }
 .loader:before {
   content: "Loading...";

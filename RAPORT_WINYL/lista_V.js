@@ -1,12 +1,31 @@
 import { daneZRaportu, daneZKolej } from "./index.js";
 import { NameValue, NameStyle } from "./klasy.js";
+import { daty } from "./index.js";
 
 let listaVZbiorczaTab;
-
+let listaVZbiorczaTabToBar;
 export const podajListe = () => {
+  let selectedDataOd = $("#datepicker_1").val();
+  let selectedDataDo = $("#datepicker_2").val();
+
+  if (selectedDataOd == "") {
+    selectedDataOd = "2024-03-01";
+  } else {
+    selectedDataOd = $("#datepicker_1").val();
+  }
+  if (selectedDataDo == "") {
+    selectedDataDo = `${daty.dzis}`;
+  } else {
+    selectedDataDo = $("#datepicker_2").val();
+  }
+
+  console.log(selectedDataOd);
+  console.log(selectedDataDo);
+
   let listaV = new Set();
   let listaVTab = [];
   listaVZbiorczaTab = [];
+  listaVZbiorczaTabToBar = [];
   let help = 0;
 
   for (let i = 0; i < daneZRaportu.length; i++) {
@@ -32,6 +51,7 @@ export const podajListe = () => {
     let tpWewKrotnosc = 0;
     let nakladOryginal = 0;
     let produkcja = false;
+    let doKoncaNakladu = 0;
     let produkcjaDobreIlosc = 0;
     let produkcjaZleIlosc = 0;
     let produkcjaZleProcent = 0;
@@ -242,6 +262,22 @@ export const podajListe = () => {
 
     listaVList.push(produkcjaDobreIloscObj);
 
+    doKoncaNakladu = produkcjaDobreIlosc - nakladOryginal;
+
+    if (nakladOryginal == 0) {
+      doKoncaNakladu = 0;
+    }
+
+    let doKoncaNakladuString = doKoncaNakladu.toLocaleString("pl-PL", {
+      useGrouping: "true",
+      minimumFractionDigits: "0",
+      maximumFractionDigits: "0",
+    });
+
+    let doKoncaNakladuObj = new NameValue(doKoncaNakladu, doKoncaNakladuString);
+
+    listaVList.push(doKoncaNakladuObj);
+
     let produkcjaZleIloscString = produkcjaZleIlosc.toLocaleString("pl-PL", {
       useGrouping: "true",
       minimumFractionDigits: "0",
@@ -343,8 +379,19 @@ export const podajListe = () => {
 
     listaVZbiorczaTab.push(listaVList);
   }
-  console.log(help);
-  console.log(listaVZbiorczaTab);
+
+  for (let i = 0; i < listaVZbiorczaTab.length; i++) {
+    let dataWpisu = new Date(listaVZbiorczaTab[i][2]).getTime();
+
+    if (
+      dataWpisu >= new Date(selectedDataOd).getTime() &&
+      dataWpisu <= new Date(selectedDataDo).getTime()
+    ) {
+      listaVZbiorczaTabToBar.push(listaVZbiorczaTab[i]);
+    }
+  }
+
+  console.log(listaVZbiorczaTabToBar);
 };
 
 export function drawTable_ListaProdukcji() {
@@ -362,6 +409,7 @@ export function drawTable_ListaProdukcji() {
   data.addColumn("number", "TP W x ");
   data.addColumn("boolean", "Prod");
   data.addColumn("number", "Dobre");
+  data.addColumn("number", "Górka");
   data.addColumn("number", "Złe");
   data.addColumn("number", "Złe %");
   data.addColumn("number", "Wpisów");
@@ -372,7 +420,7 @@ export function drawTable_ListaProdukcji() {
   data.addColumn("string", "Format");
   data.addColumn("string", "Efekt");
   data.addColumn("number", "Czas (min)");
-  data.addRows(listaVZbiorczaTab);
+  data.addRows(listaVZbiorczaTabToBar);
 
   var table = new google.visualization.Table(
     document.getElementById("lista_table")
@@ -414,56 +462,50 @@ export function drawTable_ListaProdukcji() {
 
   var formatter8 = new google.visualization.ColorFormat();
   formatter8.addRange(0, 1, "#DCDCDC", null);
-  formatter8.format(data, 13);
+  formatter8.format(data, 14);
 
   var formatter9 = new google.visualization.ColorFormat();
   formatter9.addRange(0, 1, "#DCDCDC", null);
   formatter9.addRange(2, 1000, "#004d80", "#e6f5ff");
-  formatter9.format(data, 15);
+  formatter9.format(data, 16);
 
   var formatter10 = new google.visualization.ColorFormat();
   formatter10.addRange(0, 0.01, "#DCDCDC", null);
-  formatter10.format(data, 16);
+  formatter10.format(data, 17);
 
   var formatter11 = new google.visualization.ColorFormat();
   formatter11.addRange(0, 1, "#DCDCDC", null);
-  formatter11.format(data, 17);
+  formatter11.format(data, 18);
 
   var formatter12 = new google.visualization.ColorFormat();
   formatter12.addRange(0, 0.01, "#DCDCDC", null);
-  formatter12.format(data, 18);
+  formatter12.format(data, 19);
 
   var formatter13 = new google.visualization.ColorFormat();
   formatter13.addRange(0, 0.01, "#DCDCDC", null);
-  formatter13.format(data, 19);
+  formatter13.format(data, 20);
 
   var formatter14 = new google.visualization.ColorFormat();
   formatter14.addRange(0, 1, "#DCDCDC", null);
-  formatter14.format(data, 22);
+  formatter14.format(data, 23);
 
   var formatter15 = new google.visualization.ColorFormat();
   formatter15.addRange("7 (42)", null, "#330033", "#ffe6ff");
   formatter15.addRange("12 (180)", null, "#001a00", "#e6ffe6");
   formatter15.addRange("12 (140)", null, "#001a33", "#e6f2ff");
   formatter15.addRange("10 (110)", null, "#1a0d00", "#fff2e6");
-  formatter15.format(data, 20);
+  formatter15.format(data, 21);
 
   var formatter16 = new google.visualization.ColorFormat();
   formatter16.addRange(0, 0.01, "#DCDCDC", null);
   formatter16.addRange(0.051, 0.09, "#ff0000", null);
   formatter16.addRange(0.1, 1, "#ff0000", "#ffe6e6");
-  formatter16.format(data, 14);
+  formatter16.format(data, 15);
 
-  //   var formatter1 = new google.visualization.ColorFormat();
-  //   formatter1.addRange("Waiting", null, "#FF7F50", null);
-  //   formatter1.addRange("Partially complete", null, "#008B8B", null);
-  //   formatter1.addRange("Foiling", null, "#556B2F", null);
-  //   formatter1.addRange("Complete", null, "#006400", "#D7FBD8");
-  //   formatter1.format(data, 5);
-
-  //   var formatter2 = new google.visualization.ColorFormat();
-  //   formatter2.addRange("NO", null, "#DC143C", null);
-  //   formatter2.format(data, 6);
+  var formatter17 = new google.visualization.ColorFormat();
+  formatter17.addRange(-1000, 0, "#FDD835", null);
+  formatter17.addRange(1, 1000, "#2E7D32", null);
+  formatter17.format(data, 13);
 
   var cssClassNames = {
     headerRow: "headerRow",
@@ -478,4 +520,12 @@ export function drawTable_ListaProdukcji() {
     height: "100%",
     cssClassNames: cssClassNames,
   });
+
+  //google.visualization.events.addListener(table, "select", selectHandler);
+
+  //   function selectHandler() {
+  //     alert(`    Nr Produkcji: ${data.getValue(table.getSelection()[0].row, 0)}
+  //     Nakład: ${data.getValue(table.getSelection()[0].row, 1)}
+  //     Data tłoczenia: ${data.getValue(table.getSelection()[0].row, 2)}`);
+  //   }
 }

@@ -1,6 +1,15 @@
 import { podajDaneZRaportu } from "./api/api_raport.js";
 import { podajDaneZKolejki } from "./api/api_kolejka.js";
 import { podajListe, drawTable_ListaProdukcji } from "./lista_V.js";
+import { funkcjaDat } from "./funkcja_do_dat.js";
+
+export let daty = funkcjaDat(new Date());
+
+export let options = {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+};
 
 let daneZRaportuValue = podajDaneZRaportu();
 let daneZKolejkiValue = podajDaneZKolejki();
@@ -14,8 +23,12 @@ Promise.all([daneZRaportuValue, daneZKolejkiValue]).then((values) => {
   daneZKolej = values[1];
   console.log(daneZRaportu);
   console.log(daneZKolej);
-  podajListe();
-  google.charts.setOnLoadCallback(drawTable_ListaProdukcji);
+  // podajListe();
+  // google.charts.setOnLoadCallback(drawTable_ListaProdukcji);
+  $("#poka_liste-button_id").click(function () {
+    podajListe();
+    google.charts.setOnLoadCallback(drawTable_ListaProdukcji);
+  });
 });
 
 $(function () {
