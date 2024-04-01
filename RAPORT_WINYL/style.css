@@ -133,3 +133,62 @@ body {
   height: fit-content;
   align-self: center;
 }
+.zapotrzebowanie_polichlorek {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: fit-content;
+  align-self: center;
+}
+.zapotrzebowanie_polichlorek-head {
+  display: grid;
+  grid-template-columns: 20% 25% 25% 30%;
+  grid-template-rows: 4em;
+  align-items: center;
+  justify-items: center;
+  margin-top: 1em;
+}
+.h3text {
+  font-family: "Calibri";
+  color: rgb(82, 77, 77);
+  grid-column: 1/2;
+}
+.h3anomalie {
+  font-family: "Calibri";
+  color: rgb(82, 77, 77);
+  grid-column: 1/2;
+  text-align: center;
+}
+.h1text {
+  font-family: "Calibri";
+  color: rgb(82, 77, 77);
+  text-align: center;
+  margin-top: 2em;
+}
+#datepicker_3 {
+  grid-column: 2/3;
+}
+#datepicker_4 {
+  grid-column: 3/4;
+}
+#zapotrzebowanie_polichlorek-button {
+  grid-column: 4/5;
+}
+@media only screen and (max-width: 1500px) {
+  .datepickerClass_1 {
+    height: 2em;
+    width: 11em;
+  }
+  .datepickerClass_2 {
+    height: 2em;
+    width: 11em;
+  }
+  .poka_liste-button {
+    height: 2.4em;
+    width: 7em;
+  }
+  .container-left_button {
+    width: 90%;
+    font-size: 0.7em;
+  }
+}

@@ -4,6 +4,7 @@ import { daty } from "./index.js";
 
 let listaVZbiorczaTab;
 let listaVZbiorczaTabToBar;
+
 export const podajListe = () => {
   let selectedDataOd = $("#datepicker_1").val();
   let selectedDataDo = $("#datepicker_2").val();
@@ -18,9 +19,6 @@ export const podajListe = () => {
   } else {
     selectedDataDo = $("#datepicker_2").val();
   }
-
-  console.log(selectedDataOd);
-  console.log(selectedDataDo);
 
   let listaV = new Set();
   let listaVTab = [];

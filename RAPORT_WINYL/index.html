@@ -38,6 +38,19 @@
         color: rgb(97, 97, 97);
         text-align: center;
       }
+
+      @media only screen and (max-width: 1500px) {
+        .headerRow {
+        font-size: 85%;
+      }
+      .tableRow {
+        font-size: 90%;
+      }
+      .oddTableRow {
+        font-size: 90%;
+      }
+    }
+
     </style>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="loader.css" />
@@ -58,9 +71,9 @@
         <button
           class="ui-button ui-widget ui-corner-all container-left_button buttons_sticky"
           style="margin-top: 40%"
-          id="overwiev_button"
+          id="button-zapotrzebowanie"
         >
-          Parametry
+          Zapotrzebowanie na polichlorek
         </button>
         <!-- <button
           class="ui-button ui-widget ui-corner-all container-left_button"
@@ -136,6 +149,32 @@
         <input type="button" id="poka_liste-button_id" value="Pokaż wyniki" class="poka_liste-button">
       </div>
       <div id="lista_table"></div>
+      <div class="zapotrzebowanie_polichlorek">
+        <h1 class="h1text">Zapotrzebowanie na polichlorek</h1>
+        <div class="zapotrzebowanie_polichlorek-head">
+          <h3 class="h3text">Wylicz zapotrzebowanie:</h3>
+          <div>
+            <input
+              type="text"
+              class="datepickerClass_1"
+              id="datepicker_3"
+              placeholder="Data wprowadzenia od..."
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="datepickerClass_2"
+              id="datepicker_4"
+              placeholder="Data wprowadzenia do..."
+            />
+          </div>
+          <input type="button" value="Wylicz" id="zapotrzebowanie_polichlorek-button" class="poka_liste-button">
+        </div>
+        <div id="lista_polichlorek"></div>
+        <h3 class="h3anomalie">Lista Anomalii (tematy do sprawdzenia)</h3>
+        <div id="lista_anomalii"></div>
+      </div>
       </div>
     </div>
     <script type="module" src="index.js"></script>
