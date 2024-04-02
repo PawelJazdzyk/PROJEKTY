@@ -75,13 +75,13 @@
         >
           Zapotrzebowanie na polichlorek
         </button>
-        <!-- <button
+         <button
           class="ui-button ui-widget ui-corner-all container-left_button"
-          id="orders-for-Today_button"
+          id="zamowienia_button"
         >
-          Orders for Today
+          Struktura zamówień
         </button>
-        <button
+        <!--<button
           class="ui-button ui-widget ui-corner-all container-left_button"
           id="orders-entry-Today_button"
         >
@@ -174,6 +174,33 @@
         <div id="lista_polichlorek"></div>
         <h3 class="h3anomalie">Lista Anomalii (tematy do sprawdzenia)</h3>
         <div id="lista_anomalii"></div>
+      </div>
+      <div class="zapotrzebowanie_polichlorek">
+        <h1 class="h1text">Struktura zamówień</h1>
+        <div class="zapotrzebowanie_polichlorek-head">
+          <select class="selektor_kontrahent-handlowiec" id="kontrahent-handlowiec">
+          <option value="Handlowiec">Handlowiec</option>
+          <option value="Kontrahent">Kontrahent</option>
+          </select>
+          <div>
+            <input
+              type="text"
+              class="datepickerClass_1"
+              id="datepicker_5"
+              placeholder="Data wprowadzenia od..."
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="datepickerClass_2"
+              id="datepicker_6"
+              placeholder="Data wprowadzenia do..."
+            />
+          </div>
+          <input type="button" value="Pokaż" id="struktra_zamowien-button" class="poka_liste-button">
+        </div>
+          <div id="lista_zamowienia"></div>
       </div>
       </div>
     </div>

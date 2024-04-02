@@ -7,7 +7,10 @@ import {
   drawTable_ListaPolichlorek,
   drawTable_ListaAnomalii,
 } from "./polichlorek.js";
-const excel = require("node-excel-export");
+import {
+  podajZamowienia,
+  drawTable_ListaZamowienia,
+} from "./przeglad_zamowien.js";
 
 export let daty = funkcjaDat(new Date());
 
@@ -31,6 +34,11 @@ Promise.all([daneZRaportuValue, daneZKolejkiValue]).then((values) => {
   console.log(daneZKolej);
   podajListe();
   google.charts.setOnLoadCallback(drawTable_ListaProdukcji);
+  $("#struktra_zamowien-button").click(function () {
+    podajZamowienia();
+    google.charts.setOnLoadCallback(drawTable_ListaZamowienia);
+  });
+
   $("#poka_liste-button_id").click(function () {
     podajListe();
     google.charts.setOnLoadCallback(drawTable_ListaProdukcji);
@@ -78,10 +86,36 @@ $(function () {
     $("#datepicker_4").datepicker("option", "drop", $(this).val());
   });
 });
+$(function () {
+  $("#datepicker_5").datepicker({
+    showButtonPanel: false,
+    dateFormat: "yy-mm-dd",
+  });
+  $("#datepicker_5").on("change", function () {
+    $("#datepicker_5").datepicker("option", "drop", $(this).val());
+  });
+});
+$(function () {
+  $("#datepicker_6").datepicker({
+    showButtonPanel: false,
+    dateFormat: "yy-mm-dd",
+  });
+  $("#datepicker_6").on("change", function () {
+    $("#datepicker_6").datepicker("option", "drop", $(this).val());
+  });
+});
 $("#button-zapotrzebowanie").click(function () {
   $("html, body").animate(
     {
       scrollTop: $("#lista_polichlorek").offset().top,
+    },
+    500
+  );
+});
+$("#zamowienia_button").click(function () {
+  $("html, body").animate(
+    {
+      scrollTop: $("#lista_zamowienia").offset().top,
     },
     500
   );
