@@ -518,12 +518,4 @@ export function drawTable_ListaProdukcji() {
     height: "100%",
     cssClassNames: cssClassNames,
   });
-
-  //google.visualization.events.addListener(table, "select", selectHandler);
-
-  //   function selectHandler() {
-  //     alert(`    Nr Produkcji: ${data.getValue(table.getSelection()[0].row, 0)}
-  //     Nakład: ${data.getValue(table.getSelection()[0].row, 1)}
-  //     Data tłoczenia: ${data.getValue(table.getSelection()[0].row, 2)}`);
-  //   }
 }

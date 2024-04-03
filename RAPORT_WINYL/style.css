@@ -180,7 +180,16 @@ body {
 #datepicker_6 {
   grid-column: 3/4;
 }
+#datepicker_7 {
+  grid-column: 2/3;
+}
+#datepicker_8 {
+  grid-column: 3/4;
+}
 #struktra_zamowien-button {
+  grid-column: 4/5;
+}
+#policz_zuzycie-button {
   grid-column: 4/5;
 }
 .selektor_kontrahent-handlowiec {

@@ -1,4 +1,4 @@
-import { daneZRaportu, daneZKolej } from "./index.js";
+import { daneZKolej } from "./index.js";
 import { daty } from "./index.js";
 import { NameValue } from "./klasy.js";
 

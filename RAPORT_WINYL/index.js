@@ -11,6 +11,11 @@ import {
   podajZamowienia,
   drawTable_ListaZamowienia,
 } from "./przeglad_zamowien.js";
+import {
+  podajZuzycie,
+  drawTable_ListaZuzycie,
+  zuzyciaChart,
+} from "./zuzycie_polichlorku.js";
 
 export let daty = funkcjaDat(new Date());
 
@@ -34,6 +39,7 @@ Promise.all([daneZRaportuValue, daneZKolejkiValue]).then((values) => {
   console.log(daneZKolej);
   podajListe();
   google.charts.setOnLoadCallback(drawTable_ListaProdukcji);
+
   $("#struktra_zamowien-button").click(function () {
     podajZamowienia();
     google.charts.setOnLoadCallback(drawTable_ListaZamowienia);
@@ -47,6 +53,11 @@ Promise.all([daneZRaportuValue, daneZKolejkiValue]).then((values) => {
     podajListePolichlorek();
     google.charts.setOnLoadCallback(drawTable_ListaPolichlorek);
     google.charts.setOnLoadCallback(drawTable_ListaAnomalii);
+  });
+  $("#policz_zuzycie-button").click(function () {
+    podajZuzycie();
+    google.charts.setOnLoadCallback(drawTable_ListaZuzycie);
+    zuzyciaChart();
   });
 });
 
@@ -104,6 +115,25 @@ $(function () {
     $("#datepicker_6").datepicker("option", "drop", $(this).val());
   });
 });
+$(function () {
+  $("#datepicker_7").datepicker({
+    showButtonPanel: false,
+    dateFormat: "yy-mm-dd",
+  });
+  $("#datepicker_7").on("change", function () {
+    $("#datepicker_7").datepicker("option", "drop", $(this).val());
+  });
+});
+$(function () {
+  $("#datepicker_8").datepicker({
+    showButtonPanel: false,
+    dateFormat: "yy-mm-dd",
+  });
+  $("#datepicker_8").on("change", function () {
+    $("#datepicker_8").datepicker("option", "drop", $(this).val());
+  });
+});
+//***BUTTONY */
 $("#button-zapotrzebowanie").click(function () {
   $("html, body").animate(
     {
@@ -116,6 +146,14 @@ $("#zamowienia_button").click(function () {
   $("html, body").animate(
     {
       scrollTop: $("#lista_zamowienia").offset().top,
+    },
+    500
+  );
+});
+$("#zuzycie_button").click(function () {
+  $("html, body").animate(
+    {
+      scrollTop: $("#lista_zuzycie").offset().top,
     },
     500
   );

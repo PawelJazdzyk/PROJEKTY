@@ -2,14 +2,14 @@ import { daneZKolej } from "./index.js";
 import { NameValue } from "./klasy.js";
 import { daty } from "./index.js";
 
-const wagaParam = {
+export const wagaParam = {
   waga12_180: 0.21,
   waga12_140: 0.16,
   waga10: 0.13,
   waga7: 0.5,
 };
 
-const efektParamWaga = {
+export const efektParamWaga = {
   Kolor: 1,
   Splatter_1: 1,
   Splatter_2: 0.1,

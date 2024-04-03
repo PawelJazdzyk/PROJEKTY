@@ -41,16 +41,15 @@
 
       @media only screen and (max-width: 1500px) {
         .headerRow {
-        font-size: 85%;
+          font-size: 85%;
+        }
+        .tableRow {
+          font-size: 90%;
+        }
+        .oddTableRow {
+          font-size: 90%;
+        }
       }
-      .tableRow {
-        font-size: 90%;
-      }
-      .oddTableRow {
-        font-size: 90%;
-      }
-    }
-
     </style>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="loader.css" />
@@ -75,19 +74,19 @@
         >
           Zapotrzebowanie na polichlorek
         </button>
-         <button
+        <button
           class="ui-button ui-widget ui-corner-all container-left_button"
           id="zamowienia_button"
         >
           Struktura zamówień
         </button>
-        <!--<button
-          class="ui-button ui-widget ui-corner-all container-left_button"
-          id="orders-entry-Today_button"
-        >
-          Entered Orders
-        </button>
         <button
+          class="ui-button ui-widget ui-corner-all container-left_button"
+          id="zuzycie_button"
+        >
+          Zużycie polichlorku
+        </button>
+        <!--<button
           class="ui-button ui-widget ui-corner-all container-left_button"
           id="invoice-Today_button"
         >
@@ -146,7 +145,12 @@
             placeholder="Data wprowadzenia do..."
           />
         </div>
-        <input type="button" id="poka_liste-button_id" value="Pokaż wyniki" class="poka_liste-button">
+        <input
+          type="button"
+          id="poka_liste-button_id"
+          value="Pokaż wyniki"
+          class="poka_liste-button"
+        />
       </div>
       <div id="lista_table"></div>
       <div class="zapotrzebowanie_polichlorek">
@@ -169,7 +173,12 @@
               placeholder="Data wprowadzenia do..."
             />
           </div>
-          <input type="button" value="Wylicz" id="zapotrzebowanie_polichlorek-button" class="poka_liste-button">
+          <input
+            type="button"
+            value="Wylicz"
+            id="zapotrzebowanie_polichlorek-button"
+            class="poka_liste-button"
+          />
         </div>
         <div id="lista_polichlorek"></div>
         <h3 class="h3anomalie">Lista Anomalii (tematy do sprawdzenia)</h3>
@@ -178,9 +187,12 @@
       <div class="zapotrzebowanie_polichlorek">
         <h1 class="h1text">Struktura zamówień</h1>
         <div class="zapotrzebowanie_polichlorek-head">
-          <select class="selektor_kontrahent-handlowiec" id="kontrahent-handlowiec">
-          <option value="Handlowiec">Handlowiec</option>
-          <option value="Kontrahent">Kontrahent</option>
+          <select
+            class="selektor_kontrahent-handlowiec"
+            id="kontrahent-handlowiec"
+          >
+            <option value="Handlowiec">Handlowiec</option>
+            <option value="Kontrahent">Kontrahent</option>
           </select>
           <div>
             <input
@@ -198,12 +210,47 @@
               placeholder="Data wprowadzenia do..."
             />
           </div>
-          <input type="button" value="Pokaż" id="struktra_zamowien-button" class="poka_liste-button">
+          <input
+            type="button"
+            value="Pokaż"
+            id="struktra_zamowien-button"
+            class="poka_liste-button"
+          />
         </div>
-          <div id="lista_zamowienia"></div>
+        <div id="lista_zamowienia"></div>
       </div>
+      <div class="zapotrzebowanie_polichlorek">
+        <h1 class="h1text">Zużycie surowców</h1>
+        <div class="zapotrzebowanie_polichlorek-head">
+          <h3 class="h3text">Policz zużycie:</h3>
+          <div>
+            <input
+              type="text"
+              class="datepickerClass_1"
+              id="datepicker_7"
+              placeholder="Data wprowadzenia od..."
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              class="datepickerClass_2"
+              id="datepicker_8"
+              placeholder="Data wprowadzenia do..."
+            />
+          </div>
+          <input
+            type="button"
+            value="Policz"
+            id="policz_zuzycie-button"
+            class="poka_liste-button"
+          />
+        </div>
+        <div id="lista_zuzycie"></div>
+        <div id="chartContainer" style="height: 300px; width: 100%"></div>
       </div>
     </div>
     <script type="module" src="index.js"></script>
+    <script src="https://cdn.canvasjs.com/canvasjs.min.js"></script>
   </body>
 </html>
