@@ -77,7 +77,7 @@ export const podajZamowienia = () => {
     listaLicznikow = [];
     let handlowiecLubKontrahent = listaHandlowcowLubKontrahentow[i];
     listaLicznikow.push(
-      new NameStyle("Ilość nakładów", {
+      new NameStyle("Ilość tytułów", {
         style: "background-color: #ffe6ff; color: #660066; font-weight: bold;",
       })
     );
@@ -735,7 +735,7 @@ export const podajZamowienia = () => {
     }
 
     listaSuma.push(
-      new NameStyle("Ilość tytułów", {
+      new NameStyle("Ilość płyt", {
         style: "background-color: #f2e6ff; color: #26004d; font-weight: bold;",
       })
     );
